@@ -1,0 +1,77 @@
+Research Goal:
+
+Neural networks have been demonstrated to be highly accurate when applied to
+network anomaly detection. There are three stages to using a neural network for
+a detection task:
+
+1) Designing: A neural network is typically composed of layers of neurons,
+interconnected by directed weighted edges. Each neuron has an associated bias
+and activation function. The designer needs to decide how many layers the
+network needs, how many neurons should be in each layer, and what activation
+function the layer should use. Inputs can be processed by computing various
+tensor products throughout the network.
+
+2) Training: The correct weights and biases need to be learnt in order for the
+network to produce reasonable results. This is accomplished by providing a set
+of inputs and corresponding outputs to the network, evaluating, and computing
+the error associated with some loss function. The error is then used to adjust
+the weights and biases as necessary.
+
+3) Evaluating: The accuracy of the network can be tested by applying it to a set
+of holdout data called the validation dataset. As this has never been seen by
+the network before, there is no risk of the network simply memorizing the data;
+as such, it gives an indication of how much the network has learnt, and how well
+it can work with unknown data.
+
+
+Of these three, the most difficult stage is the design of the network, as the
+rest is fully automated. The addition or removal of a single layer, or a single
+neuron, could render the network completely useless, or give it the perfect
+architecture. The classic way of approaching the design of networks is simply
+trial-and-error, guessing the number of layers, neurons, and activation
+functions until a reasonable model is found. 
+
+
+To combat this uncertainty, we have seen new constructrs such as skip-layers,
+which are highly common in image processing models. These allow certain layers
+to be 'skipped', i.e. ignored by the network, by learning a near-zero weight for
+the layer. This allows the model some control over how many layers it has, which
+has been shown to be highly useful for complex image recognition tasks.
+Unfortunately, skip-layers leads to very large models; for example, ResNet-50
+which has over 25.5 million trainable parameters. This results in models taking
+a long time to train, evaluate, and generally use. Furthermore, these models
+still use activation functions selected by the designer, and may not be the most
+appropriate for the task.
+
+
+Network anomaly detection is a fairly complex task, yet we still see rather
+simple models, typically on the order of 3 layers deep, with common activation
+functions such as the rectified linear unit (ReLU). While these achieve good
+results on contemporary datasets such as UNSW2015, we would like even better
+accuracy than these currently provide. As such, we ask: is there a more
+appropriate way to design these models?
+
+
+NeuroEvolution of Augmenting Topologies (NEAT) is a reinforcement learning
+algorithm; it is used to dynamically evolve a pool of neural networks, allowing
+the topology (neurons, edges, and activation functions) and weights to be
+mutated over time in response to a heuristic. We will use NEAT to dynamically
+create various network topologies, and apply them to our datasets to determine
+which is the best. The benefit to using NEAT is that it is able to create
+arbitrary networks; it does not require neurons to occur in layers, and can
+create arbitrary acyclic directed graphs. Furthermore, since it can mutate
+activation functions, it can explore a wide variety of architectures.
+
+
+To evaluate the performance of NEAT, we will run several experiments.
+The variables we have are:
+- Datasets: KDD99, UNSW2015
+- Network types: Feed-Forward, Recurrent
+- Algorithms: NEAT (zero-sum heuristic), NEAT-Backprop (binary cross-entropy)
+In these experiments, we aim to answer several questions:
+- Which is more appropriate, feed-forward or recurrent, and is the performance,
+  relative to the accuracy, acceptable?
+- Is the inclusion of back-propagation necessary, and is the benefit, relative
+  to the training time, acceptable?
+- Are the models created transferrable between datasets, given appropriate
+  preprocessing to ensure they have a common set of features?
