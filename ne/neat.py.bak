@@ -1,0 +1,104 @@
+"""
+ne.neat
+    Exposes an interface for using the NEAT algorithm (provided by neat-python)
+"""
+
+import neat
+from ne.base import Model, Strategy, evaluate
+
+
+class FeedForward(Model):
+    def __init__(self, model):
+        self.base_model = model
+
+    @classmethod
+    def create(cls, genome, config):
+        return cls(neat.nn.FeedForwardNetwork.create(genome, config))
+
+    def activate(self, x):
+        return self.base_model.activate(x)[0]
+
+
+class Recurrent(Model):
+    def __init__(self, model):
+        self.base_model = model
+
+    @classmethod
+    def create(cls, genome, config):
+        return cls(neat.nn.RecurrentNetwork.create(genome, config))
+
+    def activate(self, x):
+        return self.base_model.activate(x)[0]
+
+
+class ContinuousRecurrent(Model):
+    def __init__(self, model):
+        self.base_model = model
+
+    @classmethod
+    def create(cls, genome, config):
+        raise NotImplementedError()
+
+    def activate(self, x):
+        raise NotImplementedError()
+
+
+class NEAT(Strategy):
+    """
+    Train a population of models using the NEAT technique
+    """
+
+    def __init__(self, config_file, model_type, fitness_func, data, labels):
+        """
+        Parameters
+        ----------
+        config_file: str
+            Config file specifically for the neat-python package
+        model_Type: Model
+            One of ne.neat.{FeedForward|Recurrent|ContinuousRecurrent}
+        fitness_func: (x, x) -> float
+            A fitness function which takes (true, pred) and provides a score
+        data: [x]
+            Data to predict on
+        labels: [y]
+            Associated labels
+        """
+
+        self.config = neat.Config(
+                        neat.DefaultGenome,
+                        neat.DefaultReproduction,
+                        neat.DefaultSpeciesSet,
+                        neat.DefaultStagnation,
+                        config_file)
+        self.population = neat.Population(self.config)
+        self.population.add_reporter(neat.StdOutReporter(True))
+        self.model_type = model_type
+        self.data       = data
+        self.labels     = labels
+
+        # Fitness function needs to be wrapped for neat-python
+        def wrap_fitness():
+            def __inner(genomes, config):
+                #from multiprocessing import Pool
+                #p = Pool(processes=3)
+                #p.starmap(lambda genome, cfg
+
+                for _, genome in genomes:
+                    # Build the model
+                    model = model_type.create(genome, config)
+                    # Get the last elem in the returned iterator
+                    *_, genome.fitness = \
+                        evaluate(model, self.data, self.labels, fitness_func)
+            return __inner
+        self.eval = wrap_fitness() 
+
+    def train(self, epochs=None):
+        """
+        epochs: int
+            Maximum number of rounds to train for. May stop early depending on config
+        """
+
+        winner = self.population.run(self.eval, epochs)
+        model = self.model_type.create(winner, self.config)
+        return model
+
