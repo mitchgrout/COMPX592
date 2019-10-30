@@ -11,6 +11,5 @@ import ne.neat
 import ne.data.kdd99
 import ne.data.unsw2015
 import ne.data.timestamp
-import ne.stats
 import ne.fitness
 

@@ -4,20 +4,21 @@ ne.fitness
 """
 
 def normalized(minimum, maximum, fitness_func):
-    assert minimum < maximum
+    """
+    Returns
+    -------
+    (int, int, ([x], [x]->bool))
+    - min
+    - max
+    - fitness
+    """
+
+    assert minimum < maximum, '{} !< {}'.format(minimum, maximum)
     def __inner(true_list, pred_list):
         scores = fitness_func(true_list, pred_list)
         for s in scores:
             yield (s - minimum) / (maximum - minimum)
-    return __inner
-
-def abs_diff(true_list, pred_list):
-    score = 0.0
-    yield score
-
-    for true, pred in zip(true_list, pred_list):
-        score += abs(true - pred)
-        yield score
+    return 0, 1, __inner
 
 def zero_sum_builder(true_count, false_count, thresh):
     """
@@ -29,6 +30,13 @@ def zero_sum_builder(true_count, false_count, thresh):
     thresh: x -> bool
         Typically something like lambda x: x > 0.0
         Classifies the output as a true or false rather than continuous
+    Returns
+    -------
+    (int, int, ([x], [x] -> bool))
+    - min
+    - max
+    - fitness
+        
     """
 
     def __inner(true_list, pred_list):
@@ -45,5 +53,5 @@ def zero_sum_builder(true_count, false_count, thresh):
         for true, pred in zip(true_list, pred_list):
             score += reward_table[thresh(true), thresh(pred)]
             yield score
-    return __inner
+    return -2*false_count, +2*false_count, __inner
 

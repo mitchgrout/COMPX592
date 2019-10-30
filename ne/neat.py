@@ -3,113 +3,37 @@ ne.neat
     Exposes an interface for using the NEAT algorithm (provided by neat-python)
 """
 
-import neat
-from neat.nn import FeedForwardNetwork, RecurrentNetwork
-#from neat.nn import FeedForwardNetwork
-#from tf_neat.recurrent_net import RecurrentNet as RecurrentNetwork
-
-from ne.base import Model, Strategy, evaluate, predict, run_parallel
-from ne.stats import compute_stats
+from ne.base      import Model, Strategy
 from ne.visualize import draw_net
 
+# Model wrappers
 class FeedForward(Model):
-    def __init__(self, model):
-        self.base_model = model
-
-    @classmethod
-    def create(cls, genome, config):
-        return cls(FeedForwardNetwork.create(genome, config))
+    def __init__(self, fitness, thresh, genome, config):
+        from neat.nn import FeedForwardNetwork
+        super(FeedForward, self).__init__(fitness, thresh)
+        self.base_model = FeedForwardNetwork.create(genome, config)
 
     def activate(self, x):
         return self.base_model.activate(x)[0]
 
 
 class Recurrent(Model):
-    def __init__(self, model):
-        self.base_model = model
-
-    @classmethod
-    def create(cls, genome, config):
-        return cls(RecurrentNetwork.create(genome, config))
+    def __init__(self, fitness, thresh, genome, config):
+        from neat.nn import RecurrentNetwork
+        super(Recurrent, self).__init__(fitness, thresh)
+        self.base_model = RecurrentNetwork.create(genome, config)
 
     def activate(self, x):
         return self.base_model.activate(x)[0]
 
-    # def save, load render
 
 class ContinuousRecurrent(Model):
-    def __init__(self, model):
-        self.base_model = model
+    pass
 
-    @classmethod
-    def create(cls, genome, config):
-        raise NotImplementedError()
-
-    def activate(self, x):
-        raise NotImplementedError()
-
-def create_fitness_func(executor, fitness_func, model_type, sdata, slabels):
-    def flatten(xss): return [x for xs in xss for x in xs]
-
-    def __individual(genomes, config):
-        def __inner(genome_id, genome):
-            model = model_type.create(genome, config)
-            *_, genome.fitness = evaluate(model, sdata, slabels, fitness_func)
-            return genome.fitness
-        results = executor.run(__inner, genomes)
-        for (_, genome), fitness in zip(genomes, results):
-            genome.fitness = fitness
-        return results
- 
-    def __batch(genomes, config):
-        def __inner(idx_start, idx_stop):
-            results = []
-            for genome_id, genome in genomes[idx_start : idx_stop]:
-                model = model_type.create(genome, config)
-                *_, genome.fitness = evaluate(model, sdata, slabels, fitness_func)
-                results.append(genome.fitness)
-            return results
-        from math import ceil
-        n = ceil(len(genomes) / executor.num_workers())
-        indices = []
-        for idx in range(0, len(genomes), n):
-            indices.append((idx, idx+n))
-        results = flatten(executor.run(__inner, indices))
-        for (_, genome), fitness in zip(genomes, results):
-            genome.fitness = fitness
-        return results
- 
- 
-    def __precomp_batch(genomes, config):
-        models = []
-        def __inner(idx_start, idx_stop):
-            results = []
-            for model in models[idx_start : idx_stop]:
-                *_, genome.fitness = evaluate(model, sdata, slabels, fitness_func)
-                results.append(genome.fitness)
-            return results
-        from math import ceil
-        n = ceil(len(genomes) / executor.num_workers())
-        indices = []
-        for idx in range(0, len(genomes), n):
-            indices.append((idx, idx+n))
-        for genome_id, genome in genomes:
-            models.append(model_type.create(genome, config))
-        results = flatten(executor.run(__inner, indices))
-        for (_, genome), fitness in zip(genomes, results):
-            genome.fitness = fitness
-        return results
- 
-    # NOTE: Choose your technique here
-    return __batch
 
 class NEAT(Strategy):
-    """
-    Train a population of models using the NEAT technique
-    """
-
-    def __init__(self, config_file, model_type, fitness_func, data, labels,
-                       executor, val_data=None, val_labels=None, val_thresh=None):
+    def __init__(self, log_dir, config_file, model_type, fitness_func, data, labels,
+            executor, thresh, num_splits, delay):
         """
         Parameters
         ----------
@@ -127,44 +51,99 @@ class NEAT(Strategy):
             Runs a function with a certain parallelisation strategy
         """
 
-        self.config = neat.Config(
-                        neat.DefaultGenome,
-                        neat.DefaultReproduction,
-                        neat.DefaultSpeciesSet,
-                        neat.DefaultStagnation,
-                        config_file)
+        import neat
+        from neat.reporting import BaseReporter
+        self.model_type = model_type
+        self.config     = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
+                                      neat.DefaultSpeciesSet, neat.DefaultStagnation,
+                                      config_file)
         self.population = neat.Population(self.config)
         self.population.add_reporter(neat.StdOutReporter(True))
-        self.model_type = model_type
-        self.data       = data
-        self.labels     = labels
-        self.eval       = create_fitness_func(executor, fitness_func, model_type, self.data, self.labels)
+        self.thresh  = thresh
+        self.fitness = fitness_func
+ 
+        self.data         = data
+        self.labels       = labels
+        self.num_splits   = num_splits
+        self.delay        = delay
+        self.train_data   = []
+        self.train_labels = []
+        self.val_data     = []
+        self.val_labels   = []
 
-        class RenderReporter(neat.reporting.BaseReporter):
-            def __init__(self_):
-                self_.idx = 0
+
+        def __batch(genomes, config):
+            def flatten(xss): return [x for xs in xss for x in xs]
+            def __inner(idx_start, idx_stop):
+                results = []
+                for genome_id, genome in genomes[idx_start : idx_stop]:
+                    m = model_type(self.fitness, self.thresh, genome, config)
+                    *_, genome.fitness = \
+                            m.evaluate(self.train_labels,
+                                       m.predict(self.train_data))
+                    results.append(genome.fitness)
+                return results
+            from math import ceil
+            n = ceil(len(genomes) / executor.num_workers())
+            indices = []
+            for idx in range(0, len(genomes), n):
+                indices.append((idx, idx+n))
+            results = flatten(executor.run(__inner, indices))
+            for (_, genome), fitness in zip(genomes, results):
+                genome.fitness = fitness
+            return results
+        self.eval = __batch
+
+        # Reporter objects
+        class StatsReporter(BaseReporter):
+            """ Run statistics on validation data using the best model """
             def post_evaluate(self_, config_, population_, species_, best_genome_):
-                self_.idx += 1
-                draw_net(config_, best_genome_, filename='render/best_network_{}'.format(self_.idx))
-        self.population.add_reporter(RenderReporter())
+                m = model_type(self.fitness, self.thresh, best_genome_, config_)
+                print("Validation statistics:",
+                        m.compute_statistics(self.val_labels, m.predict(self.val_data)))
+       
+        class ModelSaver(BaseReporter):
+            def __init__(self_):
+                import os
+                self_.dir = '{}/models'.format(log_dir)
+                os.makedirs(self_.dir, exist_ok=True)
 
-        if not any(x is None for x in [val_data, val_labels, val_thresh]):
-            class StatsReporter(neat.reporting.BaseReporter):
-                def post_evaluate(self_, config_, population_, species_, best_genome_):
-                    print("Validation statistics:",
-                        compute_stats(
-                            val_labels,
-                            predict(model_type.create(best_genome_, config_), val_data),
-                            val_thresh))
-            self.population.add_reporter(StatsReporter())
+            def start_generation(self_, gen):
+                self_.gen = gen
 
-    def train(self, epochs=None):
+            def post_evaluate(self_, config_, population_, species_, best_genome_):
+                m = self.model_type(self.fitness, self.thresh, best_genome_, config_)
+                m.save('{}/{}.pkl'.format(self_.dir, self_.gen))
+
+        class DataUpdater(BaseReporter):
+            def __init__(self_):
+                from sklearn.model_selection import TimeSeriesSplit
+                self_.indices = list(TimeSeriesSplit(n_splits=self.num_splits or epochs+1).split(self.data))
+
+            def start_generation(self_, generation):
+                print('Updating data for generation {}'.format(generation))
+                train_index, test_index = self_.indices[0]
+                train_index = train_index[-1]
+                test_index  = test_index[-1]
+                print('Training on 0:{} items, validating on {}:{}'.format(train_index, train_index, test_index))
+        
+                if len(self_.indices) > 1 and generation % (self.delay or 1) == 0:
+                    self_.indices = self_.indices[1:]
+        
+                self.train_data   = self.data[:train_index]
+                self.train_labels = self.labels[:train_index]
+                self.val_data     = self.data[train_index:test_index]
+                self.val_labels   = self.labels[train_index:test_index]
+
+        self.population.add_reporter(StatsReporter())
+        self.population.add_reporter(ModelSaver())
+        self.population.add_reporter(DataUpdater())
+
+    def train(self, epochs):
         """
         epochs: int
             Maximum number of rounds to train for. May stop early depending on config
         """
 
         winner = self.population.run(self.eval, epochs)
-        model = self.model_type.create(winner, self.config)
-        return model
 
