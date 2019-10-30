@@ -1,19 +1,18 @@
 """
 ne.data.kdd99
-    Sample of the KDD99 data
+    Actual KDD99 data
 """
+
+from ne.data import Data
 
 def load_data():
     xs, ys = [], []
-    # with open('kddcup.data_10_percent_corrected', 'r') as fd:
+    nt, nf = 0, 0
+
     with open('ne/data/kdd99/kddcup.data.txt', 'r') as fd:
         fd.readline() # Header line
-        ctr = 1
         for line in fd:
-            ctr += 1
-            if ctr == 3000000: break
             parts = line.strip().split(',')
-           
             x, y = None, None
             try:
                 parts[1]  = {'tcp':0, 'udp':1, 'icmp':2}[parts[1]]
@@ -26,5 +25,8 @@ def load_data():
 
             xs.append(x)
             ys.append(y)
-    return xs, ys
+            if y > 0.5: nt += 1
+            else:       nf += 1
+
+    return Data(xs=xs, ys=ys, nt=nt, nf=nf)
 
