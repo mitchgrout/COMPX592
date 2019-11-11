@@ -9,8 +9,7 @@ def load_data():
     xs, ys = [], []
     nt, nf = 0, 0
 
-    with open('ne/data/kdd99/kddcup.data.txt', 'r') as fd:
-        fd.readline() # Header line
+    with open('ne/data/kdd99/kddcup.data', 'r') as fd:
         for line in fd:
             parts = line.strip().split(',')
             x, y = None, None
