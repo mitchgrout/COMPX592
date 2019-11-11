@@ -55,3 +55,35 @@ def zero_sum_builder(true_count, false_count, thresh):
             yield score
     return -2*false_count, +2*false_count, __inner
 
+def accuracy(thresh):
+    """
+
+    """
+
+    tp, tn, fp, fn = 0, 0, 0, 0
+    for true, pred in zip(true_ys, pred_ys):
+        f_t, f_p = self.thresh(true), self.thresh(pred)
+        if   f_t is True  and f_p is True:  tp += 1
+        elif f_t is True  and f_p is False: fn += 1
+        elif f_t is False and f_p is True: fp += 1
+        elif f_t is False and f_p is False: tn += 1
+
+    eps = lambda x: 1e-20 if x == 0 else x
+    return (tp+tn)/eps(tp+tn+fp+fn)
+
+def f1(thresh):
+    """
+
+    """
+
+    tp, tn, fp, fn = 0, 0, 0, 0
+    for true, pred in zip(true_ys, pred_ys):
+        f_t, f_p = self.thresh(true), self.thresh(pred)
+        if   f_t is True  and f_p is True:  tp += 1
+        elif f_t is True  and f_p is False: fn += 1
+        elif f_t is False and f_p is True: fp += 1
+        elif f_t is False and f_p is False: tn += 1
+
+    eps = lambda x: 1e-20 if x == 0 else x
+    return 2*tp/eps(2*tp+fp+fn)
+
