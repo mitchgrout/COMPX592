@@ -62,8 +62,8 @@ class Model(object):
                     ,false_negative=fn
                     ,tpr=tp/eps(tp+fn)
                     ,tnr=tn/eps(tn+fp)
-                    ,ppv=tp/(tp+fp)
-                    ,npv=tn/(tn+fn)
+                    ,ppv=tp/eps(tp+fp)
+                    ,npv=tn/eps(tn+fn)
                     ,accuracy=(tp+tn)/eps(tp+tn+fp+fn)
                     ,f1=2*tp/eps(2*tp+fp+fn))
 
