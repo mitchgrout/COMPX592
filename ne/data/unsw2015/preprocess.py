@@ -6,11 +6,18 @@ categorical_tables = {
 }
 
 if __name__ == '__main__':
+    lno = 0
+
     for filename in [ 'UNSW-NB15_{}.csv'.format(idx) for idx in [1,2,3,4] ]:
         with open(filename, 'r') as fd:
             ipv4_to_int = lambda ip: sum( int(t[0]) << (8*t[1]) \
                                      for t in zip(ip.split('.'), [3,2,1,0]) )
             for line in fd:
+                lno += 1
+                # Weird absence of positive examples here, filter out
+                if lno > 186_800 and lno < (700_000+387_240):
+                    continue
+
                 # NOTE: Hack to deal with sometimes-UTF8 data
                 parts = line.strip().encode('ascii', 'ignore').decode('ascii').split(',')
                 parts[0] = ipv4_to_int(parts[0])
@@ -30,8 +37,14 @@ if __name__ == '__main__':
                         d[x] = len(d)
                     parts[col_id] = d[x]
 
-                # Coalesce all non-DoS traffic into the Normal category
-                parts[47] = int(parts[47] == 'DoS')
+                if True:
+                    # Coalesce all non-DoS traffic into the Normal category
+                    parts[47] = int(parts[47] == 'DoS')
+                else:
+                    # Coalesce all non-Normal into the DoS category
+                    parts[47] = parts[48]
+
+
                 # No longer need the Label column now; also drop these three for missing data
                 ignored_cols = [37, 38, 39, 48]
                 b = False
