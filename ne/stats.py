@@ -72,7 +72,7 @@ def feature_selection_PCA(mod, thresh=lambda x:x>0.5):
         data.xs[:, x] = _normalize(data.xs[:, x])
     split = ne.data.make_split(data)
 
-    for n in range(1, 2):#data.xs.shape[1]):
+    for n in range(1, data.xs.shape[1]):
         pca = PCA(n_components=n).fit(data.xs, data.ys)
 
         train_xs = pca.transform(split.train.xs)
