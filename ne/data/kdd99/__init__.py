@@ -5,6 +5,9 @@ ne.data.kdd99
 
 from ne.data import Data
 
+def name():
+    return "kdd99"
+
 def load_best():
     # Negate the set of columns we actually want
     columns  = [2, 3, 11, 22, 24, 25, 28, 31, 32, 33, 37, 38]

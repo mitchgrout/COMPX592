@@ -5,6 +5,9 @@ ne.data.cic2019
 
 from ne.data import Data
 
+def name():
+    return "cic2019"
+
 def load_best():
     # Negate the set of columns we actually want
     columns  = []

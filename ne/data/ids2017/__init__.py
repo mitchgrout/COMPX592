@@ -5,6 +5,9 @@ ne.data.ids2017
 
 from ne.data import Data
 
+def name():
+    return "ids2017"
+
 def load_best():
     # Negate the set of columns we actually want
     columns  = [10, 12, 13, 22, 39, 40, 41, 42, 52, 54]

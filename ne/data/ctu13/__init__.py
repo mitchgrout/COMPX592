@@ -5,6 +5,9 @@ ne.data.ctu13
 
 from ne.data import Data
 
+def name():
+    return "ctu13"
+
 def load_best():
     # Negate the set of columns we actually want
     columns  = []

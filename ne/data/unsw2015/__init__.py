@@ -5,6 +5,9 @@ ne.data.unsw2015
 
 from ne.data import Data
 
+def name():
+    return "unsw2015"
+
 def load_best():
     # Negate the set of columns we actually want
     columns  = [0, 4, 9, 10, 14, 28, 29, 32, 33, 34, 36, 38, 39, 44, 45, 46]
