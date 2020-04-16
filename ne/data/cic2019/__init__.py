@@ -1,14 +1,14 @@
 """
-ne.data.unsw2015
-    Actual UNSW2015 data
+ne.data.cic2019
+    CIC2019 DDoS UDP data
 """
 
 from ne.data import Data
 
 def load_best():
     # Negate the set of columns we actually want
-    columns  = [0, 4, 9, 10, 14, 28, 29, 32, 33, 34, 36, 38, 39, 44, 45, 46]
-    excluded = list(filter(lambda x: x not in columns, range(47)))
+    columns  = []
+    excluded = list(filter(lambda x: x not in columns, range(88)))
     return load_data(exclude_cols=excluded)
 
 def load_data(exclude_cols=[], dedupe=True):
@@ -18,19 +18,21 @@ def load_data(exclude_cols=[], dedupe=True):
     numpy.random.seed(20192020)
 
     exclude_cols = exclude_cols.copy()
-    assert all(0 <= c and c < 47 for c in exclude_cols)
-    exclude_cols.append(47)
-    exclude_cols.append(48)
-    labels = [ 
-        "srcip", "sport", "dstip", "dsport", "proto", "state", "dur", "sbytes",
-        "dbytes", "sttl", "dttl", " sloss", "dloss", "service", "Sload",
-        "Dload", "Spkts", "Dpkts", "swin", "dwin", "stcpb", "dtcpb", " smeansz",
-        "dmeansz", "trans_depth", "res_bdy_len", "Sjit", "Djit", "Stime",
-        "Ltime", "Sintpkt", " Dintpkt", "tcprtt", "synack", "ackdat",
-        "is_sm_ips_ports", "ct_state_ttl", " ct_flw_http_mthd", "is_ftp_login",
-        "ct_ftp_cmd", "ct_srv_src", "ct_srv_dst", "ct_dst_ltm", " ct_src_ ltm",
-        "ct_src_dport_ltm", "ct_dst_sport_ltm", "ct_dst_src_ltm", "attack_cat", "Label"
-    ]
+    assert all(0 <= c and c < 88 for c in exclude_cols)
+    exclude_cols.append(87)
+    labels = [ "Unnamed", "Flow ID", "Source IP", "Source Port", "Destination IP", "Destination Port", "Protocol", "Timestamp", "Flow Duration", "Total Fwd Packets", "Total Backward Packets",
+        "Total Length of Fwd Packets", "Total Length of Bwd Packets", "Fwd Packet Length Max", "Fwd Packet Length Min", "Fwd Packet Length Mean", "Fwd Packet Length Std", "Bwd Packet Length Max", 
+        "Bwd Packet Length Min", "Bwd Packet Length Mean", "Bwd Packet Length Std", "Flow Bytes/s", "Flow Packets/s", "Flow IAT Mean", "Flow IAT Std", "Flow IAT Max", "Flow IAT Min", "Fwd IAT Total",
+        "Fwd IAT Mean", "Fwd IAT Std", "Fwd IAT Max", "Fwd IAT Min", "Bwd IAT Total", "Bwd IAT Mean", "Bwd IAT Std", "Bwd IAT Max", "Bwd IAT Min", "Fwd PSH Flags", "Bwd PSH Flags", "Fwd URG Flags", 
+        "Bwd URG Flags", "Fwd Header Length", "Bwd Header Length", "Fwd Packets/s", "Bwd Packets/s", "Min Packet Length", "Max Packet Length", "Packet Length Mean", "Packet Length Std", 
+        "Packet Length Variance", "FIN Flag Count", "SYN Flag Count", "RST Flag Count", "PSH Flag Count", "ACK Flag Count", "URG Flag Count", "CWE Flag Count", "ECE Flag Count", "Down/Up Ratio",
+        "Average Packet Size", "Avg Fwd Segment Size", "Avg Bwd Segment Size", "Fwd Header Length.1", "Fwd Avg Bytes/Bulk", "Fwd Avg Packets/Bulk", "Fwd Avg Bulk Rate", "Bwd Avg Bytes/Bulk", 
+        "Bwd Avg Packets/Bulk", "Bwd Avg Bulk Rate", "Subflow Fwd Packets", "Subflow Fwd Bytes", "Subflow Bwd Packets", "Subflow Bwd Bytes", "Init_Win_bytes_forward", "Init_Win_bytes_backward",
+        "act_data_pkt_fwd", "min_seg_size_forward", "Active Mean", "Active Std", "Active Max", "Active Min", "Idle Mean", "Idle Std", "Idle Max", "Idle Min", "SimillarHTTP", "Inbound", "Label" ]
+
+    return Data(xs=[], ys=[], nt=0, nf=0, label_names=labels)
+
+    url   = 'http://205.174.165.80/CICDataset/CICDDoS2019/Dataset/CSVs/CSV-01-12.zip'
     urlf  = 'https://www.unsw.adfa.edu.au/unsw-canberra-cyber/cybersecurity/ADFA-NB15-Datasets/{}' 
     pathf = 'ne/data/unsw2015/{}'
     files = [ 'UNSW-NB15_{}.csv'.format(idx) for idx in [1,2,3,4] ]

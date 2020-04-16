@@ -1,5 +1,12 @@
 # Project-specific
 *.swp
+ne/data/*/*
+!ne/data/*/__init__.py
+
+logs/
+old_logs/
+results/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

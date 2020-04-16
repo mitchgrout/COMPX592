@@ -1,13 +1,13 @@
 """
-ne.data.kdd99
-    Actual KDD99 data
+ne.data.nsl_kdd
+    Reworked KDD99 data
 """
 
 from ne.data import Data
 
 def load_best():
     # Negate the set of columns we actually want
-    columns  = [2, 3, 11, 22, 24, 25, 28, 31, 32, 33, 37, 38]
+    columns  = [2, 3, 11, 22, 24, 25, 28, 31, 32, 33, 37, 38, 39]
     excluded = list(filter(lambda x: x not in columns, range(41)))
     return load_data(exclude_cols=excluded)
 
@@ -15,12 +15,13 @@ def load_data(exclude_cols=[], dedupe=True):
     from os.path import exists
     import wget
     import numpy
-    import gzip
+    import zipfile
     numpy.random.seed(20192020)
 
     exclude_cols = exclude_cols.copy()
-    assert all(0 <= c and c < 41 for c in exclude_cols)
+    assert all(0 <= c and c < 41 for c in exclude_cols), exclude_cols
     exclude_cols.append(41)
+    exclude_cols.append(42)
     labels = [
         "duration", "proto", "service", "flag", "src_byte", "dst_byte", "land",
         "wrong_fragment", "urgent", "hot", "num_failed_logins", "logged_in",
@@ -33,49 +34,51 @@ def load_data(exclude_cols=[], dedupe=True):
         "dst_host_same_srv_rate", "dst_host_diff_srv_rate",
         "dst_host_same_src_port_rate", "dst_host_srv_diff_host_rate",
         "dst_host_serror_rate", "dst_host_srv_serror_rate",
-        "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "label"
+        "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "label", "unknown"
     ]
-    urlf  = 'http://kdd.ics.uci.edu/databases/kddcup99/{}'
-    pathf = 'ne/data/kdd99/{}'
-    fname = 'kddcup.data.gz'
+    urlf  = 'http://205.174.165.80/CICDataset/NSL-KDD/Dataset/{}'
+    pathf = 'ne/data/nsl_kdd/{}'
+    fname = 'NSL-KDD.zip'
 
     categorical_tables = {
         1: {},
         2: {},
         3: {},
     }
-    seen_lines = set()
+    seen_lines = set() # NOTE: Apparently NSL-KDD is deduped already
     xs, ys = [], []
     nt, nf = 0, 0
 
     if not exists(pathf.format(fname)):
         wget.download(url=urlf.format(fname), out=pathf.format(fname))
-    with gzip.open(pathf.format(fname), 'rb') as fd:
-        for line in fd:
-            line = line.decode('ascii').replace(' ', '').strip()
-            parts = line.split(',')
-            if dedupe:
-                if line in seen_lines:
-                    continue
-                seen_lines.add(line)
-            for col in categorical_tables.keys():
-                x = parts[col]
-                d = categorical_tables[col]
-                if x not in d:
-                    d[x] = len(d)
-                parts[col] = d[x]
-            parts[41] = int(parts[41] != 'normal.')
-
-            x = [ float(x) for (idx, x) in enumerate(parts) if idx not in exclude_cols ]
-            y = float(parts[41])
-            xs.append(x)
-            ys.append(y)
-
-            if y > 0.5: nt += 1
-            else:       nf += 1
+    with zipfile.ZipFile(pathf.format(fname)) as archive:
+        for fd in [ archive.open('KDDTrain+.txt'), archive.open('KDDTest+.txt') ]:
+            for line in fd:
+                line = line.decode('ascii').replace(' ', '').strip()
+                parts = line.split(',')
+                if dedupe:
+                    if line in seen_lines:
+                        continue
+                    seen_lines.add(line)
+                for col in categorical_tables.keys():
+                    x = parts[col]
+                    d = categorical_tables[col]
+                    if x not in d:
+                        d[x] = len(d)
+                    parts[col] = d[x]
+                
+                parts[41] = int(parts[41] != 'normal')
+    
+                x = [ float(x) for (idx, x) in enumerate(parts) if idx not in exclude_cols ]
+                y = float(parts[41])
+                xs.append(x)
+                ys.append(y)
+    
+                if y > 0.5: nt += 1
+                else:       nf += 1
     xs = numpy.asarray(xs)
     ys = numpy.asarray(ys)
-    
+        
     p = numpy.random.permutation(len(xs))
     xs = xs[p]
     ys = ys[p]

@@ -1,12 +1,18 @@
+# Al-Zewairi style preprocessing
+
 categorical_tables = {
     # 0-based indices
     4:  {},
     5:  {},
-    13: {}        
+    13: {},
+    37: {}, #
+    38: {}, # Currently excluded
+    39: {}, #
 }
 
 if __name__ == '__main__':
     lno = 0
+    seen_lines = set()
 
     for filename in [ 'UNSW-NB15_{}.csv'.format(idx) for idx in [1,2,3,4] ]:
         with open(filename, 'r') as fd:
@@ -15,11 +21,16 @@ if __name__ == '__main__':
             for line in fd:
                 lno += 1
                 # Weird absence of positive examples here, filter out
-                if lno > 186_800 and lno < (700_000+387_240):
-                    continue
+                # if lno > 186_800 and lno < (700_000+387_240):
+                #    continue
+
+                line = ''.join([ x for x in line if x not in (' ', '\t') ])
+                if line in seen_lines: continue
+                seen_lines.add(line)
 
                 # NOTE: Hack to deal with sometimes-UTF8 data
                 parts = line.strip().encode('ascii', 'ignore').decode('ascii').split(',')
+                if parts[0] == '127.0.0.1': continue # Stray record
                 parts[0] = ipv4_to_int(parts[0])
                 parts[2] = ipv4_to_int(parts[2])
                 # The ports are sometimes in hex, or missing entirely
@@ -37,7 +48,7 @@ if __name__ == '__main__':
                         d[x] = len(d)
                     parts[col_id] = d[x]
 
-                if True:
+                if not True:
                     # Coalesce all non-DoS traffic into the Normal category
                     parts[47] = int(parts[47] == 'DoS')
                 else:
@@ -45,8 +56,8 @@ if __name__ == '__main__':
                     parts[47] = parts[48]
 
 
-                # No longer need the Label column now; also drop these three for missing data
-                ignored_cols = [37, 38, 39, 48]
+                # Columns to be removed
+                ignored_cols = [0, 2, 48]
                 b = False
                 for idx, c in [ (idx, parts[idx]) for idx in range(len(parts)) if idx not in ignored_cols ]:
                     if b: print(',', end='')
@@ -54,3 +65,5 @@ if __name__ == '__main__':
                     b = True
                 print('')
 
+    import sys
+    print(categorical_tables, file=sys.stderr)

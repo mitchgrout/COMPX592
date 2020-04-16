@@ -37,35 +37,8 @@ class Model(object):
         return self.fitness(true_ys, pred_ys)
 
     def compute_statistics(self, true_ys, pred_ys):
-        from collections import namedtuple
-        Stats = namedtuple( 'Stats', 
-            [ 'total', 'total_true', 'total_false',
-              'true_positive', 'true_negative', 'false_positive', 'false_negative', 
-              'tpr', 'tnr', 'ppv', 'npv',
-              'accuracy', 'f1'])
-        
-        tp, tn, fp, fn = 0, 0, 0, 0
-        for true, pred in zip(true_ys, pred_ys):
-            f_t, f_p = self.thresh(true), self.thresh(pred)
-            if   f_t is True  and f_p is True:  tp += 1
-            elif f_t is True  and f_p is False: fn += 1
-            elif f_t is False and f_p is True:  fp += 1
-            elif f_t is False and f_p is False: tn += 1
-
-        eps = lambda x: 1e-20 if x == 0 else x
-        return Stats(total=tp+tn+fp+fn
-                    ,total_true=fn+tp
-                    ,total_false=tn+fp
-                    ,true_positive=tp
-                    ,true_negative=tn
-                    ,false_positive=fp
-                    ,false_negative=fn
-                    ,tpr=tp/eps(tp+fn)
-                    ,tnr=tn/eps(tn+fp)
-                    ,ppv=tp/eps(tp+fp)
-                    ,npv=tn/eps(tn+fn)
-                    ,accuracy=(tp+tn)/eps(tp+tn+fp+fn)
-                    ,f1=2*tp/eps(2*tp+fp+fn))
+        import ne.stats
+        return ne.stats.compute_statistics(self.thresh, true_ys, pred_ys)
 
     def save(self, filename):
         from dill import dump
@@ -78,14 +51,4 @@ class Model(object):
         with open(filename, 'rb') as fd:
             obj = load(fd)
         return obj
-
-
-class Strategy(object):
-    """
-    Abstraction of an evolutionary strategy. Allows for training up to a certain
-    number of epochs
-    """
-
-    def train(self, epochs):
-        raise NotImplementedError()
 

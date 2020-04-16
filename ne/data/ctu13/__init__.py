@@ -1,13 +1,13 @@
 """
-ne.data.unsw2015
-    Actual UNSW2015 data
+ne.data.ctu13
+    CTU-13 segment 4 data
 """
 
 from ne.data import Data
 
 def load_best():
     # Negate the set of columns we actually want
-    columns  = [0, 4, 9, 10, 14, 28, 29, 32, 33, 34, 36, 38, 39, 44, 45, 46]
+    columns  = []
     excluded = list(filter(lambda x: x not in columns, range(47)))
     return load_data(exclude_cols=excluded)
 

@@ -3,13 +3,13 @@ ne.neat
     Exposes an interface for using the NEAT algorithm (provided by neat-python)
 """
 
-from ne.base        import Model, Strategy
+from ne.base        import Model
 from ne.execute     import Sequential
 #from ne.visualize   import draw_net
 from neat.reporting import BaseReporter
+from ne.util        import benchmark
 
-
-def _render_neat_model(base_model, filename):
+def _render_neat_model(base_model, label_names, filename):
     import graphviz
     dot = graphviz.Digraph(format='svg', 
                            node_attr={
@@ -18,8 +18,8 @@ def _render_neat_model(base_model, filename):
                             'height': '0.2',
                             'width': '0.2' })
 
-    for k in base_model.input_nodes:
-        dot.node(str(k), _attributes={
+    for k, l in zip(base_model.input_nodes, label_names):
+        dot.node(l, _attributes={
             'style': 'filled', 
             'shape': 'box',
             'fillcolor': 'lightgray'
@@ -73,33 +73,21 @@ class Recurrent(Model):
     def render(self, filename):
         _render_neat_model(self.base_model, filename)
 
-
-def _batch_old(train, model_type, fitness, thresh, executor, genomes, config):
-    def flatten(xss): return [x for xs in xss for x in xs]
-    def _inner(idx_start, idx_stop):
-        results = []
-        for genome_id, genome in genomes[idx_start : idx_stop]:
-            m     = model_type(fitness, thresh, genome, config)
-            *_, f = m.evaluate(train[1], m.predict(train[0]))
-            results.append(f)
-        return results
-    from math import ceil
-    n = ceil(len(genomes) / executor.num_workers())
-    indices = []
-    for idx in range(0, len(genomes), n):
-        indices.append((idx, idx+n))
-    results = flatten(executor.run(_inner, indices))
-    for (_, genome), fitness in zip(genomes, results):
-        genome.fitness = fitness
-    return results
- 
-def _batch(train, model_type, fitness, thresh, executor, genomes, config):
+# Hacky, but I guess it works
+epoch = 0
+def _batch(train, num_splits, model_type, fitness, thresh, executor, genomes, config):
+    global epoch
+    epoch   += 1
+    l        = len(train.xs) / num_splits
+    train_xs = train.xs#[int(l*(epoch-1)):int(l*epoch)] # NOTE: Small segs instead of growing in size
+    train_ys = train.ys#[int(l*(epoch-1)):int(l*epoch)] # NOTE: 
+    
     def flatten(xss): return [x for xs in xss for x in xs]
     def _inner(s_genomes):
         results = []
         for genome_id, genome in s_genomes:
             m     = model_type(fitness, thresh, genome, config)
-            *_, f = m.evaluate(train[1], m.predict(train[0]))
+            *_, f = m.evaluate(train_ys, m.predict(train_xs))
             results.append(f)
         return results
     from math import ceil
@@ -114,19 +102,32 @@ def _batch(train, model_type, fitness, thresh, executor, genomes, config):
 
 
 class StatsReporter(BaseReporter):
-    def __init__(self, train, val, model_type, fitness, thresh):
-        self.train      = train
-        self.val        = val
+    def __init__(self, split_data, model_type, fitness, thresh):
+        self.split_data = split_data
         self.model_type = model_type
         self.fitness    = fitness
         self.thresh     = thresh
 
     def post_evaluate(self, config, _0, _1, best_genome):
-        m = self.model_type(self.fitness, self.thresh, best_genome, config)
-        print("Training statistics:",
-                m.compute_statistics(self.train[1], m.predict(self.train[0])))
-        print("Validation statistics:",
-                m.compute_statistics(self.val[1], m.predict(self.val[0])))
+        m    = self.model_type(self.fitness, self.thresh, best_genome, config)
+        #train= self.split_data.train
+        val  = self.split_data.val
+        test = self.split_data.test
+
+        val_pred_ys  = list(m.predict(val.xs))
+        test_pred_ys = list(m.predict(test.xs))
+
+         #*_, train_fitness = m.evaluate(train.ys, m.predict(train.xs))
+        *_, val_fitness  = m.evaluate(val.ys,  val_pred_ys)
+        *_, test_fitness = m.evaluate(test.ys, test_pred_ys)
+
+        # print("Train fitness", train_fitness)
+        print("Validation fitness:", val_fitness)
+        print("Test fitness      :", test_fitness)
+
+        # print("Train      :", benchmark(lambda:m.compute_statistics(train.ys,m.predict(train.xs))))
+        print("Validation stats:", m.compute_statistics(val.ys , val_pred_ys ))
+        print("Test stats      :", m.compute_statistics(test.ys, test_pred_ys))
        
 
 class ModelSaver(BaseReporter):
@@ -146,59 +147,26 @@ class ModelSaver(BaseReporter):
         m.save('{}/{}.pkl'.format(self.dir, self.gen))
 
 
-# class PopulationSaver(BaseReporter):
-
-
-class DataUpdater(BaseReporter):
-    def __init__(self, data, train, val, num_splits, delay):
-        from sklearn.model_selection import TimeSeriesSplit as TSS
-        self.data    = data
-        self.train   = train
-        self.val     = val
-        self.delay   = delay
-        self.indices = list(TSS(n_splits=num_splits).split(data.xs))
-
-    def start_generation(self, gen):
-        if len(self.indices) > 1 and gen > 0 and (gen % self.delay) == 0:
-            self.indices = self.indices[1:]
-        train_index, test_index = self.indices[0]
-        train_index = train_index[-1]
-        test_index  = test_index[-1]
-        print('Training on 0:{} items, validating on {}:{}'.format(
-                train_index, train_index, test_index))
-        self.train[0] = self.data.xs[:train_index]
-        self.train[1] = self.data.ys[:train_index]
-        self.val[0]   = self.data.xs[train_index:test_index]
-        self.val[1]   = self.data.ys[train_index:test_index]
-
-
-def run(epochs, data, model_type, fitness, config_file, log_dir,
-        executor=Sequential(), thresh=lambda x: x>0.5, num_splits=None, delay=None):
+def run(epochs, split_data, model_type, fitness, config_file, log_dir,
+        executor=Sequential(), thresh=lambda x: x>0.5, train_ratio=0.8,
+        num_splits=None):
     """
     """
     
     import neat
     from functools import partial
 
-    if (num_splits, delay) == (None, None):
-        num_splits = epochs
-        delay      = 1
+    if num_splits == None: num_splits = epochs
     assert num_splits != None
-    assert delay      != None
 
-    # Splits of the data object
-    train     = [[], []]
-    val       = [[], []]
-    evaluator = partial(_batch, train, model_type, fitness, thresh, executor)
-
+    evaluator = partial(_batch, split_data.train, num_splits, model_type, fitness, thresh, executor) 
     config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
                          neat.DefaultSpeciesSet, neat.DefaultStagnation,
                          config_file)
     population = neat.Population(config)
-    population.add_reporter(neat.StdOutReporter(True))
-    population.add_reporter(StatsReporter(train, val, model_type, fitness, thresh))
+    population.add_reporter(neat.StdOutReporter(False))
+    population.add_reporter(StatsReporter(split_data, model_type, fitness, thresh))
     population.add_reporter(ModelSaver(log_dir, model_type, fitness, thresh))
-    population.add_reporter(DataUpdater(data, train, val, num_splits, delay))
   
     winner = population.run(evaluator, epochs)
 
