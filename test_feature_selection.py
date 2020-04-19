@@ -8,9 +8,9 @@ import warnings
 from sklearn.naive_bayes import GaussianNB
 warnings.filterwarnings('ignore')
 
-if __name__ ==  '__main__':
-    DATASET  = ne.data.kdd99.dataset
-    SELECTOR = ne.data.Pearsons
+def run_test(test_dataset, test_selector):
+    DATASET  = test_dataset
+    SELECTOR = test_selector
     THRESH   = lambda x: x > 0.5
     
     log_dir = os.path.join('results', 'feature_selection', SELECTOR.name, DATASET.name())
@@ -27,4 +27,21 @@ if __name__ ==  '__main__':
             results[n_features] = stats
             print("{} - {}".format(n_features, stats.mcc))
         print(list(map(lambda t:t[0], sorted(results.items(), key=lambda t:t[1].mcc, reverse=True))))
+
+if __name__ == '__main__':
+    datasets = [
+        ne.data.kdd99,
+        ne.data.nsl_kdd,
+        ne.data.unsw2015,
+        ne.data.ids2017,
+    ]
+
+    selectors = [
+        ne.data.Pearsons,
+        ne.data.PCA,
+    ]
+
+    for d in datasets:
+        for s in selectors:
+            run_test(d, s)
 
