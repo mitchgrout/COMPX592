@@ -48,7 +48,7 @@ def loader():
                         d[x] = len(d)
                     parts[col] = d[x]
     
-                del parts[-2]
+                del parts[-2] # attack_cat
                 yield list(map(float, parts))
 
 labels = [
@@ -59,7 +59,7 @@ labels = [
     "Ltime", "Sintpkt", " Dintpkt", "tcprtt", "synack", "ackdat",
     "is_sm_ips_ports", "ct_state_ttl", " ct_flw_http_mthd", "is_ftp_login",
     "ct_ftp_cmd", "ct_srv_src", "ct_srv_dst", "ct_dst_ltm", " ct_src_ ltm",
-    "ct_src_dport_ltm", "ct_dst_sport_ltm", "ct_dst_src_ltm", "attack_cat", "Label"
+    "ct_src_dport_ltm", "ct_dst_sport_ltm", "ct_dst_src_ltm", "Label"
 ]
 
 dataset = Dataset('unsw2015', loader, labels)

@@ -13,4 +13,4 @@ def dump(fname):
     with open(fname, 'r') as fd:
         for line in fd:
             print(line, end='')
-
+    print()
