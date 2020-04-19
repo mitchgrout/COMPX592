@@ -1,0 +1,78 @@
+#!/usr/bin/env python3
+
+import numpy
+import ne
+import os
+import tee
+import warnings
+from sklearn.naive_bayes import GaussianNB
+warnings.filterwarnings('ignore')
+
+if __name__ ==  '__main__':
+    DATASET  = ne.data.unsw2015.dataset
+    SELECTOR = ne.data.PCA
+    THRESH   = lambda x: x > 0.5
+    
+    log_dir = os.path.join('results', 'feature_selection', SELECTOR.name, DATASET.name())
+    os.makedirs(log_dir, exist_ok=True)
+    with tee.StdoutTee(os.path.join(log_dir, 'output.log'), buff=1):
+        ne.util.dump(__file__)
+
+        results = {}
+        for n_features in range(1, DATASET.num_features()):
+            split = DATASET.data(selector=SELECTOR(n_features), save=False, cache=True)
+            model = GaussianNB(var_smoothing=1e-15)
+            model.fit(*split.train)
+            stats = ne.stats.compute_statistics(THRESH, split.test.ys, model.predict(split.test.xs))
+            results[n_features] = stats
+            print("{} - {}".format(n_features, stats.mcc))
+        print(list(map(lambda t:t[0], sorted(results.items(), key=lambda t:t[1].mcc, reverse=True))))
+
+
+1 - 0.3510952585699638
+2 - 0.4039725747689429
+3 - 0.3793082270262654
+4 - 0.5705337745963588
+5 - 0.5569362264766193
+6 - 0.5817164358135181
+7 - 0.47535514039844196
+8 - 0.5139725503392353
+9 - 0.6381132737311787
+10 - 0.6092587568524385
+11 - 0.5989362974120863
+12 - 0.5886371701173739
+13 - 0.6464586274236235
+14 - 0.642333509318239
+15 - 0.647625939069621
+16 - 0.6069281185361411
+17 - 0.6707081559107918
+18 - 0.6476089401942523
+19 - 0.6416970278211837
+20 - 0.6339528497450053
+21 - 0.6236339436394361
+22 - 0.6179914054451505
+23 - 0.6037477834039067
+24 - 0.6041305141444722
+25 - 0.6233012740789405
+26 - 0.6320093629169685
+27 - 0.6289116452228412
+28 - 0.6221266254499838
+29 - 0.6272628561612423
+30 - 0.624245717343939
+31 - 0.6192634170896483
+32 - 0.6707328981072387
+33 - 0.6651653229850664
+34 - 0.6456371206836888
+35 - 0.6428967311916677
+36 - 0.6384562752165899
+37 - 0.6225174559608732
+38 - 0.6197011096869461
+39 - 0.6160801381605465
+40 - 0.6158850502118867
+41 - 0.5996575813492644
+42 - 0.600897497547884
+43 - 0.5971076230865269
+44 - 0.5810543847080797
+45 - 0.5746385964728136
+46 - 0.599645651977707
+[32, 17, 33, 15, 18, 13, 34, 35, 14, 19, 36, 9, 20, 26, 27, 29, 30, 21, 25, 37, 28, 38, 31, 22, 39, 40, 10, 16, 24, 23, 42, 41, 46, 11, 43, 12, 6, 44, 45, 4, 5, 8, 7, 2, 3, 1]

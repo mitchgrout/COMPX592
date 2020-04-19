@@ -1,0 +1,72 @@
+#!/usr/bin/env python3
+
+import numpy
+import ne
+import os
+import tee
+import warnings
+from sklearn.naive_bayes import GaussianNB
+warnings.filterwarnings('ignore')
+
+if __name__ ==  '__main__':
+    DATASET  = ne.data.nsl_kdd.dataset
+    SELECTOR = ne.data.PCA
+    THRESH   = lambda x: x > 0.5
+    
+    log_dir = os.path.join('results', 'feature_selection', SELECTOR.name, DATASET.name())
+    os.makedirs(log_dir, exist_ok=True)
+    with tee.StdoutTee(os.path.join(log_dir, 'output.log'), buff=1):
+        ne.util.dump(__file__)
+
+        results = {}
+        for n_features in range(1, DATASET.num_features()):
+            split = DATASET.data(selector=SELECTOR(n_features), save=False, cache=True)
+            model = GaussianNB(var_smoothing=1e-15)
+            model.fit(*split.train)
+            stats = ne.stats.compute_statistics(THRESH, split.test.ys, model.predict(split.test.xs))
+            results[n_features] = stats
+            print("{} - {}".format(n_features, stats.mcc))
+        print(list(map(lambda t:t[0], sorted(results.items(), key=lambda t:t[1].mcc, reverse=True))))
+
+
+1 - 0.7423915037623703
+2 - 0.7332291242232492
+3 - 0.7052187643422724
+4 - 0.7917452484522718
+5 - 0.7874477267744711
+6 - 0.7837545363867426
+7 - 0.7854773841951674
+8 - 0.7734685248813282
+9 - 0.790598464571693
+10 - 0.7979518564725941
+11 - 0.796617955116423
+12 - 0.8032190243270496
+13 - 0.7983322501027901
+14 - 0.7964909131807415
+15 - 0.7907546432581687
+16 - 0.7742962394029406
+17 - 0.7703820269525816
+18 - 0.7699169316769683
+19 - 0.7640501903727903
+20 - 0.7643437613091074
+21 - 0.7672216678538647
+22 - 0.7672216678538647
+23 - 0.7672616759417354
+24 - 0.765412555450589
+25 - 0.7609161979864411
+26 - 0.782459242404369
+27 - 0.7839982290089959
+28 - 0.7834961838627427
+29 - 0.7895792475319023
+30 - 0.7802085381628366
+31 - 0.7680495833116114
+32 - 0.7753341193885875
+33 - 0.7789495561664455
+34 - 0.7802970895262142
+35 - 0.7779866792899895
+36 - 0.779492623527601
+37 - 0.7705573045728905
+38 - 0.7686828783174047
+39 - 0.7680176518368675
+40 - 0.7849618154474208
+[12, 13, 10, 11, 14, 4, 15, 9, 29, 5, 7, 40, 27, 6, 28, 26, 34, 30, 36, 33, 35, 32, 16, 8, 37, 17, 18, 38, 31, 39, 23, 21, 22, 24, 20, 19, 25, 1, 2, 3]
