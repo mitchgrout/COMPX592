@@ -17,7 +17,7 @@ if __name__ == '__main__':
     EXECUTOR    = ne.execute.Sequential()
     THRESH      = lambda x: x > 0.5
         
-    log_dir = os.path.join('results', 'fitness_functions', DATASET.name())
+    log_dir = os.path.join('results', 'fitness_functions', FITNESS.__name__, DATASET.name())
     os.makedirs(log_dir, exist_ok=True)
     with tee.StdoutTee(os.path.join(log_dir, 'output.log'), buff=1):
         ne.util.dump(__file__)
