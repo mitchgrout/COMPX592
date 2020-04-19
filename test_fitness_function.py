@@ -11,7 +11,7 @@ if __name__ == '__main__':
     SELECTOR    = ne.data.PCA(12)
     FITNESS     = ne.fitness.accuracy
     NUM_CHUNKS  = 1
-    EPOCHS      = 64 * NUM_CHUNKS
+    EPOCHS      = 32 * NUM_CHUNKS
     CONFIG_FILE = ne.neat.create_config_file(num_inputs=SELECTOR.n_features)
     MODEL_TYPE  = ne.neat.FeedForward    
     EXECUTOR    = ne.execute.Sequential()

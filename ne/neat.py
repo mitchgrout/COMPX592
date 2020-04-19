@@ -15,7 +15,7 @@ def create_config_file(**kwargs):
         'NEAT': {
             'fitness_criterion':'max',
             'fitness_threshold': 1.1,
-            'pop_size': 128,
+            'pop_size': 64,
             'reset_on_extinction': False,
         },
 
