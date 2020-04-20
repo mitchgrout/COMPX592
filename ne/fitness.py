@@ -6,6 +6,9 @@ ne.fitness
 import ne.stats
 from itertools import starmap
 
+def _loss_to_metric(carry):
+    return 1 / (1 + carry)
+
 def _normalize(min_, max_, val):
     """
     Natural map from [min_, max_] -> [0, 1]
@@ -30,3 +33,37 @@ def f1(thresh):
 
 def mcc(thresh):
     return lambda true_ys, pred_ys: starmap(ne.stats.mcc, ne.stats.score(thresh, true_ys, pred_ys))
+
+def inverse_mean_square_error(thresh):
+    def __inner(true_ys, pred_ys):
+        clamp   = lambda x: min(max(x, 0), 1)
+        count   = 0
+        partial = 0 
+        yield 0 
+        for (true_y, pred_y) in zip(true_ys, pred_ys):
+            true_y = clamp(true_y)
+            pred_y = clamp(pred_y)
+            partial += (true_y - pred_y) ** 2
+            count   += 1
+            yield _loss_to_metric(partial / count)
+    return __inner
+
+def inverse_binary_crossentropy(thresh):
+    from math import log
+    _eps = lambda e: 1e-10 if e == 0 else e
+
+    def __inner(true_ys, pred_ys):
+        clamp   = lambda x: min(max(x, 0), 1)
+        count   = 0
+        partial = 0
+        yield 0 
+        for (true_y, pred_y) in zip(true_ys, pred_ys):
+            true_y = clamp(true_y)
+            pred_y = clamp(pred_y)
+            if thresh(true_y):
+                partial += -log(_eps(pred_y))
+            else:
+                partial += -log(_eps(1-pred_y))
+            count   += 1
+            yield _loss_to_metric(partial / count)
+    return __inner
