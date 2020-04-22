@@ -10,11 +10,11 @@ def run_test(test_dataset, test_selector, test_fitness):
     DATASET     = test_dataset
     SELECTOR    = test_selector
     FITNESS     = test_fitness
-    NUM_CHUNKS  = 1
-    EPOCHS      = 64 * NUM_CHUNKS
+    BATCH_SIZE  = 128 
+    EPOCHS      = 16
     CONFIG_FILE = ne.neat.create_config_file(num_inputs=SELECTOR.n_features)
     MODEL_TYPE  = ne.neat.FeedForward    
-    EXECUTOR    = ne.execute.MultiProcess(32)
+    EXECUTOR    = ne.execute.Sequential()
     THRESH      = lambda x: x > 0.5
         
     log_dir = os.path.join('results', 'fitness_functions', FITNESS.__name__, DATASET.name())
@@ -26,7 +26,7 @@ def run_test(test_dataset, test_selector, test_fitness):
         model = ne.neat.run(
                     epochs=EPOCHS,
                     split_data=split,
-                    num_chunks=NUM_CHUNKS,
+                    batch_size=BATCH_SIZE,
                     model_type=MODEL_TYPE,
                     fitness=FITNESS(THRESH),
                     config_file=CONFIG_FILE,
@@ -35,8 +35,11 @@ def run_test(test_dataset, test_selector, test_fitness):
                     thresh=THRESH,
                     verbose=True)
         model.save(os.path.join(log_dir, 'model.pkl'))
-        stats = ne.stats.compute_statistics(THRESH, split.test.ys, model.predict(split.test.xs))
-        print('Test statistics: ', stats)
+        pred_ys = list(model.predict(split.test.xs))
+        *_, f = model.evaluate(split.test.ys, pred_ys)
+        stats = model.compute_statistics(split.test.ys, pred_ys)
+        print('Test fitness:', f)
+        print('Test statistics:', stats)
 
 if __name__ == '__main__':
     dataset_pairs = [
@@ -49,7 +52,9 @@ if __name__ == '__main__':
         ne.fitness.accuracy,
         ne.fitness.f1,
         ne.fitness.mcc,
-        ne.fitness.zero_sum
+        ne.fitness.zero_sum,
+        ne.fitness.inverse_mean_square_error,
+       ne.fitness.inverse_binary_crossentropy,
     ]
 
     for p in dataset_pairs:

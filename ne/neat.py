@@ -7,6 +7,7 @@ from ne.base        import Model
 from ne.execute     import Sequential
 from neat.reporting import BaseReporter
 from ne.util        import benchmark
+from time           import time
 
 def create_config_file(**kwargs):
     import tempfile
@@ -154,16 +155,21 @@ class Recurrent(Model):
 
 # Hacky, but I guess it works
 epoch = 0
-def _batch(train, num_chunks, model_type, fitness, thresh, executor, genomes, config):
+perm  = None
+def _batch(train, batch_size, model_type, fitness, thresh, executor, genomes, config):
+    import numpy
     from math import ceil
     global epoch
-    l        = ceil(train.xs.shape[0] / num_chunks)
-    offset   = (epoch % num_chunks) * l
+    global perm
+    num_chunks = ceil(train.xs.shape[0] / batch_size)
+    offset     = ((epoch % num_chunks) * batch_size)
+    if (epoch % num_chunks) == 0:
+        perm = numpy.random.permutation(train.xs.shape[0])
+
+    train_xs = train.xs[perm][offset : offset + batch_size]
+    train_ys = train.ys[perm][offset : offset + batch_size]
     epoch   += 1
-    
-    train_xs = train.xs[offset : offset + l]
-    train_ys = train.ys[offset : offset + l]
-    
+   
     def flatten(xss): return [x for xs in xss for x in xs]
     def _inner(s_genomes):
         results = []
@@ -184,16 +190,22 @@ def _batch(train, num_chunks, model_type, fitness, thresh, executor, genomes, co
 
 
 class StatsReporter(BaseReporter):
-    def __init__(self, split_data, model_type, fitness, thresh, verbose):
+    def __init__(self, split_data, num_chunks, model_type, fitness, thresh, verbose):
         self.split_data   = split_data
+        self.num_chunks   = num_chunks
         self.model_type   = model_type
         self.fitness      = fitness
         self.thresh       = thresh
         self.verbose      = verbose
+        self.last_time    = time()
         self.best_model   = None
         self.best_fitness = None
 
-    def post_evaluate(self, config, _0, _1, best_genome):
+    def post_evaluate(self, config, population, species, best_genome):
+        global epoch
+        if (epoch % self.num_chunks) != 0:
+            return
+    
         m    = self.model_type(self.fitness, self.thresh, best_genome, config)
         val  = self.split_data.val
         val_pred_ys  = list(m.predict(val.xs))
@@ -204,25 +216,40 @@ class StatsReporter(BaseReporter):
             self.best_fitness = val_fitness
 
         if self.verbose:
-            print("Validation fitness:", val_fitness)
-            # print("Validation stats:  ", stats)
+            from numpy import mean, std
+            # TODO: Do we want fitness across the *entire* train dataset or just this chunk?
+            fitnesses = [c.fitness for c in population.values()]
+            print('*** Epoch {} ***'.format(epoch // self.num_chunks))
+            print('Mean fitness:', mean(fitnesses))
+            print('Stdev:',        std(fitnesses))
+            print('Best fitness:', best_genome.fitness)
+            print('Model size:',   best_genome.size())
+            print('Validation fitness:', val_fitness)
+
+            new_time = time()
+            print('Elapsed:', new_time - self.last_time)
+            self.last_time = new_time
+            print()
        
-def run(epochs, split_data, num_chunks, model_type, fitness, config_file, log_dir,
+def run(epochs, split_data, batch_size, model_type, fitness, config_file, log_dir,
         executor=Sequential(), thresh=lambda x: x>0.5, verbose=True):
 
     import neat
     from functools import partial
+    from math import ceil
     global epoch
     epoch = 0 # For re-running [if we ever do that]
 
-    evaluator = partial(_batch, split_data.train, num_chunks, model_type, fitness, thresh, executor) 
+    if batch_size is None:
+        batch_size = split_data.train.xs.shape[0]
+    num_chunks = ceil(split_data.train.xs.shape[0] / batch_size)
+    epochs *= num_chunks
+    evaluator = partial(_batch, split_data.train, batch_size, model_type, fitness, thresh, executor) 
     config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
                          neat.DefaultSpeciesSet, neat.DefaultStagnation,
                          config_file)
     population = neat.Population(config)
-    if verbose:
-        population.add_reporter(neat.StdOutReporter(False))
-    reporter = StatsReporter(split_data, model_type, fitness, thresh, verbose)
+    reporter = StatsReporter(split_data, num_chunks, model_type, fitness, thresh, verbose)
     population.add_reporter(reporter)
   
     # Overall winner != best training fitness
