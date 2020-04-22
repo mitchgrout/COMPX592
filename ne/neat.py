@@ -203,9 +203,14 @@ class StatsReporter(BaseReporter):
 
     def post_evaluate(self, config, population, species, best_genome):
         global epoch
+
+        # Cheap and easy progbar
+        from sys import stderr
+        print('\rBatch {}/{}'.format(epoch % self.num_chunks, self.num_chunks), end='', file=stderr)
         if (epoch % self.num_chunks) != 0:
             return
-    
+        print('\r', file=stderr)
+
         m    = self.model_type(self.fitness, self.thresh, best_genome, config)
         val  = self.split_data.val
         val_pred_ys  = list(m.predict(val.xs))
