@@ -11,6 +11,8 @@ class Selector:
     name = None
     def __init__(self, n_features):
         self.n_features = n_features
+    def num_features(self):
+        return self.n_features
 
 class Pearsons(Selector): name = 'pearsons'
 class PCA     (Selector): name = 'pca'
@@ -133,3 +135,17 @@ class Dataset:
         return Split(train=Pair(xs=xs[ :a], ys=ys[ :a]),
                      test =Pair(xs=xs[a:b], ys=ys[a:b]),
                      val  =Pair(xs=xs[b:c], ys=ys[b:c]))
+
+def _load_random():
+    from sklearn.datasets import make_classification
+    xs, ys = make_classification(n_samples=100, n_features=20, n_informative=5)
+    for i in range(100):
+        yield xs[i] + [ ys[i] ]
+random = Dataset('random', _load_random, [''] * 20)
+
+def _load_mnist():
+    from sklearn.datasets import load_digits
+    xs, ys = load_digits(return_X_y=True) 
+    for i in range(xs.shape[0]):
+        yield xs[i] + [ ys[i] ]
+mnist = Dataset('mnist', _load_mnist, [''] * 64)
