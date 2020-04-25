@@ -41,14 +41,14 @@ class Model(object):
         return ne.stats.compute_statistics(self.thresh, true_ys, pred_ys)
 
     def save(self, filename):
-        from dill import dump
+        from dill import dump, HIGHEST_PROTOCOL
         with open(filename, 'wb') as fd:
-            dump(self, fd)
+            dump(self, fd, HIGHEST_PROTOCOL)
 
     @classmethod
     def load(cls, filename):
-        from dill import load
+        from dill import load, HIGHEST_PROTOCOL
         with open(filename, 'rb') as fd:
-            obj = load(fd)
+            obj = load(fd, HIGHEST_PROTOCOL)
         return obj
 
