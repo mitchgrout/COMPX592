@@ -15,10 +15,9 @@ def neat(test_name,
          fitness=ne.fitness.mcc,
          batch_size=256,
          epochs=1,
-         pop_size=256,
          config_args={}):
 
-    return _make_task(_neat_task, test_name, dataset, selector, fitness, batch_size, epochs, pop_size, config_args)
+    return _make_task(_neat_task, test_name, dataset, selector, fitness, batch_size, epochs, config_args)
 
 def shallow_neural(test_name,
                    dataset=ne.data.nsl_kdd.dataset,
@@ -83,7 +82,7 @@ def random_forest(test_name,
     return _make_task(_sklearn_task, test_name, model, dataset, selector)
 
 def _make_task(fn, *args):
-    from multiprocessing import Porcess
+    from multiprocessing import Process
     p = Process(target=fn, args=args)
     p.start()
     return p
