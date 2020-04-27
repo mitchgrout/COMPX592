@@ -198,7 +198,8 @@ def _batch(train, batch_size, model_type, fitness, thresh, executor, genomes, co
 
 
 class StatsReporter(BaseReporter):
-    def __init__(self, split_data, num_chunks, model_type, fitness, thresh, verbose):
+    def __init__(self, log_dir, split_data, num_chunks, model_type, fitness, thresh, verbose):
+        self.log_dir      = log_dir
         self.split_data   = split_data
         self.num_chunks   = num_chunks
         self.model_type   = model_type
@@ -256,7 +257,7 @@ def run(epochs, split_data, batch_size, model_type, fitness, config_file, log_di
                          neat.DefaultSpeciesSet, neat.DefaultStagnation,
                          config_file)
     population = neat.Population(config)
-    reporter = StatsReporter(split_data, num_chunks, model_type, fitness, thresh, verbose)
+    reporter = StatsReporter(log_dir, split_data, num_chunks, model_type, fitness, thresh, verbose)
     population.add_reporter(reporter)
   
     try:
