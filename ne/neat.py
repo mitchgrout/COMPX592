@@ -6,76 +6,84 @@ ne.neat
 from ne.base        import Model
 from ne.execute     import Sequential
 from neat.reporting import BaseReporter
-from ne.util        import benchmark
 from time           import time
+from os.path        import join
 
 def create_config_file(**kwargs):
     import tempfile
     # neat has a bad API for doing this, so we're going to patch it
     default_config = {
         'NEAT': {
-            'fitness_criterion':'max',
-            'fitness_threshold': 1.1,
-            'pop_size': 128,
-            'reset_on_extinction': False,
+            'fitness_criterion'         : 'max',
+            'fitness_threshold'         : 1.1,
+            'pop_size'                  : 256,
+            'reset_on_extinction'       : True,
         },
 
         'DefaultGenome': {
-            'activation_default': 'identity',
-            'activation_mutate_rate': 0.2,
-            'activation_options': 'identity relu clamped tanh sigmoid',
-            'aggregation_default': 'sum',
-            'aggregation_mutate_rate': 0.2,
-            'aggregation_options': 'sum',
-            'bias_init_mean': 0.0,
-            'bias_init_stdev': 1.0,
-            'bias_max_value': 30.0,
-            'bias_min_value': -30.0,
-            'bias_mutate_power': 0.5,
-            'bias_mutate_rate': 0.7,
-            'bias_replace_rate': 0.1,
+            'activation_default'        : 'random',
+            'activation_mutate_rate'    : 0.3,
+            'activation_options'        : 'identity relu clamped tanh sigmoid',
+
+            'aggregation_default'       : 'random',
+            'aggregation_mutate_rate'   : 0.2,
+            'aggregation_options'       : 'sum',
+
+            'bias_init_mean'            : 0.0,
+            'bias_init_stdev'           : 1.0,
+            'bias_max_value'            : 30.0,
+            'bias_min_value'            : -30.0,
+            'bias_mutate_power'         : 0.5,
+            'bias_mutate_rate'          : 0.7,
+            'bias_replace_rate'         : 0.1,
+
             'compatibility_disjoint_coefficient': 1.0,
-            'compatibility_weight_coefficient': 0.5,
-            'conn_add_prob': 0.5,
-            'conn_delete_prob': 0.5,
-            'enabled_default': True,
-            'enabled_mutate_rate': 0.01,
-            'feed_forward': True,
-            'initial_connection': 'full_direct',
-            'node_add_prob': 0.2,
-            'node_delete_prob': 0.5,
-            'num_hidden': 0,
-            'num_inputs': 0,
-            'num_outputs': 1,
-            'response_init_mean': 1.0,
-            'response_init_stdev': 0.0,
-            'response_max_value': 30.0,
-            'response_min_value': -30.0,
-            'response_mutate_power': 0.0,
-            'response_mutate_rate': 0.0,
-            'response_replace_rate': 0.0,
-            'weight_init_mean': 0.0,
-            'weight_init_stdev': 1.0,
-            'weight_max_value': 30.0,
-            'weight_min_value': -30.0,
-            'weight_mutate_power': 0.5,
-            'weight_mutate_rate': 0.8,
-            'weight_replace_rate': 0.1,
+            'compatibility_weight_coefficient'  : 0.6,
+
+            'conn_add_prob'             : 0.7,
+            'conn_delete_prob'          : 0.3,
+            'enabled_default'           : True,
+            'enabled_mutate_rate'       : 0.01,
+            'feed_forward'              : True,
+            'initial_connection'        : 'full',
+
+            'node_add_prob'             : 0.6,
+            'node_delete_prob'          : 0.4,
+            'num_hidden'                : 0,
+            'num_inputs'                : 0,
+            'num_outputs'               : 1,
+
+            'response_init_mean'        : 1.0,
+            'response_init_stdev'       : 0.0,
+            'response_max_value'        : 30.0,
+            'response_min_value'        : -30.0,
+            'response_mutate_power'     : 0.0,
+            'response_mutate_rate'      : 0.0,
+            'response_replace_rate'     : 0.0,
+
+            'weight_init_mean'          : 0.0,
+            'weight_init_stdev'         : 1.0,
+            'weight_max_value'          : 30.0,
+            'weight_min_value'          : -30.0,
+            'weight_mutate_power'       : 0.5,
+            'weight_mutate_rate'        : 0.8,
+            'weight_replace_rate'       : 0.1,
         },
 
         'DefaultSpeciesSet': {
-            'compatibility_threshold': 3.0, 
+            'compatibility_threshold'   : 2.5, 
         },
 
         'DefaultStagnation': {
-            'species_fitness_func': 'max',
-            'max_stagnation': 20,
-            'species_elitism': 2,
+            'species_fitness_func'      : 'mean',
+            'max_stagnation'            : 15,
+            'species_elitism'           : 3,
         },
 
         'DefaultReproduction': {
-            'elitism': 2,
-            'survival_threshold': 0.2,
+            'elitism'                   : 2,
+            'survival_threshold'        : 0.2,
+            'min_species_size'          : 3,
         },
     }
 
@@ -204,38 +212,32 @@ class StatsReporter(BaseReporter):
     def post_evaluate(self, config, population, species, best_genome):
         global epoch
 
-        # Cheap and easy progbar
-        from sys import stderr
-        print('\rBatch {}/{}'.format(epoch % self.num_chunks, self.num_chunks), end='', file=stderr)
-        if (epoch % self.num_chunks) != 0:
-            return
-        print('\r', file=stderr)
+        _epoch = 1 + ((epoch-1) // self.num_chunks)
+        _batch = 1 + ((epoch-1) %  self.num_chunks)
 
+        # Check validation *every* batch
         m    = self.model_type(self.fitness, self.thresh, best_genome, config)
         val  = self.split_data.val
         val_pred_ys  = list(m.predict(val.xs))
         *_, val_fitness  = m.evaluate(val.ys,  val_pred_ys)
 
+        indicator = ''
         if self.best_fitness is None or val_fitness > self.best_fitness:
             self.best_model   = m
             self.best_fitness = val_fitness
+            m.save(join(self.log_dir, 'model.{}.{}.pkl'.format(_epoch, _batch)))
+            indicator = '!!!'
 
         if self.verbose:
-            from numpy import mean, std
-            # TODO: Do we want fitness across the *entire* train dataset or just this chunk?
-            fitnesses = [c.fitness for c in population.values()]
-            print('*** Epoch {} ***'.format(epoch // self.num_chunks))
-            print('Mean fitness:', mean(fitnesses))
-            print('Stdev:',        std(fitnesses))
-            print('Best fitness:', best_genome.fitness)
-            print('Model size:',   best_genome.size())
-            print('Validation fitness:', val_fitness)
-
+            print('*** Epoch {}, batch {}/{} ***'.format(_epoch, _batch, self.num_chunks))
+            print('Training fitness:', best_genome.fitness)
+            print('Model size:', best_genome.size())
+            print('Validation fitness:', val_fitness, indicator)
             new_time = time()
-            print('Elapsed:', new_time - self.last_time)
+            print('Elapsed:', new_time - self.last_time) 
             self.last_time = new_time
             print()
-       
+
 def run(epochs, split_data, batch_size, model_type, fitness, config_file, log_dir,
         executor=Sequential(), thresh=lambda x: x>0.5, verbose=True):
 
@@ -257,7 +259,11 @@ def run(epochs, split_data, batch_size, model_type, fitness, config_file, log_di
     reporter = StatsReporter(split_data, num_chunks, model_type, fitness, thresh, verbose)
     population.add_reporter(reporter)
   
-    # Overall winner != best training fitness
-    population.run(evaluator, epochs)
+    try:
+        # Overall winner != best training fitness
+        population.run(evaluator, epochs)
+    except neat.CompleteExtinctionException:
+        # This could happen depending on the config
+        pass
     return reporter.best_model
 
