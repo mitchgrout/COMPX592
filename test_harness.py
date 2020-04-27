@@ -13,9 +13,9 @@ def neat(test_name,
          dataset=ne.data.nsl_kdd.dataset,
          selector=None,
          fitness=ne.fitness.mcc,
-         batch_size=512,
-         epochs=4,
-         pop_size=64,
+         batch_size=256,
+         epochs=1,
+         pop_size=256,
          config_args={}):
 
     return _make_task(_neat_task, test_name, dataset, selector, fitness, batch_size, epochs, pop_size, config_args)
