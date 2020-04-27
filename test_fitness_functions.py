@@ -23,9 +23,9 @@ if __name__ == '__main__':
     for (d, s) in dataset_pairs:
         for f in fitness_funcs:
             test_name = join('fitness_functions', d.name(), s.name, f.__name__)
-            p = run_test(\
+            p = neat(\
                     test_name=test_name,
-                    dataset=d
+                    dataset=d,
                     selector=s,
                     fitness=f)
             procs.append(p)
