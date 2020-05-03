@@ -6,7 +6,14 @@ ne.stats
 
 from math import sqrt
 from sys  import float_info
+from collections import namedtuple
 
+Stats = namedtuple('Stats',
+        [ 'total', 'total_true', 'total_false',
+          'true_positive', 'true_negative', 'false_positive', 'false_negative',
+          'tpr', 'tnr', 'ppv', 'npv',
+          'accuracy', 'f1', 'mcc' ])
+ 
 eps = lambda x: x if x else float_info.epsilon
 
 total       = lambda tp, tn, fp, fn: tp+tn+fp+fn
@@ -39,12 +46,6 @@ def score(thresh, true_ys, pred_ys):
         yield (tp, tn, fp, fn) 
 
 def compute_statistics(thresh, true_ys, pred_ys):
-    from collections import namedtuple
-    Stats = namedtuple('Stats',
-            [ 'total', 'total_true', 'total_false',
-              'true_positive', 'true_negative', 'false_positive', 'false_negative',
-              'tpr', 'tnr', 'ppv', 'npv',
-              'accuracy', 'f1', 'mcc' ])
     *_, t = score(thresh, true_ys, pred_ys)
     return Stats(total=total(*t)
                 ,total_true=total_true(*t)
