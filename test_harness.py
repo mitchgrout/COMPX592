@@ -28,7 +28,7 @@ def shallow_neural(test_name,
         keras.layers.Dense(7, activation='sigmoid'),
         keras.layers.Dense(1, activation='sigmoid'),
     ])
-    return _make_task(_keras_task, test_name, model, dataset, selector)
+    return _make_task(_keras_task, test_name, model, dataset, selector, 1, 10) # unspecified in ref doc
 
 def deep_neural(test_name,
                 dataset=ne.data.nsl_kdd.dataset,
@@ -43,7 +43,7 @@ def deep_neural(test_name,
         keras.layers.MaxoutDense(10),
         keras.layers.Dense(1, activation='sigmoid')
     ])
-    return _make_task(_keras_task, test_name, model, dataset, selector)
+    return _make_task(_keras_task, test_name, model, dataset, selector, 1, 10)
 
 def naive_bayes(test_name,
                 dataset=ne.data.nsl_kdd.dataset,
@@ -169,12 +169,12 @@ def _keras_task(test_name, model, dataset, selector, batch_size, epochs):
         model.compile('adam', 'binary_crossentropy', metrics=[mcc])
         callbacks = [
             keras.callbacks.ModelCheckpoint(\
-                filepath=os.path.join(logdir, 'model.{epoch}.h5'),
+                filepath=os.path.join(log_dir, 'model.{epoch}.h5'),
                 monitor='val_mcc',
                 save_best_only=True,
                 mode='max'),
         ]
-        t, _ = ne.util.benchmark(lambda: model.fit(*split.train, batch_size=batch_size, epochs=epochs, validation_data=split.val, callbacks=cb, verbose=0))
+        t, _ = ne.util.benchmark(lambda: model.fit(*split.train, batch_size=batch_size, epochs=epochs, validation_data=split.val, callbacks=callbacks, verbose=2))
         print('Total train time:', t)
 
         t, r = ne.util.benchmark(lambda: ne.stats.compute_statistics(thresh, split.test.ys, [ t[0] for t in model.predict(split.test.xs) ]))
