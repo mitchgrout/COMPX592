@@ -34,6 +34,11 @@ def f1(thresh):
 def mcc(thresh):
     return lambda true_ys, pred_ys: starmap(ne.stats.mcc, ne.stats.score(thresh, true_ys, pred_ys))
 
+def auroc(thresh):
+    from sklearn.metrics import roc_auc_score
+    # NOTE: We have to force pred_ys since it could be lazy; true_ys should never be
+    return lambda true_ys, pred_ys: [ roc_auc_score(true_ys, list(pred_ys)) ]
+
 def inverse_mean_square_error(thresh):
     def __inner(true_ys, pred_ys):
         clamp   = lambda x: min(max(x, 0), 1)
