@@ -1,4 +1,3 @@
-
 if __name__ == '__main__':
     import ne
     from test_harness import neat
@@ -17,6 +16,7 @@ if __name__ == '__main__':
         ne.fitness.zero_sum,
         ne.fitness.inverse_mean_square_error,
         ne.fitness.inverse_binary_crossentropy,
+        ne.fitness.auroc,
     ]
 
     procs = []
