@@ -63,23 +63,8 @@ def decision_tree(test_name,
                 criterion='gini',
                 splitter='best',
                 max_depth=max_depth,
-                min_samples_split=2,
-                min_samples_leaf=1,
-                max_features='auto')
+                max_features='sqrt')
     return _make_task(_sklearn_task, test_name, model, dataset, selector) 
-
-def random_forest(test_name,
-        dataset=ne.data.nsl_kdd.dataset):
-
-    model = sklearn.ensemble.RandomForestClassifier(\
-                n_estimators=100,
-                criterion='gini',
-                max_depth=max_depth,
-                min_samples_split=2,
-                min_samples_leaf=1,
-                max_features='auto',
-                n_jobs=1)
-    return _make_task(_sklearn_task, test_name, model, dataset, selector)
 
 def _make_task(fn, *args):
     from multiprocessing import Process
@@ -135,25 +120,6 @@ def _keras_task(test_name, model, dataset, selector, batch_size, epochs):
     ses = tensorflow.compat.v1.Session(config=cfg)
     keras.backend.set_session(ses)
 
-    def mcc(y_true, y_pred):
-        import tensorflow as tf
-        from tensorflow.keras import backend as K
-
-        # y_pred needs to be thresholded; TODO; Allow variable threshold value
-        y_pred = K.cast( K.greater_equal(y_pred, 0.5), dtype=K.floatx() )
-        y_true = K.cast( y_true, dtype=K.floatx() )
-
-        # Tensor-friendly way to compute confusion matrix
-        # Assumes only a single output [otherwise axis should be specified]
-        tp = K.sum(     y_true  *      y_pred)
-        tn = K.sum((1 - y_true) * (1 - y_pred))
-        fp = K.sum((1 - y_true) * (    y_pred))
-        fn = K.sum(     y_true  * (1 - y_pred))
-
-        num = (tp * tn) - (fp * fn)
-        den = K.sqrt( (tp+fp) * (tp+fn) * (tn+fp) * (tn+fn) )
-        return num / (den + K.epsilon())
-
     thresh = lambda x: x > 0.5
     log_dir = os.path.join('results', test_name)
     os.makedirs(log_dir, exist_ok=True)
@@ -164,17 +130,30 @@ def _keras_task(test_name, model, dataset, selector, batch_size, epochs):
         print('Batch size:', batch_size)
         print('Epochs:', epochs)
  
-        split = dataset.data(selector=selector, save=False, cache=False)
+        split = dataset.data(selector=selector, save=False, cache=False, ratio=(0.01, 0.1, 0.1))
         
-        model.compile('adam', 'binary_crossentropy', metrics=[mcc])
+        model.compile('adam', 'binary_crossentropy') # placeholder
+
+        class MCC_Callback(keras.callbacks.Callback):
+            def on_epoch_end(self, epoch, logs=None):
+                logs = logs or {}
+                pred_ys = [t[0] for t in model.predict(split.val.xs)]
+                stats = ne.stats.compute_statistics(thresh, split.val.ys, pred_ys)
+                logs['val_mcc'] = stats.mcc
+                # Stupid..
+                print(' - val_mcc: {:04f}'.format( logs['val_mcc'] ))
+
         callbacks = [
+            MCC_Callback(), # Infuriatingly we have to do it like this
             keras.callbacks.ModelCheckpoint(\
                 filepath=os.path.join(log_dir, 'model.{epoch}.h5'),
                 monitor='val_mcc',
                 save_best_only=True,
                 mode='max'),
         ]
-        t, _ = ne.util.benchmark(lambda: model.fit(*split.train, batch_size=batch_size, epochs=epochs, validation_data=split.val, callbacks=callbacks, verbose=2))
+        print(split.train.ys)
+        print(split.val.ys)
+        t, _ = ne.util.benchmark(lambda: model.fit(*split.train, batch_size=batch_size, epochs=epochs, callbacks=callbacks, verbose=2))
         print('Total train time:', t)
 
         t, r = ne.util.benchmark(lambda: ne.stats.compute_statistics(thresh, split.test.ys, [ t[0] for t in model.predict(split.test.xs) ]))

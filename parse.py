@@ -99,8 +99,8 @@ def parse_keras(fname):
             val_mcc = float(parts[5][len('val_mcc: '):])
 
             train['train_loss'].append(loss)
-            train['train_mcc' ].append(mcc)
-            train['val_loss'  ].append(val_loss)
+            # train['train_mcc' ].append(mcc)
+            # train['val_loss'  ].append(val_loss)
             train['val_mcc'   ].append(val_mcc)
             # train['elapsed'   ].append(elapsed)
 

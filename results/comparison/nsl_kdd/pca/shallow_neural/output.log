@@ -1,0 +1,13 @@
+Configuration:
+Dataset: nsl_kdd
+Selector: pca
+Batch size: 1
+Epochs: 10
+Train on 118326 samples, validate on 14790 samples
+Epoch 1/10
+ - 188s - loss: 0.1861 - mcc: 0.0000e+00 - val_loss: 0.1398 - val_mcc: 0.0000e+00
+Epoch 2/10
+ - 185s - loss: 0.1245 - mcc: 0.0000e+00 - val_loss: 0.1093 - val_mcc: 0.0000e+00
+Epoch 3/10
+ - 185s - loss: 0.1072 - mcc: 0.0000e+00 - val_loss: 0.1012 - val_mcc: 0.0000e+00
+Epoch 4/10
