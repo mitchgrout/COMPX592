@@ -64,7 +64,7 @@ def parse_neat(fname):
         return {
             'config': config,
             'train' : pd.DataFrame(train, columns=list(train.keys())), 
-            'output': test,
+            'output': output,
         }
 
 def parse_keras(fname):
