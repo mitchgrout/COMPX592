@@ -1,0 +1,3132 @@
+Configuration:
+Dataset: nsl_kdd
+Selector: pca
+Fold: 8
+Fitness: auroc
+Batch size: 256
+Epochs: 1
+Config args: {}
+*** Epoch 1, batch 1/520 ***
+Training fitness: 0.9530681467776752
+Model size: (1, 12)
+Validation fitness: 0.9162417403027792 !!!
+Elapsed: 2.5645580291748047
+
+*** Epoch 1, batch 2/520 ***
+Training fitness: 0.9512973072440655
+Model size: (1, 11)
+Validation fitness: 0.9596849429123496 !!!
+Elapsed: 2.777590036392212
+
+*** Epoch 1, batch 3/520 ***
+Training fitness: 0.9539956011730206
+Model size: (1, 11)
+Validation fitness: 0.9596849429123496 
+Elapsed: 2.9711227416992188
+
+*** Epoch 1, batch 4/520 ***
+Training fitness: 0.9490231990231991
+Model size: (2, 12)
+Validation fitness: 0.9386614340472903 
+Elapsed: 2.9934239387512207
+
+*** Epoch 1, batch 5/520 ***
+Training fitness: 0.9682132159667461
+Model size: (1, 11)
+Validation fitness: 0.9596849429123496 
+Elapsed: 2.9382951259613037
+
+*** Epoch 1, batch 6/520 ***
+Training fitness: 0.9732252517808893
+Model size: (3, 14)
+Validation fitness: 0.9546738352079203 
+Elapsed: 3.7303624153137207
+
+*** Epoch 1, batch 7/520 ***
+Training fitness: 0.9771655953474135
+Model size: (4, 16)
+Validation fitness: 0.9469940077166229 
+Elapsed: 3.311302661895752
+
+*** Epoch 1, batch 8/520 ***
+Training fitness: 0.9814445828144458
+Model size: (4, 17)
+Validation fitness: 0.9582977256099492 
+Elapsed: 3.508169651031494
+
+*** Epoch 1, batch 9/520 ***
+Training fitness: 0.9726018847906135
+Model size: (3, 11)
+Validation fitness: 0.9597728966149567 !!!
+Elapsed: 3.2942793369293213
+
+*** Epoch 1, batch 10/520 ***
+Training fitness: 0.9683664122137404
+Model size: (3, 11)
+Validation fitness: 0.9547489924803524 
+Elapsed: 3.3527679443359375
+
+*** Epoch 1, batch 11/520 ***
+Training fitness: 0.9678211741586834
+Model size: (5, 17)
+Validation fitness: 0.9565503029960172 
+Elapsed: 3.3798270225524902
+
+*** Epoch 1, batch 12/520 ***
+Training fitness: 0.9741933470635962
+Model size: (3, 12)
+Validation fitness: 0.9532274264010159 
+Elapsed: 3.2679617404937744
+
+*** Epoch 1, batch 13/520 ***
+Training fitness: 0.9651960784313726
+Model size: (3, 14)
+Validation fitness: 0.9388376345704474 
+Elapsed: 3.3126144409179688
+
+*** Epoch 1, batch 14/520 ***
+Training fitness: 0.9553151170609451
+Model size: (3, 9)
+Validation fitness: 0.9639472441930405 !!!
+Elapsed: 3.717745780944824
+
+*** Epoch 1, batch 15/520 ***
+Training fitness: 0.9738055709278731
+Model size: (5, 18)
+Validation fitness: 0.9670938927850777 !!!
+Elapsed: 3.418057680130005
+
+*** Epoch 1, batch 16/520 ***
+Training fitness: 0.9581298828125
+Model size: (5, 18)
+Validation fitness: 0.9670938927850777 
+Elapsed: 3.6114327907562256
+
+*** Epoch 1, batch 17/520 ***
+Training fitness: 0.968108504398827
+Model size: (5, 18)
+Validation fitness: 0.9670938927850777 
+Elapsed: 3.6386029720306396
+
+*** Epoch 1, batch 18/520 ***
+Training fitness: 0.9786496689151557
+Model size: (3, 9)
+Validation fitness: 0.9639472441930405 
+Elapsed: 3.4174394607543945
+
+*** Epoch 1, batch 19/520 ***
+Training fitness: 0.9483490130972145
+Model size: (5, 18)
+Validation fitness: 0.9662611080708265 
+Elapsed: 3.7296512126922607
+
+*** Epoch 1, batch 20/520 ***
+Training fitness: 0.950787784477728
+Model size: (3, 9)
+Validation fitness: 0.9639472441930405 
+Elapsed: 3.428603410720825
+
+*** Epoch 1, batch 21/520 ***
+Training fitness: 0.9839975093399751
+Model size: (4, 11)
+Validation fitness: 0.9582913044950223 
+Elapsed: 3.7267041206359863
+
+*** Epoch 1, batch 22/520 ***
+Training fitness: 0.9597680097680098
+Model size: (3, 9)
+Validation fitness: 0.9639472441930405 
+Elapsed: 3.575927257537842
+
+*** Epoch 1, batch 23/520 ***
+Training fitness: 0.967533665375392
+Model size: (5, 18)
+Validation fitness: 0.9662611080708265 
+Elapsed: 3.938810348510742
+
+*** Epoch 1, batch 24/520 ***
+Training fitness: 0.9581679389312977
+Model size: (3, 9)
+Validation fitness: 0.9639472441930405 
+Elapsed: 3.475452184677124
+
+*** Epoch 1, batch 25/520 ***
+Training fitness: 0.9699541984732825
+Model size: (5, 18)
+Validation fitness: 0.9662611080708265 
+Elapsed: 3.590608835220337
+
+*** Epoch 1, batch 26/520 ***
+Training fitness: 0.9795504789977892
+Model size: (5, 15)
+Validation fitness: 0.9612991159416298 
+Elapsed: 3.618741989135742
+
+*** Epoch 1, batch 27/520 ***
+Training fitness: 0.9696191698759092
+Model size: (6, 10)
+Validation fitness: 0.9498779127129942 
+Elapsed: 3.722956657409668
+
+*** Epoch 1, batch 28/520 ***
+Training fitness: 0.9664286150277728
+Model size: (5, 18)
+Validation fitness: 0.9662611080708265 
+Elapsed: 3.603529214859009
+
+*** Epoch 1, batch 29/520 ***
+Training fitness: 0.97198486328125
+Model size: (3, 9)
+Validation fitness: 0.9639472441930405 
+Elapsed: 3.5245490074157715
+
+*** Epoch 1, batch 30/520 ***
+Training fitness: 0.9774274673372999
+Model size: (5, 16)
+Validation fitness: 0.9654315659738141 
+Elapsed: 3.828540325164795
+
+*** Epoch 1, batch 31/520 ***
+Training fitness: 0.9609432571849669
+Model size: (6, 18)
+Validation fitness: 0.9596725128796023 
+Elapsed: 3.7920987606048584
+
+*** Epoch 1, batch 32/520 ***
+Training fitness: 0.9741147741147741
+Model size: (5, 16)
+Validation fitness: 0.9654315659738141 
+Elapsed: 3.7620444297790527
+
+*** Epoch 1, batch 33/520 ***
+Training fitness: 0.9721713098729228
+Model size: (3, 7)
+Validation fitness: 0.9592925404268267 
+Elapsed: 3.7630393505096436
+
+*** Epoch 1, batch 34/520 ***
+Training fitness: 0.9597996089931573
+Model size: (3, 9)
+Validation fitness: 0.9639472441930405 
+Elapsed: 3.5949296951293945
+
+*** Epoch 1, batch 35/520 ***
+Training fitness: 0.952755905511811
+Model size: (5, 16)
+Validation fitness: 0.9654315659738141 
+Elapsed: 3.8218834400177
+
+*** Epoch 1, batch 36/520 ***
+Training fitness: 0.9764415664508173
+Model size: (5, 18)
+Validation fitness: 0.9662611080708265 
+Elapsed: 3.9747719764709473
+
+*** Epoch 1, batch 37/520 ***
+Training fitness: 0.9767370676461586
+Model size: (4, 13)
+Validation fitness: 0.9628287977239979 
+Elapsed: 3.7254300117492676
+
+*** Epoch 1, batch 38/520 ***
+Training fitness: 0.9679679679679679
+Model size: (5, 18)
+Validation fitness: 0.9662611080708265 
+Elapsed: 3.6788828372955322
+
+*** Epoch 1, batch 39/520 ***
+Training fitness: 0.9716352201257863
+Model size: (3, 8)
+Validation fitness: 0.9597759010738668 
+Elapsed: 3.7649850845336914
+
+*** Epoch 1, batch 40/520 ***
+Training fitness: 0.9673142717497556
+Model size: (3, 9)
+Validation fitness: 0.9639472441930405 
+Elapsed: 3.7520205974578857
+
+*** Epoch 1, batch 41/520 ***
+Training fitness: 0.9897435897435898
+Model size: (5, 18)
+Validation fitness: 0.9662611080708265 
+Elapsed: 3.8597538471221924
+
+*** Epoch 1, batch 42/520 ***
+Training fitness: 0.9472718375336432
+Model size: (2, 7)
+Validation fitness: 0.9595265584641324 
+Elapsed: 3.7031357288360596
+
+*** Epoch 1, batch 43/520 ***
+Training fitness: 0.9692733990147784
+Model size: (5, 16)
+Validation fitness: 0.9654315659738141 
+Elapsed: 3.862853765487671
+
+*** Epoch 1, batch 44/520 ***
+Training fitness: 0.9803358778625955
+Model size: (5, 18)
+Validation fitness: 0.9662611080708265 
+Elapsed: 4.163517713546753
+
+*** Epoch 1, batch 45/520 ***
+Training fitness: 0.9558530510585305
+Model size: (3, 9)
+Validation fitness: 0.9558882686431805 
+Elapsed: 3.86308217048645
+
+*** Epoch 1, batch 46/520 ***
+Training fitness: 0.9801943884100495
+Model size: (3, 8)
+Validation fitness: 0.9597759010738668 
+Elapsed: 3.760385751724243
+
+*** Epoch 1, batch 47/520 ***
+Training fitness: 0.9622583802299975
+Model size: (5, 11)
+Validation fitness: 0.9656124747039215 
+Elapsed: 3.9729580879211426
+
+*** Epoch 1, batch 48/520 ***
+Training fitness: 0.9786330049261084
+Model size: (5, 11)
+Validation fitness: 0.9656124747039215 
+Elapsed: 4.153305292129517
+
+*** Epoch 1, batch 49/520 ***
+Training fitness: 0.9666625886958649
+Model size: (6, 14)
+Validation fitness: 0.95923625262194 
+Elapsed: 4.093196392059326
+
+*** Epoch 1, batch 50/520 ***
+Training fitness: 0.966807262057583
+Model size: (6, 14)
+Validation fitness: 0.9619895735749485 
+Elapsed: 4.157305479049683
+
+*** Epoch 1, batch 51/520 ***
+Training fitness: 0.9676019316584143
+Model size: (6, 14)
+Validation fitness: 0.95923625262194 
+Elapsed: 4.241687059402466
+
+*** Epoch 1, batch 52/520 ***
+Training fitness: 0.984406001984127
+Model size: (6, 14)
+Validation fitness: 0.9620191693272006 
+Elapsed: 4.051564455032349
+
+*** Epoch 1, batch 53/520 ***
+Training fitness: 0.9438931535917119
+Model size: (3, 8)
+Validation fitness: 0.9557780562968182 
+Elapsed: 3.9481773376464844
+
+*** Epoch 1, batch 54/520 ***
+Training fitness: 0.9767711962833914
+Model size: (6, 8)
+Validation fitness: 0.9511657905127102 
+Elapsed: 4.199973106384277
+
+*** Epoch 1, batch 55/520 ***
+Training fitness: 0.9821504981967113
+Model size: (8, 18)
+Validation fitness: 0.9580466792521741 
+Elapsed: 4.218242406845093
+
+*** Epoch 1, batch 56/520 ***
+Training fitness: 0.9735221674876847
+Model size: (3, 8)
+Validation fitness: 0.9597759010738668 
+Elapsed: 3.970259428024292
+
+*** Epoch 1, batch 57/520 ***
+Training fitness: 0.970093343158929
+Model size: (5, 11)
+Validation fitness: 0.9656124747039215 
+Elapsed: 3.9007232189178467
+
+*** Epoch 1, batch 58/520 ***
+Training fitness: 0.9682539682539681
+Model size: (3, 8)
+Validation fitness: 0.9635391690575319 
+Elapsed: 4.032919645309448
+
+*** Epoch 1, batch 59/520 ***
+Training fitness: 0.9612002705527887
+Model size: (6, 8)
+Validation fitness: 0.9585610646014359 
+Elapsed: 3.9925036430358887
+
+*** Epoch 1, batch 60/520 ***
+Training fitness: 0.9607536764705884
+Model size: (6, 8)
+Validation fitness: 0.9585610646014359 
+Elapsed: 3.8799171447753906
+
+*** Epoch 1, batch 61/520 ***
+Training fitness: 0.9664394497666422
+Model size: (8, 21)
+Validation fitness: 0.9684096717489409 !!!
+Elapsed: 3.2364490032196045
+
+*** Epoch 1, batch 62/520 ***
+Training fitness: 0.9738194274528994
+Model size: (8, 22)
+Validation fitness: 0.9577181306784274 
+Elapsed: 2.279022693634033
+
+*** Epoch 1, batch 63/520 ***
+Training fitness: 0.9654393777833532
+Model size: (8, 21)
+Validation fitness: 0.9684096717489409 
+Elapsed: 2.3216943740844727
+
+*** Epoch 1, batch 64/520 ***
+Training fitness: 0.9757453567937439
+Model size: (8, 21)
+Validation fitness: 0.9684096717489409 
+Elapsed: 2.2102372646331787
+
+*** Epoch 1, batch 65/520 ***
+Training fitness: 0.9707194816309064
+Model size: (6, 12)
+Validation fitness: 0.9645685717916188 
+Elapsed: 2.0708212852478027
+
+*** Epoch 1, batch 66/520 ***
+Training fitness: 0.9643623872906826
+Model size: (8, 21)
+Validation fitness: 0.9684096717489409 
+Elapsed: 2.18523907661438
+
+*** Epoch 1, batch 67/520 ***
+Training fitness: 0.9610651974288338
+Model size: (9, 21)
+Validation fitness: 0.9601853227199234 
+Elapsed: 2.097771406173706
+
+*** Epoch 1, batch 68/520 ***
+Training fitness: 0.9631356192111881
+Model size: (4, 9)
+Validation fitness: 0.963871885402023 
+Elapsed: 2.0569570064544678
+
+*** Epoch 1, batch 69/520 ***
+Training fitness: 0.962087912087912
+Model size: (6, 15)
+Validation fitness: 0.9606358816372161 
+Elapsed: 2.045149326324463
+
+*** Epoch 1, batch 70/520 ***
+Training fitness: 0.9665024630541872
+Model size: (5, 10)
+Validation fitness: 0.9652491000546372 
+Elapsed: 2.0424444675445557
+
+*** Epoch 1, batch 71/520 ***
+Training fitness: 0.9758286028199964
+Model size: (5, 10)
+Validation fitness: 0.9652491000546372 
+Elapsed: 2.0870819091796875
+
+*** Epoch 1, batch 72/520 ***
+Training fitness: 0.9737132352941176
+Model size: (5, 10)
+Validation fitness: 0.9656324983233653 
+Elapsed: 2.0314786434173584
+
+*** Epoch 1, batch 73/520 ***
+Training fitness: 0.9581788979490979
+Model size: (7, 12)
+Validation fitness: 0.9576996642480529 
+Elapsed: 1.8880219459533691
+
+*** Epoch 1, batch 74/520 ***
+Training fitness: 0.9661764705882353
+Model size: (3, 6)
+Validation fitness: 0.9604829107109986 
+Elapsed: 1.8457868099212646
+
+*** Epoch 1, batch 75/520 ***
+Training fitness: 0.952861952861953
+Model size: (7, 12)
+Validation fitness: 0.9576996642480529 
+Elapsed: 1.8609106540679932
+
+*** Epoch 1, batch 76/520 ***
+Training fitness: 0.9648886713971128
+Model size: (2, 4)
+Validation fitness: 0.9560466256115906 
+Elapsed: 1.7773642539978027
+
+*** Epoch 1, batch 77/520 ***
+Training fitness: 0.9642748091603054
+Model size: (2, 4)
+Validation fitness: 0.9560466256115906 
+Elapsed: 1.7321960926055908
+
+*** Epoch 1, batch 78/520 ***
+Training fitness: 0.9516148764374847
+Model size: (1, 6)
+Validation fitness: 0.9575141755500944 
+Elapsed: 1.8074190616607666
+
+*** Epoch 1, batch 79/520 ***
+Training fitness: 0.9688701702984801
+Model size: (1, 5)
+Validation fitness: 0.9512806927461518 
+Elapsed: 1.7674589157104492
+
+*** Epoch 1, batch 80/520 ***
+Training fitness: 0.9659340659340659
+Model size: (4, 8)
+Validation fitness: 0.9586345089658918 
+Elapsed: 2.0715246200561523
+
+*** Epoch 1, batch 81/520 ***
+Training fitness: 0.977216900024564
+Model size: (2, 6)
+Validation fitness: 0.9605220785960589 
+Elapsed: 1.83721923828125
+
+*** Epoch 1, batch 82/520 ***
+Training fitness: 0.9576451451451451
+Model size: (4, 12)
+Validation fitness: 0.9623991875796548 
+Elapsed: 2.0544261932373047
+
+*** Epoch 1, batch 83/520 ***
+Training fitness: 0.9664404914725838
+Model size: (3, 10)
+Validation fitness: 0.9601892523323395 
+Elapsed: 1.9327692985534668
+
+*** Epoch 1, batch 84/520 ***
+Training fitness: 0.9653299151559543
+Model size: (10, 19)
+Validation fitness: 0.9594179216267109 
+Elapsed: 1.943199872970581
+
+*** Epoch 1, batch 85/520 ***
+Training fitness: 0.9731908396946565
+Model size: (10, 19)
+Validation fitness: 0.9671439060340087 
+Elapsed: 1.9772958755493164
+
+*** Epoch 1, batch 86/520 ***
+Training fitness: 0.9603603603603603
+Model size: (10, 19)
+Validation fitness: 0.9671439060340087 
+Elapsed: 1.944718837738037
+
+*** Epoch 1, batch 87/520 ***
+Training fitness: 0.9824818409326741
+Model size: (9, 20)
+Validation fitness: 0.949166341427883 
+Elapsed: 2.133375883102417
+
+*** Epoch 1, batch 88/520 ***
+Training fitness: 0.9708029197080292
+Model size: (3, 10)
+Validation fitness: 0.9601892523323395 
+Elapsed: 2.037179708480835
+
+*** Epoch 1, batch 89/520 ***
+Training fitness: 0.9585495428712627
+Model size: (9, 20)
+Validation fitness: 0.949166341427883 
+Elapsed: 2.170555830001831
+
+*** Epoch 1, batch 90/520 ***
+Training fitness: 0.95955522971652
+Model size: (10, 19)
+Validation fitness: 0.9671439060340087 
+Elapsed: 2.03454852104187
+
+*** Epoch 1, batch 91/520 ***
+Training fitness: 0.9628902655952892
+Model size: (7, 16)
+Validation fitness: 0.9579011919934248 
+Elapsed: 2.048326253890991
+
+*** Epoch 1, batch 92/520 ***
+Training fitness: 0.9703907203907204
+Model size: (8, 14)
+Validation fitness: 0.9619777206181506 
+Elapsed: 1.9532735347747803
+
+*** Epoch 1, batch 93/520 ***
+Training fitness: 0.9649465648854962
+Model size: (6, 14)
+Validation fitness: 0.954137328613939 
+Elapsed: 2.0866494178771973
+
+*** Epoch 1, batch 94/520 ***
+Training fitness: 0.9727978482792348
+Model size: (6, 14)
+Validation fitness: 0.954137328613939 
+Elapsed: 2.0470707416534424
+
+*** Epoch 1, batch 95/520 ***
+Training fitness: 0.9571297709923665
+Model size: (9, 15)
+Validation fitness: 0.9655504802590928 
+Elapsed: 2.0144362449645996
+
+*** Epoch 1, batch 96/520 ***
+Training fitness: 0.9588652482269504
+Model size: (13, 22)
+Validation fitness: 0.9538783955515249 
+Elapsed: 1.9837729930877686
+
+*** Epoch 1, batch 97/520 ***
+Training fitness: 0.9699660807893926
+Model size: (8, 15)
+Validation fitness: 0.9559955040104399 
+Elapsed: 1.9750356674194336
+
+*** Epoch 1, batch 98/520 ***
+Training fitness: 0.9801013245437343
+Model size: (6, 14)
+Validation fitness: 0.954137328613939 
+Elapsed: 2.031458616256714
+
+*** Epoch 1, batch 99/520 ***
+Training fitness: 0.9559590259461449
+Model size: (8, 14)
+Validation fitness: 0.9619777206181506 
+Elapsed: 1.8396515846252441
+
+*** Epoch 1, batch 100/520 ***
+Training fitness: 0.9736681329423265
+Model size: (6, 14)
+Validation fitness: 0.9459267378083454 
+Elapsed: 2.074622631072998
+
+*** Epoch 1, batch 101/520 ***
+Training fitness: 0.9620486366985999
+Model size: (6, 12)
+Validation fitness: 0.9416355827301943 
+Elapsed: 2.1061649322509766
+
+*** Epoch 1, batch 102/520 ***
+Training fitness: 0.9652688762741867
+Model size: (14, 25)
+Validation fitness: 0.9626731795763627 
+Elapsed: 2.076467275619507
+
+*** Epoch 1, batch 103/520 ***
+Training fitness: 0.980162363425502
+Model size: (9, 17)
+Validation fitness: 0.9576442832768006 
+Elapsed: 2.1224496364593506
+
+*** Epoch 1, batch 104/520 ***
+Training fitness: 0.9741568914956011
+Model size: (14, 25)
+Validation fitness: 0.9626731795763627 
+Elapsed: 2.1169276237487793
+
+*** Epoch 1, batch 105/520 ***
+Training fitness: 0.9737484737484738
+Model size: (9, 20)
+Validation fitness: 0.9569008262555122 
+Elapsed: 2.127040386199951
+
+*** Epoch 1, batch 106/520 ***
+Training fitness: 0.9725203950193216
+Model size: (14, 25)
+Validation fitness: 0.9626731795763627 
+Elapsed: 2.028834104537964
+
+*** Epoch 1, batch 107/520 ***
+Training fitness: 0.9785714285714284
+Model size: (6, 14)
+Validation fitness: 0.954137328613939 
+Elapsed: 2.0763750076293945
+
+*** Epoch 1, batch 108/520 ***
+Training fitness: 0.9636485826001955
+Model size: (9, 15)
+Validation fitness: 0.9605119477071727 
+Elapsed: 1.9413673877716064
+
+*** Epoch 1, batch 109/520 ***
+Training fitness: 0.9421502976190477
+Model size: (10, 19)
+Validation fitness: 0.9594702340195028 
+Elapsed: 2.185786008834839
+
+*** Epoch 1, batch 110/520 ***
+Training fitness: 0.9797222901884023
+Model size: (5, 12)
+Validation fitness: 0.959630743572803 
+Elapsed: 1.9927258491516113
+
+*** Epoch 1, batch 111/520 ***
+Training fitness: 0.9815573770491803
+Model size: (6, 13)
+Validation fitness: 0.9479747895120054 
+Elapsed: 2.1294126510620117
+
+*** Epoch 1, batch 112/520 ***
+Training fitness: 0.9589133089133088
+Model size: (9, 15)
+Validation fitness: 0.9605119477071727 
+Elapsed: 1.9182090759277344
+
+*** Epoch 1, batch 113/520 ***
+Training fitness: 0.9577594123048668
+Model size: (9, 17)
+Validation fitness: 0.9576442832768006 
+Elapsed: 2.122812509536743
+
+*** Epoch 1, batch 114/520 ***
+Training fitness: 0.9705211224175146
+Model size: (12, 24)
+Validation fitness: 0.9595387136988085 
+Elapsed: 2.1056368350982666
+
+*** Epoch 1, batch 115/520 ***
+Training fitness: 0.971916971916972
+Model size: (6, 12)
+Validation fitness: 0.9589392417068141 
+Elapsed: 2.113748550415039
+
+*** Epoch 1, batch 116/520 ***
+Training fitness: 0.9805896355978758
+Model size: (8, 14)
+Validation fitness: 0.95678226004779 
+Elapsed: 2.027590751647949
+
+*** Epoch 1, batch 117/520 ***
+Training fitness: 0.9870573870573871
+Model size: (8, 15)
+Validation fitness: 0.9580408901728107 
+Elapsed: 2.0553016662597656
+
+*** Epoch 1, batch 118/520 ***
+Training fitness: 0.9663870767319043
+Model size: (9, 12)
+Validation fitness: 0.95709701375837 
+Elapsed: 1.8738598823547363
+
+*** Epoch 1, batch 119/520 ***
+Training fitness: 0.9806372549019607
+Model size: (8, 14)
+Validation fitness: 0.95678226004779 
+Elapsed: 2.0349433422088623
+
+*** Epoch 1, batch 120/520 ***
+Training fitness: 0.95941708171924
+Model size: (9, 15)
+Validation fitness: 0.9616135948541387 
+Elapsed: 1.9766566753387451
+
+*** Epoch 1, batch 121/520 ***
+Training fitness: 0.9598167938931298
+Model size: (7, 14)
+Validation fitness: 0.9594133508187956 
+Elapsed: 2.0744211673736572
+
+*** Epoch 1, batch 122/520 ***
+Training fitness: 0.9585777126099707
+Model size: (11, 21)
+Validation fitness: 0.9593993819168506 
+Elapsed: 1.9614038467407227
+
+*** Epoch 1, batch 123/520 ***
+Training fitness: 0.9596630387997295
+Model size: (12, 27)
+Validation fitness: 0.9535794702098372 
+Elapsed: 1.8679931163787842
+
+*** Epoch 1, batch 124/520 ***
+Training fitness: 0.9827818627450979
+Model size: (9, 15)
+Validation fitness: 0.9616135948541387 
+Elapsed: 1.862077236175537
+
+*** Epoch 1, batch 125/520 ***
+Training fitness: 0.9767370676461586
+Model size: (10, 20)
+Validation fitness: 0.9664666020683574 
+Elapsed: 1.8685925006866455
+
+*** Epoch 1, batch 126/520 ***
+Training fitness: 0.9749755859375
+Model size: (11, 24)
+Validation fitness: 0.9609405227787816 
+Elapsed: 2.0942704677581787
+
+*** Epoch 1, batch 127/520 ***
+Training fitness: 0.960585377851565
+Model size: (10, 18)
+Validation fitness: 0.9522821301965413 
+Elapsed: 2.034931182861328
+
+*** Epoch 1, batch 128/520 ***
+Training fitness: 0.9637254901960784
+Model size: (11, 22)
+Validation fitness: 0.963068595680731 
+Elapsed: 2.087275743484497
+
+*** Epoch 1, batch 129/520 ***
+Training fitness: 0.9684729064039408
+Model size: (12, 25)
+Validation fitness: 0.9555666449808243 
+Elapsed: 1.8582301139831543
+
+*** Epoch 1, batch 130/520 ***
+Training fitness: 0.95794677734375
+Model size: (11, 22)
+Validation fitness: 0.963068595680731 
+Elapsed: 1.9884450435638428
+
+*** Epoch 1, batch 131/520 ***
+Training fitness: 0.9642769757768535
+Model size: (11, 20)
+Validation fitness: 0.9570544933368427 
+Elapsed: 2.0899875164031982
+
+*** Epoch 1, batch 132/520 ***
+Training fitness: 0.9619258167526407
+Model size: (7, 12)
+Validation fitness: 0.9564330191792932 
+Elapsed: 1.878607988357544
+
+*** Epoch 1, batch 133/520 ***
+Training fitness: 0.9651333496452166
+Model size: (13, 27)
+Validation fitness: 0.9637367763504237 
+Elapsed: 2.1936354637145996
+
+*** Epoch 1, batch 134/520 ***
+Training fitness: 0.9645821804095186
+Model size: (12, 25)
+Validation fitness: 0.9608291196407781 
+Elapsed: 2.242985725402832
+
+*** Epoch 1, batch 135/520 ***
+Training fitness: 0.9579430670339761
+Model size: (11, 20)
+Validation fitness: 0.955010334605856 
+Elapsed: 2.127721071243286
+
+*** Epoch 1, batch 136/520 ***
+Training fitness: 0.9657258064516129
+Model size: (8, 13)
+Validation fitness: 0.9611689715751807 
+Elapsed: 1.881690502166748
+
+*** Epoch 1, batch 137/520 ***
+Training fitness: 0.964603409933284
+Model size: (13, 27)
+Validation fitness: 0.9637367763504237 
+Elapsed: 2.1137046813964844
+
+*** Epoch 1, batch 138/520 ***
+Training fitness: 0.9732142857142856
+Model size: (13, 28)
+Validation fitness: 0.9630534085073379 
+Elapsed: 2.2069811820983887
+
+*** Epoch 1, batch 139/520 ***
+Training fitness: 0.9586177212076493
+Model size: (7, 11)
+Validation fitness: 0.9587001124253869 
+Elapsed: 2.0073373317718506
+
+*** Epoch 1, batch 140/520 ***
+Training fitness: 0.9642137404580152
+Model size: (9, 16)
+Validation fitness: 0.9550908779204806 
+Elapsed: 2.075153112411499
+
+*** Epoch 1, batch 141/520 ***
+Training fitness: 0.9625763125763125
+Model size: (13, 27)
+Validation fitness: 0.9637367763504237 
+Elapsed: 2.2033329010009766
+
+*** Epoch 1, batch 142/520 ***
+Training fitness: 0.9816715542521995
+Model size: (6, 11)
+Validation fitness: 0.9571084178783186 
+Elapsed: 1.9015228748321533
+
+*** Epoch 1, batch 143/520 ***
+Training fitness: 0.9727367198484016
+Model size: (10, 20)
+Validation fitness: 0.9569412124120207 
+Elapsed: 2.2043185234069824
+
+*** Epoch 1, batch 144/520 ***
+Training fitness: 0.976806640625
+Model size: (5, 9)
+Validation fitness: 0.9598008802185253 
+Elapsed: 1.819706916809082
+
+*** Epoch 1, batch 145/520 ***
+Training fitness: 0.9672831593725203
+Model size: (8, 11)
+Validation fitness: 0.9570713842582766 
+Elapsed: 1.7933189868927002
+
+*** Epoch 1, batch 146/520 ***
+Training fitness: 0.9780308187387834
+Model size: (5, 9)
+Validation fitness: 0.9653510318191252 
+Elapsed: 1.8879380226135254
+
+*** Epoch 1, batch 147/520 ***
+Training fitness: 0.9704517704517704
+Model size: (5, 9)
+Validation fitness: 0.9653510318191252 
+Elapsed: 1.8269383907318115
+
+*** Epoch 1, batch 148/520 ***
+Training fitness: 0.9512404814541882
+Model size: (12, 28)
+Validation fitness: 0.9610336060453817 
+Elapsed: 2.063805103302002
+
+*** Epoch 1, batch 149/520 ***
+Training fitness: 0.9718128224023581
+Model size: (5, 9)
+Validation fitness: 0.9653510318191252 
+Elapsed: 1.760558843612671
+
+*** Epoch 1, batch 150/520 ***
+Training fitness: 0.9663567408857353
+Model size: (5, 9)
+Validation fitness: 0.9653510318191252 
+Elapsed: 1.7897143363952637
+
+*** Epoch 1, batch 151/520 ***
+Training fitness: 0.96966552734375
+Model size: (5, 9)
+Validation fitness: 0.9653510318191252 
+Elapsed: 1.73996901512146
+
+*** Epoch 1, batch 152/520 ***
+Training fitness: 0.9726966636057546
+Model size: (8, 14)
+Validation fitness: 0.9571330031457417 
+Elapsed: 1.8389499187469482
+
+*** Epoch 1, batch 153/520 ***
+Training fitness: 0.9671232876712329
+Model size: (9, 11)
+Validation fitness: 0.9608811297556922 
+Elapsed: 1.7016456127166748
+
+*** Epoch 1, batch 154/520 ***
+Training fitness: 0.9711279667237582
+Model size: (9, 11)
+Validation fitness: 0.9608811297556922 
+Elapsed: 1.723696231842041
+
+*** Epoch 1, batch 155/520 ***
+Training fitness: 0.9591662082034355
+Model size: (11, 21)
+Validation fitness: 0.9612628242763797 
+Elapsed: 2.0315372943878174
+
+*** Epoch 1, batch 156/520 ***
+Training fitness: 0.9795129730724406
+Model size: (9, 16)
+Validation fitness: 0.9611352813316699 
+Elapsed: 1.894578456878662
+
+*** Epoch 1, batch 157/520 ***
+Training fitness: 0.9348676569472462
+Model size: (10, 14)
+Validation fitness: 0.9583675701196743 
+Elapsed: 1.8570313453674316
+
+*** Epoch 1, batch 158/520 ***
+Training fitness: 0.9584971603320228
+Model size: (10, 14)
+Validation fitness: 0.9552423008175646 
+Elapsed: 1.860332727432251
+
+*** Epoch 1, batch 159/520 ***
+Training fitness: 0.972470238095238
+Model size: (10, 14)
+Validation fitness: 0.9552423008175646 
+Elapsed: 1.783595085144043
+
+*** Epoch 1, batch 160/520 ***
+Training fitness: 0.9579401788467469
+Model size: (9, 15)
+Validation fitness: 0.9615827075509527 
+Elapsed: 1.8448269367218018
+
+*** Epoch 1, batch 161/520 ***
+Training fitness: 0.9794292068198664
+Model size: (8, 12)
+Validation fitness: 0.959450824115751 
+Elapsed: 1.911484956741333
+
+*** Epoch 1, batch 162/520 ***
+Training fitness: 0.9701857282502443
+Model size: (13, 23)
+Validation fitness: 0.9565707021728247 
+Elapsed: 2.0040292739868164
+
+*** Epoch 1, batch 163/520 ***
+Training fitness: 0.9415972864631514
+Model size: (9, 13)
+Validation fitness: 0.9563965901150077 
+Elapsed: 1.9485626220703125
+
+*** Epoch 1, batch 164/520 ***
+Training fitness: 0.95147705078125
+Model size: (9, 13)
+Validation fitness: 0.9563965901150077 
+Elapsed: 2.217651605606079
+
+*** Epoch 1, batch 165/520 ***
+Training fitness: 0.9676434676434676
+Model size: (7, 11)
+Validation fitness: 0.9552736186377285 
+Elapsed: 1.9215800762176514
+
+*** Epoch 1, batch 166/520 ***
+Training fitness: 0.970281862745098
+Model size: (7, 10)
+Validation fitness: 0.9447396193013476 
+Elapsed: 1.943413257598877
+
+*** Epoch 1, batch 167/520 ***
+Training fitness: 0.9604530149984696
+Model size: (13, 22)
+Validation fitness: 0.9638819979710376 
+Elapsed: 1.8518261909484863
+
+*** Epoch 1, batch 168/520 ***
+Training fitness: 0.9858902159787116
+Model size: (14, 22)
+Validation fitness: 0.9565845336757343 
+Elapsed: 1.9577009677886963
+
+*** Epoch 1, batch 169/520 ***
+Training fitness: 0.9688856287059111
+Model size: (7, 11)
+Validation fitness: 0.9552736186377285 
+Elapsed: 1.9809181690216064
+
+*** Epoch 1, batch 170/520 ***
+Training fitness: 0.9387667887667888
+Model size: (11, 17)
+Validation fitness: 0.9562725371058004 
+Elapsed: 1.807480812072754
+
+*** Epoch 1, batch 171/520 ***
+Training fitness: 0.9618259803921569
+Model size: (12, 19)
+Validation fitness: 0.9480137467185445 
+Elapsed: 2.118314743041992
+
+*** Epoch 1, batch 172/520 ***
+Training fitness: 0.9519013611670634
+Model size: (9, 13)
+Validation fitness: 0.9563965901150077 
+Elapsed: 2.0245659351348877
+
+*** Epoch 1, batch 173/520 ***
+Training fitness: 0.9792167745914278
+Model size: (9, 10)
+Validation fitness: 0.955298350464123 
+Elapsed: 1.8209631443023682
+
+*** Epoch 1, batch 174/520 ***
+Training fitness: 0.9635263929618769
+Model size: (10, 13)
+Validation fitness: 0.9584278608164625 
+Elapsed: 1.8378093242645264
+
+*** Epoch 1, batch 175/520 ***
+Training fitness: 0.979002624671916
+Model size: (10, 21)
+Validation fitness: 0.9528556704105644 
+Elapsed: 1.8683507442474365
+
+*** Epoch 1, batch 176/520 ***
+Training fitness: 0.9547672672672673
+Model size: (14, 22)
+Validation fitness: 0.9577263013410732 
+Elapsed: 1.8458008766174316
+
+*** Epoch 1, batch 177/520 ***
+Training fitness: 0.9795943304007819
+Model size: (13, 22)
+Validation fitness: 0.9531586078040892 
+Elapsed: 1.8686466217041016
+
+*** Epoch 1, batch 178/520 ***
+Training fitness: 0.9632209188660803
+Model size: (9, 16)
+Validation fitness: 0.9515704581521376 
+Elapsed: 2.103940010070801
+
+*** Epoch 1, batch 179/520 ***
+Training fitness: 0.9695274772296596
+Model size: (11, 16)
+Validation fitness: 0.9566181781195663 
+Elapsed: 1.8241307735443115
+
+*** Epoch 1, batch 180/520 ***
+Training fitness: 0.959005376344086
+Model size: (9, 16)
+Validation fitness: 0.9515704581521376 
+Elapsed: 1.961122751235962
+
+*** Epoch 1, batch 181/520 ***
+Training fitness: 0.9438538611925709
+Model size: (11, 17)
+Validation fitness: 0.9589369150831459 
+Elapsed: 1.9125926494598389
+
+*** Epoch 1, batch 182/520 ***
+Training fitness: 0.9571489699859405
+Model size: (11, 17)
+Validation fitness: 0.9589369150831459 
+Elapsed: 1.7982349395751953
+
+*** Epoch 1, batch 183/520 ***
+Training fitness: 0.9638487888426719
+Model size: (12, 13)
+Validation fitness: 0.9610487382591609 
+Elapsed: 1.731999397277832
+
+*** Epoch 1, batch 184/520 ***
+Training fitness: 0.9591299019607843
+Model size: (13, 23)
+Validation fitness: 0.9614741256731454 
+Elapsed: 1.912522554397583
+
+*** Epoch 1, batch 185/520 ***
+Training fitness: 0.9744107744107744
+Model size: (13, 23)
+Validation fitness: 0.9614741256731454 
+Elapsed: 1.7984650135040283
+
+*** Epoch 1, batch 186/520 ***
+Training fitness: 0.9593939765687296
+Model size: (12, 14)
+Validation fitness: 0.9536746602616488 
+Elapsed: 1.7845113277435303
+
+*** Epoch 1, batch 187/520 ***
+Training fitness: 0.9577930022021043
+Model size: (11, 16)
+Validation fitness: 0.9459787937229379 
+Elapsed: 1.8706400394439697
+
+*** Epoch 1, batch 188/520 ***
+Training fitness: 0.9498161764705881
+Model size: (9, 12)
+Validation fitness: 0.9623939755762406 
+Elapsed: 1.7787511348724365
+
+*** Epoch 1, batch 189/520 ***
+Training fitness: 0.9585965773170583
+Model size: (11, 13)
+Validation fitness: 0.9508233737963113 
+Elapsed: 1.7499446868896484
+
+*** Epoch 1, batch 190/520 ***
+Training fitness: 0.9642333984375
+Model size: (11, 16)
+Validation fitness: 0.9653607688307758 
+Elapsed: 1.6925990581512451
+
+*** Epoch 1, batch 191/520 ***
+Training fitness: 0.969944182052383
+Model size: (11, 15)
+Validation fitness: 0.9594820778163652 
+Elapsed: 1.9169347286224365
+
+*** Epoch 1, batch 192/520 ***
+Training fitness: 0.9701465201465201
+Model size: (12, 17)
+Validation fitness: 0.9647142330891466 
+Elapsed: 1.6812386512756348
+
+*** Epoch 1, batch 193/520 ***
+Training fitness: 0.9846470698371093
+Model size: (12, 24)
+Validation fitness: 0.957687683052155 
+Elapsed: 1.8246374130249023
+
+*** Epoch 1, batch 194/520 ***
+Training fitness: 0.976732824427481
+Model size: (13, 20)
+Validation fitness: 0.9661134315874446 
+Elapsed: 1.7407162189483643
+
+*** Epoch 1, batch 195/520 ***
+Training fitness: 0.9539956011730205
+Model size: (12, 18)
+Validation fitness: 0.9650289593199193 
+Elapsed: 1.6987407207489014
+
+*** Epoch 1, batch 196/520 ***
+Training fitness: 0.9746078251846426
+Model size: (14, 23)
+Validation fitness: 0.9590561774459813 
+Elapsed: 1.8226923942565918
+
+*** Epoch 1, batch 197/520 ***
+Training fitness: 0.9855921855921856
+Model size: (13, 23)
+Validation fitness: 0.9614741256731454 
+Elapsed: 1.7065672874450684
+
+*** Epoch 1, batch 198/520 ***
+Training fitness: 0.9774641825001538
+Model size: (13, 20)
+Validation fitness: 0.9649865121778781 
+Elapsed: 1.8324103355407715
+
+*** Epoch 1, batch 199/520 ***
+Training fitness: 0.9684577296900788
+Model size: (13, 20)
+Validation fitness: 0.9661134315874446 
+Elapsed: 1.7644834518432617
+
+*** Epoch 1, batch 200/520 ***
+Training fitness: 0.9746936274509804
+Model size: (13, 20)
+Validation fitness: 0.9649865121778781 
+Elapsed: 1.8006236553192139
+
+*** Epoch 1, batch 201/520 ***
+Training fitness: 0.9669007633587787
+Model size: (11, 13)
+Validation fitness: 0.9602094499905616 
+Elapsed: 1.69126558303833
+
+*** Epoch 1, batch 202/520 ***
+Training fitness: 0.97247314453125
+Model size: (15, 21)
+Validation fitness: 0.962075063254852 
+Elapsed: 1.7922120094299316
+
+*** Epoch 1, batch 203/520 ***
+Training fitness: 0.9619619619619619
+Model size: (11, 15)
+Validation fitness: 0.944942969873924 
+Elapsed: 1.7457058429718018
+
+*** Epoch 1, batch 204/520 ***
+Training fitness: 0.9710534351145038
+Model size: (11, 14)
+Validation fitness: 0.9611199842390482 
+Elapsed: 1.7574372291564941
+
+*** Epoch 1, batch 205/520 ***
+Training fitness: 0.960204407537528
+Model size: (14, 21)
+Validation fitness: 0.9532143918125124 
+Elapsed: 1.6893346309661865
+
+*** Epoch 1, batch 206/520 ***
+Training fitness: 0.959313725490196
+Model size: (14, 27)
+Validation fitness: 0.9645578913065909 
+Elapsed: 1.7372982501983643
+
+*** Epoch 1, batch 207/520 ***
+Training fitness: 0.9643206256109481
+Model size: (14, 27)
+Validation fitness: 0.9645578913065909 
+Elapsed: 1.7244243621826172
+
+*** Epoch 1, batch 208/520 ***
+Training fitness: 0.9747786259541984
+Model size: (14, 18)
+Validation fitness: 0.9638540235274048 
+Elapsed: 1.7802143096923828
+
+*** Epoch 1, batch 209/520 ***
+Training fitness: 0.9519774011299434
+Model size: (14, 18)
+Validation fitness: 0.9638540235274048 
+Elapsed: 1.8274283409118652
+
+*** Epoch 1, batch 210/520 ***
+Training fitness: 0.9676019316584143
+Model size: (14, 28)
+Validation fitness: 0.9553915986095658 
+Elapsed: 1.838442087173462
+
+*** Epoch 1, batch 211/520 ***
+Training fitness: 0.9687807881773398
+Model size: (14, 27)
+Validation fitness: 0.9645578913065909 
+Elapsed: 1.807692050933838
+
+*** Epoch 1, batch 212/520 ***
+Training fitness: 0.9603917967554331
+Model size: (16, 26)
+Validation fitness: 0.9628851954481128 
+Elapsed: 1.6993317604064941
+
+*** Epoch 1, batch 213/520 ***
+Training fitness: 0.9731631382316314
+Model size: (12, 13)
+Validation fitness: 0.9636818442160209 
+Elapsed: 1.8132743835449219
+
+*** Epoch 1, batch 214/520 ***
+Training fitness: 0.9831037649219467
+Model size: (12, 13)
+Validation fitness: 0.9636818442160209 
+Elapsed: 1.7484464645385742
+
+*** Epoch 1, batch 215/520 ***
+Training fitness: 0.9633699633699634
+Model size: (15, 18)
+Validation fitness: 0.9634209417674308 
+Elapsed: 1.9717669486999512
+
+*** Epoch 1, batch 216/520 ***
+Training fitness: 0.9583714826344382
+Model size: (14, 16)
+Validation fitness: 0.966194936695318 
+Elapsed: 1.8026096820831299
+
+*** Epoch 1, batch 217/520 ***
+Training fitness: 0.9716559534741354
+Model size: (13, 15)
+Validation fitness: 0.9634733549195156 
+Elapsed: 1.913877248764038
+
+*** Epoch 1, batch 218/520 ***
+Training fitness: 0.987424924924925
+Model size: (12, 13)
+Validation fitness: 0.9549458944581949 
+Elapsed: 1.8542656898498535
+
+*** Epoch 1, batch 219/520 ***
+Training fitness: 0.9587609970674488
+Model size: (15, 18)
+Validation fitness: 0.9634209417674308 
+Elapsed: 2.108116388320923
+
+*** Epoch 1, batch 220/520 ***
+Training fitness: 0.9522833178005591
+Model size: (15, 18)
+Validation fitness: 0.9634209417674308 
+Elapsed: 2.096872329711914
+
+*** Epoch 1, batch 221/520 ***
+Training fitness: 0.9797011207970112
+Model size: (10, 16)
+Validation fitness: 0.9501110880362154 
+Elapsed: 2.134617567062378
+
+*** Epoch 1, batch 222/520 ***
+Training fitness: 0.9544334975369458
+Model size: (11, 15)
+Validation fitness: 0.9576216032760033 
+Elapsed: 2.042870283126831
+
+*** Epoch 1, batch 223/520 ***
+Training fitness: 0.9535054897871557
+Model size: (15, 17)
+Validation fitness: 0.9517078297078552 
+Elapsed: 1.9253475666046143
+
+*** Epoch 1, batch 224/520 ***
+Training fitness: 0.946144916911046
+Model size: (22, 34)
+Validation fitness: 0.9599108452466235 
+Elapsed: 1.9482660293579102
+
+*** Epoch 1, batch 225/520 ***
+Training fitness: 0.9606060606060606
+Model size: (15, 25)
+Validation fitness: 0.9471723791445412 
+Elapsed: 2.152893543243408
+
+*** Epoch 1, batch 226/520 ***
+Training fitness: 0.982928027511668
+Model size: (15, 18)
+Validation fitness: 0.9634209417674308 
+Elapsed: 2.0950088500976562
+
+*** Epoch 1, batch 227/520 ***
+Training fitness: 0.9732039309039858
+Model size: (20, 30)
+Validation fitness: 0.9541866823474996 
+Elapsed: 1.9594039916992188
+
+*** Epoch 1, batch 228/520 ***
+Training fitness: 0.9691323863985735
+Model size: (15, 18)
+Validation fitness: 0.9634209417674308 
+Elapsed: 2.1102147102355957
+
+*** Epoch 1, batch 229/520 ***
+Training fitness: 0.9706696181516326
+Model size: (14, 14)
+Validation fitness: 0.9624486878721866 
+Elapsed: 2.065338373184204
+
+*** Epoch 1, batch 230/520 ***
+Training fitness: 0.9551519644180875
+Model size: (23, 35)
+Validation fitness: 0.9628912593255474 
+Elapsed: 2.0636746883392334
+
+*** Epoch 1, batch 231/520 ***
+Training fitness: 0.9652790625963614
+Model size: (22, 34)
+Validation fitness: 0.9599517077197885 
+Elapsed: 2.1065540313720703
+
+*** Epoch 1, batch 232/520 ***
+Training fitness: 0.9697414267375757
+Model size: (23, 35)
+Validation fitness: 0.9628912593255474 
+Elapsed: 2.112619400024414
+
+*** Epoch 1, batch 233/520 ***
+Training fitness: 0.9509236453201971
+Model size: (10, 14)
+Validation fitness: 0.958037345277694 
+Elapsed: 1.9680061340332031
+
+*** Epoch 1, batch 234/520 ***
+Training fitness: 0.9660185241980004
+Model size: (16, 18)
+Validation fitness: 0.9623798601153244 
+Elapsed: 1.823282241821289
+
+*** Epoch 1, batch 235/520 ***
+Training fitness: 0.9804675578343406
+Model size: (16, 20)
+Validation fitness: 0.9672440424510991 
+Elapsed: 1.986924648284912
+
+*** Epoch 1, batch 236/520 ***
+Training fitness: 0.9768471659919029
+Model size: (16, 20)
+Validation fitness: 0.9672440424510991 
+Elapsed: 1.9169280529022217
+
+*** Epoch 1, batch 237/520 ***
+Training fitness: 0.9707966764418376
+Model size: (16, 20)
+Validation fitness: 0.9672440424510991 
+Elapsed: 1.9556825160980225
+
+*** Epoch 1, batch 238/520 ***
+Training fitness: 0.9765687296816536
+Model size: (17, 22)
+Validation fitness: 0.9684208010708186 !!!
+Elapsed: 1.8712043762207031
+
+*** Epoch 1, batch 239/520 ***
+Training fitness: 0.975923645320197
+Model size: (17, 21)
+Validation fitness: 0.9692074380290048 !!!
+Elapsed: 1.9747331142425537
+
+*** Epoch 1, batch 240/520 ***
+Training fitness: 0.9698477032670105
+Model size: (16, 20)
+Validation fitness: 0.9663908310802335 
+Elapsed: 1.9009068012237549
+
+*** Epoch 1, batch 241/520 ***
+Training fitness: 0.96343994140625
+Model size: (24, 38)
+Validation fitness: 0.9538732568275962 
+Elapsed: 2.1481966972351074
+
+*** Epoch 1, batch 242/520 ***
+Training fitness: 0.9741195141305011
+Model size: (26, 44)
+Validation fitness: 0.9614247169799707 
+Elapsed: 2.143407106399536
+
+*** Epoch 1, batch 243/520 ***
+Training fitness: 0.9598992876443134
+Model size: (22, 35)
+Validation fitness: 0.9621297938706692 
+Elapsed: 2.045112371444702
+
+*** Epoch 1, batch 244/520 ***
+Training fitness: 0.963380972827087
+Model size: (12, 25)
+Validation fitness: 0.9611138287622568 
+Elapsed: 2.1542577743530273
+
+*** Epoch 1, batch 245/520 ***
+Training fitness: 0.9439601494396016
+Model size: (25, 37)
+Validation fitness: 0.9619900132518622 
+Elapsed: 2.1672775745391846
+
+*** Epoch 1, batch 246/520 ***
+Training fitness: 0.965948275862069
+Model size: (19, 35)
+Validation fitness: 0.9626949802233322 
+Elapsed: 2.063464403152466
+
+*** Epoch 1, batch 247/520 ***
+Training fitness: 0.9834503816793893
+Model size: (17, 30)
+Validation fitness: 0.9632145226163942 
+Elapsed: 2.090040922164917
+
+*** Epoch 1, batch 248/520 ***
+Training fitness: 0.9803571428571428
+Model size: (21, 26)
+Validation fitness: 0.9557130115934009 
+Elapsed: 2.0125317573547363
+
+*** Epoch 1, batch 249/520 ***
+Training fitness: 0.9604645416357797
+Model size: (18, 32)
+Validation fitness: 0.9650251579466033 
+Elapsed: 2.10274076461792
+
+*** Epoch 1, batch 250/520 ***
+Training fitness: 0.9681960375391031
+Model size: (21, 26)
+Validation fitness: 0.9557130115934009 
+Elapsed: 1.919769048690796
+
+*** Epoch 1, batch 251/520 ***
+Training fitness: 0.964447021484375
+Model size: (17, 30)
+Validation fitness: 0.9632145226163942 
+Elapsed: 2.0055971145629883
+
+*** Epoch 1, batch 252/520 ***
+Training fitness: 0.9758800122436486
+Model size: (9, 15)
+Validation fitness: 0.957009169974991 
+Elapsed: 2.013982057571411
+
+*** Epoch 1, batch 253/520 ***
+Training fitness: 0.9705972247692402
+Model size: (18, 32)
+Validation fitness: 0.9650251579466033 
+Elapsed: 2.007598638534546
+
+*** Epoch 1, batch 254/520 ***
+Training fitness: 0.9518315018315019
+Model size: (21, 26)
+Validation fitness: 0.9557130115934009 
+Elapsed: 1.97935152053833
+
+*** Epoch 1, batch 255/520 ***
+Training fitness: 0.974899784150478
+Model size: (13, 25)
+Validation fitness: 0.9580938162812948 
+Elapsed: 1.9603667259216309
+
+*** Epoch 1, batch 256/520 ***
+Training fitness: 0.9577930022021042
+Model size: (12, 26)
+Validation fitness: 0.962793852569296 
+Elapsed: 2.2952122688293457
+
+*** Epoch 1, batch 257/520 ***
+Training fitness: 0.9537802265074992
+Model size: (11, 20)
+Validation fitness: 0.9647857355472338 
+Elapsed: 2.1577608585357666
+
+*** Epoch 1, batch 258/520 ***
+Training fitness: 0.9727716727716728
+Model size: (12, 26)
+Validation fitness: 0.962793852569296 
+Elapsed: 2.223442316055298
+
+*** Epoch 1, batch 259/520 ***
+Training fitness: 0.9745845552297165
+Model size: (13, 28)
+Validation fitness: 0.9627583852982593 
+Elapsed: 2.3055624961853027
+
+*** Epoch 1, batch 260/520 ***
+Training fitness: 0.9653299151559542
+Model size: (23, 31)
+Validation fitness: 0.9567585083345156 
+Elapsed: 1.9459655284881592
+
+*** Epoch 1, batch 261/520 ***
+Training fitness: 0.9832870798643232
+Model size: (13, 28)
+Validation fitness: 0.9641043462502594 
+Elapsed: 2.331132173538208
+
+*** Epoch 1, batch 262/520 ***
+Training fitness: 0.9690708971284512
+Model size: (12, 19)
+Validation fitness: 0.963188865636494 
+Elapsed: 1.999466896057129
+
+*** Epoch 1, batch 263/520 ***
+Training fitness: 0.9767399267399268
+Model size: (12, 25)
+Validation fitness: 0.9644522497681436 
+Elapsed: 2.2501282691955566
+
+*** Epoch 1, batch 264/520 ***
+Training fitness: 0.9762315270935961
+Model size: (11, 24)
+Validation fitness: 0.9618152508386106 
+Elapsed: 2.2492752075195312
+
+*** Epoch 1, batch 265/520 ***
+Training fitness: 0.985958485958486
+Model size: (13, 28)
+Validation fitness: 0.9640844875096583 
+Elapsed: 2.416577100753784
+
+*** Epoch 1, batch 266/520 ***
+Training fitness: 0.958734865332345
+Model size: (13, 28)
+Validation fitness: 0.9640844875096583 
+Elapsed: 2.2304420471191406
+
+*** Epoch 1, batch 267/520 ***
+Training fitness: 0.97442626953125
+Model size: (24, 33)
+Validation fitness: 0.9637878704717675 
+Elapsed: 1.8889975547790527
+
+*** Epoch 1, batch 268/520 ***
+Training fitness: 0.9668072620575829
+Model size: (24, 36)
+Validation fitness: 0.9557553030165354 
+Elapsed: 2.0862929821014404
+
+*** Epoch 1, batch 269/520 ***
+Training fitness: 0.981929181929182
+Model size: (14, 25)
+Validation fitness: 0.9649891960390387 
+Elapsed: 3.8057689666748047
+
+*** Epoch 1, batch 270/520 ***
+Training fitness: 0.9646158555249464
+Model size: (12, 19)
+Validation fitness: 0.963188865636494 
+Elapsed: 3.7701499462127686
+
+*** Epoch 1, batch 271/520 ***
+Training fitness: 0.9628543499511241
+Model size: (14, 22)
+Validation fitness: 0.9684529066454527 
+Elapsed: 3.82614803314209
+
+*** Epoch 1, batch 272/520 ***
+Training fitness: 0.9576338928856913
+Model size: (25, 38)
+Validation fitness: 0.9570044617680404 
+Elapsed: 3.9404819011688232
+
+*** Epoch 1, batch 273/520 ***
+Training fitness: 0.96447799987623
+Model size: (15, 28)
+Validation fitness: 0.956333551437509 
+Elapsed: 4.183936834335327
+
+*** Epoch 1, batch 274/520 ***
+Training fitness: 0.9576970443349753
+Model size: (18, 35)
+Validation fitness: 0.9630322856956101 
+Elapsed: 3.8340766429901123
+
+*** Epoch 1, batch 275/520 ***
+Training fitness: 0.9779253520260713
+Model size: (14, 24)
+Validation fitness: 0.9611353546111556 
+Elapsed: 3.8895046710968018
+
+*** Epoch 1, batch 276/520 ***
+Training fitness: 0.9601661779081133
+Model size: (13, 27)
+Validation fitness: 0.9623474980624903 
+Elapsed: 3.72170090675354
+
+*** Epoch 1, batch 277/520 ***
+Training fitness: 0.9806222874258818
+Model size: (23, 34)
+Validation fitness: 0.955247384581879 
+Elapsed: 3.723372220993042
+
+*** Epoch 1, batch 278/520 ***
+Training fitness: 0.9672877082949025
+Model size: (13, 27)
+Validation fitness: 0.9623474980624903 
+Elapsed: 3.77215313911438
+
+*** Epoch 1, batch 279/520 ***
+Training fitness: 0.9461754643206255
+Model size: (14, 24)
+Validation fitness: 0.9611353546111556 
+Elapsed: 3.8654773235321045
+
+*** Epoch 1, batch 280/520 ***
+Training fitness: 0.965034965034965
+Model size: (12, 23)
+Validation fitness: 0.9661195687443649 
+Elapsed: 3.885089635848999
+
+*** Epoch 1, batch 281/520 ***
+Training fitness: 0.9594503816793893
+Model size: (13, 24)
+Validation fitness: 0.9609927160924095 
+Elapsed: 3.78238844871521
+
+*** Epoch 1, batch 282/520 ***
+Training fitness: 0.9695375581110839
+Model size: (13, 26)
+Validation fitness: 0.9608253640671405 
+Elapsed: 3.707550048828125
+
+*** Epoch 1, batch 283/520 ***
+Training fitness: 0.9618259803921568
+Model size: (15, 19)
+Validation fitness: 0.9646670227805404 
+Elapsed: 3.353989601135254
+
+*** Epoch 1, batch 284/520 ***
+Training fitness: 0.9528779832753465
+Model size: (15, 19)
+Validation fitness: 0.9646670227805404 
+Elapsed: 3.519836902618408
+
+*** Epoch 1, batch 285/520 ***
+Training fitness: 0.967948717948718
+Model size: (11, 19)
+Validation fitness: 0.9655105429394335 
+Elapsed: 3.893648386001587
+
+*** Epoch 1, batch 286/520 ***
+Training fitness: 0.9654814271749755
+Model size: (11, 19)
+Validation fitness: 0.9655105429394335 
+Elapsed: 3.6925241947174072
+
+*** Epoch 1, batch 287/520 ***
+Training fitness: 0.9672131147540983
+Model size: (23, 36)
+Validation fitness: 0.9547801729014807 
+Elapsed: 3.4929685592651367
+
+*** Epoch 1, batch 288/520 ***
+Training fitness: 0.9520833333333333
+Model size: (16, 22)
+Validation fitness: 0.9654986899826357 
+Elapsed: 3.3044917583465576
+
+*** Epoch 1, batch 289/520 ***
+Training fitness: 0.9763465019035137
+Model size: (15, 22)
+Validation fitness: 0.9530833131326217 
+Elapsed: 3.571579694747925
+
+*** Epoch 1, batch 290/520 ***
+Training fitness: 0.9740808823529412
+Model size: (15, 22)
+Validation fitness: 0.9642887723956763 
+Elapsed: 3.303154945373535
+
+*** Epoch 1, batch 291/520 ***
+Training fitness: 0.9751847290640394
+Model size: (25, 41)
+Validation fitness: 0.9573566429758975 
+Elapsed: 3.6313037872314453
+
+*** Epoch 1, batch 292/520 ***
+Training fitness: 0.9600220062350999
+Model size: (14, 30)
+Validation fitness: 0.9643877729807399 
+Elapsed: 3.7047781944274902
+
+*** Epoch 1, batch 293/520 ***
+Training fitness: 0.9647130647130646
+Model size: (14, 24)
+Validation fitness: 0.9611353546111556 
+Elapsed: 3.908707857131958
+
+*** Epoch 1, batch 294/520 ***
+Training fitness: 0.9700980392156863
+Model size: (13, 24)
+Validation fitness: 0.9608211504967178 
+Elapsed: 3.644892930984497
+
+*** Epoch 1, batch 295/520 ***
+Training fitness: 0.9706802429000797
+Model size: (16, 18)
+Validation fitness: 0.9643213084872886 
+Elapsed: 3.5075619220733643
+
+*** Epoch 1, batch 296/520 ***
+Training fitness: 0.9837650150150149
+Model size: (13, 21)
+Validation fitness: 0.9587552552383107 
+Elapsed: 3.6265833377838135
+
+*** Epoch 1, batch 297/520 ***
+Training fitness: 0.9531068258340987
+Model size: (14, 22)
+Validation fitness: 0.9622626129383434 
+Elapsed: 3.542874574661255
+
+*** Epoch 1, batch 298/520 ***
+Training fitness: 0.9480869299051118
+Model size: (14, 22)
+Validation fitness: 0.9633142651562494 
+Elapsed: 3.5775489807128906
+
+*** Epoch 1, batch 299/520 ***
+Training fitness: 0.9729812335717343
+Model size: (15, 24)
+Validation fitness: 0.9629276609100257 
+Elapsed: 3.5072083473205566
+
+*** Epoch 1, batch 300/520 ***
+Training fitness: 0.9723699492634024
+Model size: (14, 22)
+Validation fitness: 0.9633142651562494 
+Elapsed: 3.577009677886963
+
+*** Epoch 1, batch 301/520 ***
+Training fitness: 0.968563988095238
+Model size: (18, 22)
+Validation fitness: 0.9652930127863908 
+Elapsed: 3.3902063369750977
+
+*** Epoch 1, batch 302/520 ***
+Training fitness: 0.9719178082191781
+Model size: (19, 24)
+Validation fitness: 0.9646620397755186 
+Elapsed: 3.206974983215332
+
+*** Epoch 1, batch 303/520 ***
+Training fitness: 0.9717251908396947
+Model size: (19, 25)
+Validation fitness: 0.9652807934321648 
+Elapsed: 3.382605791091919
+
+*** Epoch 1, batch 304/520 ***
+Training fitness: 0.9782675237220692
+Model size: (15, 21)
+Validation fitness: 0.9658214861167618 
+Elapsed: 3.4553756713867188
+
+*** Epoch 1, batch 305/520 ***
+Training fitness: 0.9658341042244836
+Model size: (20, 27)
+Validation fitness: 0.9661523613141768 
+Elapsed: 3.329988956451416
+
+*** Epoch 1, batch 306/520 ***
+Training fitness: 0.9583104437526704
+Model size: (16, 23)
+Validation fitness: 0.9654598518552608 
+Elapsed: 3.479410409927368
+
+*** Epoch 1, batch 307/520 ***
+Training fitness: 0.979451634668466
+Model size: (14, 19)
+Validation fitness: 0.9608077037111076 
+Elapsed: 3.489386796951294
+
+*** Epoch 1, batch 308/520 ***
+Training fitness: 0.9610660771309261
+Model size: (15, 21)
+Validation fitness: 0.9599398181232479 
+Elapsed: 3.6199324131011963
+
+*** Epoch 1, batch 309/520 ***
+Training fitness: 0.9664179104477613
+Model size: (17, 25)
+Validation fitness: 0.9670194225078232 
+Elapsed: 3.54355788230896
+
+*** Epoch 1, batch 310/520 ***
+Training fitness: 0.9743699535111329
+Model size: (13, 22)
+Validation fitness: 0.9640681828241093 
+Elapsed: 3.43801212310791
+
+*** Epoch 1, batch 311/520 ***
+Training fitness: 0.9697247146432277
+Model size: (17, 25)
+Validation fitness: 0.9670194225078232 
+Elapsed: 3.5250771045684814
+
+*** Epoch 1, batch 312/520 ***
+Training fitness: 0.960729141179349
+Model size: (13, 19)
+Validation fitness: 0.9499520440726276 
+Elapsed: 4.243074417114258
+
+*** Epoch 1, batch 313/520 ***
+Training fitness: 0.9833943833943833
+Model size: (16, 20)
+Validation fitness: 0.9671544399600656 
+Elapsed: 3.500013828277588
+
+*** Epoch 1, batch 314/520 ***
+Training fitness: 0.9771714582188854
+Model size: (14, 25)
+Validation fitness: 0.9633613289058843 
+Elapsed: 3.6366450786590576
+
+*** Epoch 1, batch 315/520 ***
+Training fitness: 0.9675114503816795
+Model size: (17, 23)
+Validation fitness: 0.9633931963221906 
+Elapsed: 3.5172858238220215
+
+*** Epoch 1, batch 316/520 ***
+Training fitness: 0.9631147540983608
+Model size: (15, 22)
+Validation fitness: 0.9672827706592457 
+Elapsed: 3.4876315593719482
+
+*** Epoch 1, batch 317/520 ***
+Training fitness: 0.9736922419581273
+Model size: (17, 23)
+Validation fitness: 0.9558340235039553 
+Elapsed: 3.7210264205932617
+
+*** Epoch 1, batch 318/520 ***
+Training fitness: 0.9636598413576831
+Model size: (11, 17)
+Validation fitness: 0.9665739565147806 
+Elapsed: 3.573112964630127
+
+*** Epoch 1, batch 319/520 ***
+Training fitness: 0.977961432506887
+Model size: (11, 17)
+Validation fitness: 0.9665739565147806 
+Elapsed: 3.612705707550049
+
+*** Epoch 1, batch 320/520 ***
+Training fitness: 0.9770768384375573
+Model size: (13, 21)
+Validation fitness: 0.9670891112986414 
+Elapsed: 3.8339223861694336
+
+*** Epoch 1, batch 321/520 ***
+Training fitness: 0.9756963575145393
+Model size: (13, 21)
+Validation fitness: 0.9670891112986414 
+Elapsed: 4.0689215660095215
+
+*** Epoch 1, batch 322/520 ***
+Training fitness: 0.9621840988747463
+Model size: (14, 21)
+Validation fitness: 0.9640360680895395 
+Elapsed: 3.8404595851898193
+
+*** Epoch 1, batch 323/520 ***
+Training fitness: 0.9595941072192676
+Model size: (13, 20)
+Validation fitness: 0.9620364541258696 
+Elapsed: 3.904344320297241
+
+*** Epoch 1, batch 324/520 ***
+Training fitness: 0.971908396946565
+Model size: (13, 21)
+Validation fitness: 0.9670891112986414 
+Elapsed: 4.13989782333374
+
+*** Epoch 1, batch 325/520 ***
+Training fitness: 0.9559429379573265
+Model size: (19, 26)
+Validation fitness: 0.9578355976938652 
+Elapsed: 4.244394302368164
+
+*** Epoch 1, batch 326/520 ***
+Training fitness: 0.9695580414450762
+Model size: (13, 19)
+Validation fitness: 0.9610998873401188 
+Elapsed: 4.106165885925293
+
+*** Epoch 1, batch 327/520 ***
+Training fitness: 0.963365162578793
+Model size: (16, 25)
+Validation fitness: 0.9643329232857584 
+Elapsed: 4.054550409317017
+
+*** Epoch 1, batch 328/520 ***
+Training fitness: 0.977328431372549
+Model size: (13, 21)
+Validation fitness: 0.9584262303479075 
+Elapsed: 3.7738797664642334
+
+*** Epoch 1, batch 329/520 ***
+Training fitness: 0.9664835164835165
+Model size: (14, 20)
+Validation fitness: 0.965500247171705 
+Elapsed: 4.182821273803711
+
+*** Epoch 1, batch 330/520 ***
+Training fitness: 0.9714503816793894
+Model size: (19, 29)
+Validation fitness: 0.9650553857344187 
+Elapsed: 4.316610336303711
+
+*** Epoch 1, batch 331/520 ***
+Training fitness: 0.9642748091603053
+Model size: (20, 29)
+Validation fitness: 0.9648018570340686 
+Elapsed: 4.281845331192017
+
+*** Epoch 1, batch 332/520 ***
+Training fitness: 0.9860422405876952
+Model size: (20, 29)
+Validation fitness: 0.9648018570340686 
+Elapsed: 4.206211090087891
+
+*** Epoch 1, batch 333/520 ***
+Training fitness: 0.981618320610687
+Model size: (14, 24)
+Validation fitness: 0.9625648908164974 
+Elapsed: 4.111680030822754
+
+*** Epoch 1, batch 334/520 ***
+Training fitness: 0.9833618791289455
+Model size: (33, 37)
+Validation fitness: 0.9533039485038673 
+Elapsed: 3.90279221534729
+
+*** Epoch 1, batch 335/520 ***
+Training fitness: 0.977993764900055
+Model size: (33, 44)
+Validation fitness: 0.9625836412048787 
+Elapsed: 4.234875917434692
+
+*** Epoch 1, batch 336/520 ***
+Training fitness: 0.9646446078431372
+Model size: (20, 32)
+Validation fitness: 0.9678687867056943 
+Elapsed: 4.487837076187134
+
+*** Epoch 1, batch 337/520 ***
+Training fitness: 0.9740196078431372
+Model size: (12, 20)
+Validation fitness: 0.9605195870935481 
+Elapsed: 4.080947160720825
+
+*** Epoch 1, batch 338/520 ***
+Training fitness: 0.9729064039408867
+Model size: (18, 27)
+Validation fitness: 0.9610210569334703 
+Elapsed: 3.6611318588256836
+
+*** Epoch 1, batch 339/520 ***
+Training fitness: 0.9615147022485792
+Model size: (15, 25)
+Validation fitness: 0.9643117638342876 
+Elapsed: 3.7767720222473145
+
+*** Epoch 1, batch 340/520 ***
+Training fitness: 0.9719694656488549
+Model size: (15, 25)
+Validation fitness: 0.9643117638342876 
+Elapsed: 3.64707612991333
+
+*** Epoch 1, batch 341/520 ***
+Training fitness: 0.9702333065164924
+Model size: (16, 28)
+Validation fitness: 0.957062535760389 
+Elapsed: 3.850119113922119
+
+*** Epoch 1, batch 342/520 ***
+Training fitness: 0.9689870320528506
+Model size: (13, 25)
+Validation fitness: 0.958336691976424 
+Elapsed: 4.225688219070435
+
+*** Epoch 1, batch 343/520 ***
+Training fitness: 0.9611223179900972
+Model size: (18, 30)
+Validation fitness: 0.9613926022454007 
+Elapsed: 3.7889063358306885
+
+*** Epoch 1, batch 344/520 ***
+Training fitness: 0.9671839538735203
+Model size: (14, 24)
+Validation fitness: 0.9636911965103722 
+Elapsed: 3.8428361415863037
+
+*** Epoch 1, batch 345/520 ***
+Training fitness: 0.9691603053435114
+Model size: (12, 20)
+Validation fitness: 0.9605195870935481 
+Elapsed: 4.082096338272095
+
+*** Epoch 1, batch 346/520 ***
+Training fitness: 0.9658062148275018
+Model size: (23, 37)
+Validation fitness: 0.9533764310750746 
+Elapsed: 3.874441385269165
+
+*** Epoch 1, batch 347/520 ***
+Training fitness: 0.974186444825055
+Model size: (15, 27)
+Validation fitness: 0.9653841724664938 
+Elapsed: 4.236069679260254
+
+*** Epoch 1, batch 348/520 ***
+Training fitness: 0.9768549618320611
+Model size: (17, 31)
+Validation fitness: 0.9458391505031662 
+Elapsed: 4.018336057662964
+
+*** Epoch 1, batch 349/520 ***
+Training fitness: 0.9570017788137152
+Model size: (15, 24)
+Validation fitness: 0.9661505293270364 
+Elapsed: 3.9617137908935547
+
+*** Epoch 1, batch 350/520 ***
+Training fitness: 0.9604027674820854
+Model size: (23, 37)
+Validation fitness: 0.9581482537791695 
+Elapsed: 3.8733229637145996
+
+*** Epoch 1, batch 351/520 ***
+Training fitness: 0.9669950738916255
+Model size: (15, 28)
+Validation fitness: 0.9640331185902433 
+Elapsed: 4.191057205200195
+
+*** Epoch 1, batch 352/520 ***
+Training fitness: 0.9771259915144808
+Model size: (15, 24)
+Validation fitness: 0.9661505293270364 
+Elapsed: 3.995063543319702
+
+*** Epoch 1, batch 353/520 ***
+Training fitness: 0.9586181640625
+Model size: (33, 44)
+Validation fitness: 0.9647926787784955 
+Elapsed: 4.309643983840942
+
+*** Epoch 1, batch 354/520 ***
+Training fitness: 0.96923828125
+Model size: (23, 35)
+Validation fitness: 0.955549057904277 
+Elapsed: 3.8647232055664062
+
+*** Epoch 1, batch 355/520 ***
+Training fitness: 0.9901679389312976
+Model size: (24, 36)
+Validation fitness: 0.9627377662829949 
+Elapsed: 4.110188961029053
+
+*** Epoch 1, batch 356/520 ***
+Training fitness: 0.9667033235581622
+Model size: (34, 45)
+Validation fitness: 0.9672463690747674 
+Elapsed: 3.9724607467651367
+
+*** Epoch 1, batch 357/520 ***
+Training fitness: 0.9718379142839575
+Model size: (34, 46)
+Validation fitness: 0.9687123160245235 
+Elapsed: 3.7984654903411865
+
+*** Epoch 1, batch 358/520 ***
+Training fitness: 0.9779833487511563
+Model size: (23, 33)
+Validation fitness: 0.9659904869304573 
+Elapsed: 3.983894109725952
+
+*** Epoch 1, batch 359/520 ***
+Training fitness: 0.9767156862745098
+Model size: (24, 34)
+Validation fitness: 0.9617473115955114 
+Elapsed: 4.000512599945068
+
+*** Epoch 1, batch 360/520 ***
+Training fitness: 0.9724445812807881
+Model size: (24, 36)
+Validation fitness: 0.962811283926936 
+Elapsed: 4.132471323013306
+
+*** Epoch 1, batch 361/520 ***
+Training fitness: 0.9838246963315632
+Model size: (20, 20)
+Validation fitness: 0.96496127655502 
+Elapsed: 3.5787577629089355
+
+*** Epoch 1, batch 362/520 ***
+Training fitness: 0.9762952101661778
+Model size: (18, 30)
+Validation fitness: 0.9647551780017329 
+Elapsed: 4.477291822433472
+
+*** Epoch 1, batch 363/520 ***
+Training fitness: 0.9644934190388736
+Model size: (24, 36)
+Validation fitness: 0.962811283926936 
+Elapsed: 4.149432182312012
+
+*** Epoch 1, batch 364/520 ***
+Training fitness: 0.9647741147741148
+Model size: (21, 22)
+Validation fitness: 0.9670303045114368 
+Elapsed: 4.220680236816406
+
+*** Epoch 1, batch 365/520 ***
+Training fitness: 0.9714689786632231
+Model size: (25, 39)
+Validation fitness: 0.9634427240945295 
+Elapsed: 4.337436199188232
+
+*** Epoch 1, batch 366/520 ***
+Training fitness: 0.9908968719452591
+Model size: (18, 31)
+Validation fitness: 0.9610677542856776 
+Elapsed: 4.696743726730347
+
+*** Epoch 1, batch 367/520 ***
+Training fitness: 0.967846445381747
+Model size: (26, 39)
+Validation fitness: 0.964750817872339 
+Elapsed: 4.340567588806152
+
+*** Epoch 1, batch 368/520 ***
+Training fitness: 0.9574780058651026
+Model size: (31, 44)
+Validation fitness: 0.964951970060347 
+Elapsed: 4.300482988357544
+
+*** Epoch 1, batch 369/520 ***
+Training fitness: 0.9672742843161244
+Model size: (22, 23)
+Validation fitness: 0.967877488644611 
+Elapsed: 4.101861476898193
+
+*** Epoch 1, batch 370/520 ***
+Training fitness: 0.9802265074992347
+Model size: (26, 39)
+Validation fitness: 0.964750817872339 
+Elapsed: 4.201430797576904
+
+*** Epoch 1, batch 371/520 ***
+Training fitness: 0.9745033727334612
+Model size: (26, 39)
+Validation fitness: 0.964750817872339 
+Elapsed: 4.429746627807617
+
+*** Epoch 1, batch 372/520 ***
+Training fitness: 0.977863862755949
+Model size: (17, 28)
+Validation fitness: 0.967442593217368 
+Elapsed: 3.8504254817962646
+
+*** Epoch 1, batch 373/520 ***
+Training fitness: 0.9749124124124124
+Model size: (26, 40)
+Validation fitness: 0.9609793059465424 
+Elapsed: 4.119592666625977
+
+*** Epoch 1, batch 374/520 ***
+Training fitness: 0.9803885630498533
+Model size: (17, 28)
+Validation fitness: 0.9647476668544577 
+Elapsed: 3.961646795272827
+
+*** Epoch 1, batch 375/520 ***
+Training fitness: 0.9848522167487684
+Model size: (25, 37)
+Validation fitness: 0.964946382499569 
+Elapsed: 4.353901624679565
+
+*** Epoch 1, batch 376/520 ***
+Training fitness: 0.9784798534798534
+Model size: (17, 29)
+Validation fitness: 0.967583143270774 
+Elapsed: 3.830920696258545
+
+*** Epoch 1, batch 377/520 ***
+Training fitness: 0.9808302808302809
+Model size: (17, 27)
+Validation fitness: 0.9674901699234023 
+Elapsed: 3.664851188659668
+
+*** Epoch 1, batch 378/520 ***
+Training fitness: 0.9814541881601571
+Model size: (25, 37)
+Validation fitness: 0.964946382499569 
+Elapsed: 4.045173645019531
+
+*** Epoch 1, batch 379/520 ***
+Training fitness: 0.9793897882938979
+Model size: (16, 30)
+Validation fitness: 0.9560162329449325 
+Elapsed: 3.569591760635376
+
+*** Epoch 1, batch 380/520 ***
+Training fitness: 0.9767111440573265
+Model size: (16, 27)
+Validation fitness: 0.9598470462944617 
+Elapsed: 2.217738389968872
+
+*** Epoch 1, batch 381/520 ***
+Training fitness: 0.9780442921505172
+Model size: (25, 37)
+Validation fitness: 0.964946382499569 
+Elapsed: 2.1982381343841553
+
+*** Epoch 1, batch 382/520 ***
+Training fitness: 0.9832977099236642
+Model size: (26, 39)
+Validation fitness: 0.9628858458035477 
+Elapsed: 2.140907049179077
+
+*** Epoch 1, batch 383/520 ***
+Training fitness: 0.9800402856619667
+Model size: (18, 29)
+Validation fitness: 0.9681910515635498 
+Elapsed: 2.193049430847168
+
+*** Epoch 1, batch 384/520 ***
+Training fitness: 0.9630129424032388
+Model size: (26, 40)
+Validation fitness: 0.9702188048496949 !!!
+Elapsed: 2.169556140899658
+
+*** Epoch 1, batch 385/520 ***
+Training fitness: 0.9623015873015873
+Model size: (27, 41)
+Validation fitness: 0.9708049308153721 !!!
+Elapsed: 2.3133580684661865
+
+*** Epoch 1, batch 386/520 ***
+Training fitness: 0.9854627982579893
+Model size: (31, 43)
+Validation fitness: 0.9516904716297007 
+Elapsed: 1.9749000072479248
+
+*** Epoch 1, batch 387/520 ***
+Training fitness: 0.9823597631691388
+Model size: (16, 25)
+Validation fitness: 0.9649983742946118 
+Elapsed: 2.1490235328674316
+
+*** Epoch 1, batch 388/520 ***
+Training fitness: 0.9752450980392158
+Model size: (17, 33)
+Validation fitness: 0.9565018744159626 
+Elapsed: 2.3793182373046875
+
+*** Epoch 1, batch 389/520 ***
+Training fitness: 0.9697414267375757
+Model size: (18, 27)
+Validation fitness: 0.9670756095534173 
+Elapsed: 2.1080691814422607
+
+*** Epoch 1, batch 390/520 ***
+Training fitness: 0.9706997797895768
+Model size: (18, 28)
+Validation fitness: 0.9701128427134985 
+Elapsed: 2.197768211364746
+
+*** Epoch 1, batch 391/520 ***
+Training fitness: 0.9696178937558247
+Model size: (17, 25)
+Validation fitness: 0.9663173500760348 
+Elapsed: 2.0792901515960693
+
+*** Epoch 1, batch 392/520 ***
+Training fitness: 0.9877794153770573
+Model size: (18, 28)
+Validation fitness: 0.9701128427134985 
+Elapsed: 2.1808762550354004
+
+*** Epoch 1, batch 393/520 ***
+Training fitness: 0.9833119383825417
+Model size: (19, 31)
+Validation fitness: 0.9686603150695451 
+Elapsed: 2.2359817028045654
+
+*** Epoch 1, batch 394/520 ***
+Training fitness: 0.9798534798534798
+Model size: (18, 28)
+Validation fitness: 0.9701128427134985 
+Elapsed: 2.166127920150757
+
+*** Epoch 1, batch 395/520 ***
+Training fitness: 0.9798898071625344
+Model size: (23, 30)
+Validation fitness: 0.9407263308727059 
+Elapsed: 2.1217877864837646
+
+*** Epoch 1, batch 396/520 ***
+Training fitness: 0.9739363974851981
+Model size: (18, 28)
+Validation fitness: 0.9701128427134985 
+Elapsed: 2.1915292739868164
+
+*** Epoch 1, batch 397/520 ***
+Training fitness: 0.9721407624633431
+Model size: (23, 33)
+Validation fitness: 0.9629796160653256 
+Elapsed: 1.9529671669006348
+
+*** Epoch 1, batch 398/520 ***
+Training fitness: 0.9851675517304522
+Model size: (18, 27)
+Validation fitness: 0.9684359882442118 
+Elapsed: 2.314371347427368
+
+*** Epoch 1, batch 399/520 ***
+Training fitness: 0.9715576171875
+Model size: (33, 47)
+Validation fitness: 0.9645727670421703 
+Elapsed: 2.057992696762085
+
+*** Epoch 1, batch 400/520 ***
+Training fitness: 0.9511029411764707
+Model size: (23, 34)
+Validation fitness: 0.9633072669653734 
+Elapsed: 2.3739097118377686
+
+*** Epoch 1, batch 401/520 ***
+Training fitness: 0.9704101803805287
+Model size: (31, 35)
+Validation fitness: 0.9643125699086293 
+Elapsed: 2.1230108737945557
+
+*** Epoch 1, batch 402/520 ***
+Training fitness: 0.9811691099797583
+Model size: (23, 28)
+Validation fitness: 0.9657283112508047 
+Elapsed: 2.1880249977111816
+
+*** Epoch 1, batch 403/520 ***
+Training fitness: 0.9752874969415218
+Model size: (23, 28)
+Validation fitness: 0.9657283112508047 
+Elapsed: 2.0516295433044434
+
+*** Epoch 1, batch 404/520 ***
+Training fitness: 0.9741130172784849
+Model size: (19, 27)
+Validation fitness: 0.9641294261542105 
+Elapsed: 2.383598804473877
+
+*** Epoch 1, batch 405/520 ***
+Training fitness: 0.9672628256699053
+Model size: (23, 36)
+Validation fitness: 0.9669601027642195 
+Elapsed: 2.647841691970825
+
+*** Epoch 1, batch 406/520 ***
+Training fitness: 0.9631325154123177
+Model size: (22, 33)
+Validation fitness: 0.9656773087288177 
+Elapsed: 2.4422318935394287
+
+*** Epoch 1, batch 407/520 ***
+Training fitness: 0.9710251237850726
+Model size: (24, 28)
+Validation fitness: 0.9640343643414988 
+Elapsed: 2.067108631134033
+
+*** Epoch 1, batch 408/520 ***
+Training fitness: 0.98419189453125
+Model size: (23, 36)
+Validation fitness: 0.9676967814330888 
+Elapsed: 2.5029244422912598
+
+*** Epoch 1, batch 409/520 ***
+Training fitness: 0.9741758241758242
+Model size: (23, 36)
+Validation fitness: 0.9676967814330888 
+Elapsed: 2.691514015197754
+
+*** Epoch 1, batch 410/520 ***
+Training fitness: 0.9696969696969697
+Model size: (34, 39)
+Validation fitness: 0.9650002337615591 
+Elapsed: 2.3362114429473877
+
+*** Epoch 1, batch 411/520 ***
+Training fitness: 0.9791821102050902
+Model size: (26, 34)
+Validation fitness: 0.9656965079540485 
+Elapsed: 2.191927671432495
+
+*** Epoch 1, batch 412/520 ***
+Training fitness: 0.9574351145038167
+Model size: (24, 38)
+Validation fitness: 0.9649892876383958 
+Elapsed: 2.55334734916687
+
+*** Epoch 1, batch 413/520 ***
+Training fitness: 0.9709923664122138
+Model size: (26, 34)
+Validation fitness: 0.9656965079540485 
+Elapsed: 2.119555711746216
+
+*** Epoch 1, batch 414/520 ***
+Training fitness: 0.9701857282502444
+Model size: (24, 38)
+Validation fitness: 0.9616588266166335 
+Elapsed: 2.360236167907715
+
+*** Epoch 1, batch 415/520 ***
+Training fitness: 0.9754464285714286
+Model size: (21, 39)
+Validation fitness: 0.9683957028469958 
+Elapsed: 2.397890329360962
+
+*** Epoch 1, batch 416/520 ***
+Training fitness: 0.9635874877810362
+Model size: (25, 41)
+Validation fitness: 0.9659050613701036 
+Elapsed: 2.7774784564971924
+
+*** Epoch 1, batch 417/520 ***
+Training fitness: 0.9749511241446724
+Model size: (20, 30)
+Validation fitness: 0.9666970843704822 
+Elapsed: 2.4711647033691406
+
+*** Epoch 1, batch 418/520 ***
+Training fitness: 0.9653846153846154
+Model size: (26, 35)
+Validation fitness: 0.967289640611022 
+Elapsed: 2.1776349544525146
+
+*** Epoch 1, batch 419/520 ***
+Training fitness: 0.9727978482792347
+Model size: (19, 35)
+Validation fitness: 0.9656461466275609 
+Elapsed: 2.6309256553649902
+
+*** Epoch 1, batch 420/520 ***
+Training fitness: 0.972873900293255
+Model size: (25, 42)
+Validation fitness: 0.9638828590049935 
+Elapsed: 2.7164835929870605
+
+*** Epoch 1, batch 421/520 ***
+Training fitness: 0.970970970970971
+Model size: (26, 43)
+Validation fitness: 0.960448359433532 
+Elapsed: 2.5206310749053955
+
+*** Epoch 1, batch 422/520 ***
+Training fitness: 0.9800916030534351
+Model size: (20, 37)
+Validation fitness: 0.9646927988396046 
+Elapsed: 2.223923921585083
+
+*** Epoch 1, batch 423/520 ***
+Training fitness: 0.9746758013212625
+Model size: (27, 44)
+Validation fitness: 0.9674459457538348 
+Elapsed: 2.715712785720825
+
+*** Epoch 1, batch 424/520 ***
+Training fitness: 0.9746049314394638
+Model size: (19, 38)
+Validation fitness: 0.9671179284563589 
+Elapsed: 2.3559751510620117
+
+*** Epoch 1, batch 425/520 ***
+Training fitness: 0.9634803921568628
+Model size: (30, 45)
+Validation fitness: 0.9624531029611947 
+Elapsed: 2.098663806915283
+
+*** Epoch 1, batch 426/520 ***
+Training fitness: 0.9625152625152625
+Model size: (20, 26)
+Validation fitness: 0.9630617623686977 
+Elapsed: 2.2921009063720703
+
+*** Epoch 1, batch 427/520 ***
+Training fitness: 0.9750915750915752
+Model size: (21, 28)
+Validation fitness: 0.9622846517436414 
+Elapsed: 2.3149819374084473
+
+*** Epoch 1, batch 428/520 ***
+Training fitness: 0.982967032967033
+Model size: (29, 41)
+Validation fitness: 0.9608148118212121 
+Elapsed: 2.1727101802825928
+
+*** Epoch 1, batch 429/520 ***
+Training fitness: 0.963254593175853
+Model size: (19, 38)
+Validation fitness: 0.9667814290584231 
+Elapsed: 2.4598753452301025
+
+*** Epoch 1, batch 430/520 ***
+Training fitness: 0.9679200147212169
+Model size: (19, 38)
+Validation fitness: 0.9667814290584231 
+Elapsed: 2.1912972927093506
+
+*** Epoch 1, batch 431/520 ***
+Training fitness: 0.9598386209426004
+Model size: (23, 29)
+Validation fitness: 0.9633717345928418 
+Elapsed: 2.149646759033203
+
+*** Epoch 1, batch 432/520 ***
+Training fitness: 0.953921568627451
+Model size: (28, 43)
+Validation fitness: 0.9656005851073808 
+Elapsed: 2.0797836780548096
+
+*** Epoch 1, batch 433/520 ***
+Training fitness: 0.966360294117647
+Model size: (28, 43)
+Validation fitness: 0.9656005851073808 
+Elapsed: 2.239802837371826
+
+*** Epoch 1, batch 434/520 ***
+Training fitness: 0.9667033235581622
+Model size: (24, 36)
+Validation fitness: 0.9659994270277021 
+Elapsed: 2.2308876514434814
+
+*** Epoch 1, batch 435/520 ***
+Training fitness: 0.9617690237337901
+Model size: (25, 30)
+Validation fitness: 0.9624403523306979 
+Elapsed: 2.1180646419525146
+
+*** Epoch 1, batch 436/520 ***
+Training fitness: 0.9582406721027922
+Model size: (20, 41)
+Validation fitness: 0.9605067631835656 
+Elapsed: 2.3666563034057617
+
+*** Epoch 1, batch 437/520 ***
+Training fitness: 0.9611876339149066
+Model size: (26, 35)
+Validation fitness: 0.9578459667410795 
+Elapsed: 2.1048073768615723
+
+*** Epoch 1, batch 438/520 ***
+Training fitness: 0.9720629047178537
+Model size: (22, 37)
+Validation fitness: 0.9638984308956864 
+Elapsed: 2.1263973712921143
+
+*** Epoch 1, batch 439/520 ***
+Training fitness: 0.97076416015625
+Model size: (27, 36)
+Validation fitness: 0.9611397880200352 
+Elapsed: 2.0678653717041016
+
+*** Epoch 1, batch 440/520 ***
+Training fitness: 0.9679252199413491
+Model size: (30, 46)
+Validation fitness: 0.9657334957744117 
+Elapsed: 2.223118782043457
+
+*** Epoch 1, batch 441/520 ***
+Training fitness: 0.9525324198678738
+Model size: (31, 47)
+Validation fitness: 0.9602529230454017 
+Elapsed: 2.2918553352355957
+
+*** Epoch 1, batch 442/520 ***
+Training fitness: 0.9671740326425821
+Model size: (31, 50)
+Validation fitness: 0.9621794040824294 
+Elapsed: 2.237739086151123
+
+*** Epoch 1, batch 443/520 ***
+Training fitness: 0.946022204502239
+Model size: (27, 33)
+Validation fitness: 0.966383356572701 
+Elapsed: 2.2351274490356445
+
+*** Epoch 1, batch 444/520 ***
+Training fitness: 0.9742038021883976
+Model size: (29, 37)
+Validation fitness: 0.9660899271924344 
+Elapsed: 1.8789782524108887
+
+*** Epoch 1, batch 445/520 ***
+Training fitness: 0.9674662760178234
+Model size: (25, 37)
+Validation fitness: 0.9641469216314007 
+Elapsed: 2.1431009769439697
+
+*** Epoch 1, batch 446/520 ***
+Training fitness: 0.9437713575644611
+Model size: (30, 37)
+Validation fitness: 0.959816708587418 
+Elapsed: 1.9014813899993896
+
+*** Epoch 1, batch 447/520 ***
+Training fitness: 0.9671129042117489
+Model size: (25, 32)
+Validation fitness: 0.9638185928961107 
+Elapsed: 1.9252145290374756
+
+*** Epoch 1, batch 448/520 ***
+Training fitness: 0.9814169570267132
+Model size: (26, 28)
+Validation fitness: 0.9636942925686394 
+Elapsed: 1.9167819023132324
+
+*** Epoch 1, batch 449/520 ***
+Training fitness: 0.9573084708335888
+Model size: (32, 47)
+Validation fitness: 0.9637609219409332 
+Elapsed: 2.0557191371917725
+
+*** Epoch 1, batch 450/520 ***
+Training fitness: 0.9581500488758553
+Model size: (33, 48)
+Validation fitness: 0.9648818049528725 
+Elapsed: 1.9975590705871582
+
+*** Epoch 1, batch 451/520 ***
+Training fitness: 0.9723039215686274
+Model size: (25, 29)
+Validation fitness: 0.9601170628790748 
+Elapsed: 2.0419411659240723
+
+*** Epoch 1, batch 452/520 ***
+Training fitness: 0.9650003136172615
+Model size: (26, 29)
+Validation fitness: 0.9658538573295314 
+Elapsed: 1.8925578594207764
+
+*** Epoch 1, batch 453/520 ***
+Training fitness: 0.9625488758553273
+Model size: (31, 40)
+Validation fitness: 0.9627800027465151 
+Elapsed: 1.9504318237304688
+
+*** Epoch 1, batch 454/520 ***
+Training fitness: 0.9646866963557675
+Model size: (26, 29)
+Validation fitness: 0.9658538573295314 
+Elapsed: 1.809640645980835
+
+*** Epoch 1, batch 455/520 ***
+Training fitness: 0.9708128078817735
+Model size: (27, 30)
+Validation fitness: 0.9660022116481554 
+Elapsed: 1.9193735122680664
+
+*** Epoch 1, batch 456/520 ***
+Training fitness: 0.9801958983777166
+Model size: (21, 30)
+Validation fitness: 0.9596414332177667 
+Elapsed: 1.9680230617523193
+
+*** Epoch 1, batch 457/520 ***
+Training fitness: 0.9737292277614858
+Model size: (28, 34)
+Validation fitness: 0.9658544985250306 
+Elapsed: 1.8120646476745605
+
+*** Epoch 1, batch 458/520 ***
+Training fitness: 0.9797380775883371
+Model size: (22, 25)
+Validation fitness: 0.9558680435051511 
+Elapsed: 1.7964165210723877
+
+*** Epoch 1, batch 459/520 ***
+Training fitness: 0.9554416163095891
+Model size: (27, 31)
+Validation fitness: 0.965462453277 
+Elapsed: 1.9093830585479736
+
+*** Epoch 1, batch 460/520 ***
+Training fitness: 0.9802052785923754
+Model size: (22, 35)
+Validation fitness: 0.9548063336778447 
+Elapsed: 1.9804584980010986
+
+*** Epoch 1, batch 461/520 ***
+Training fitness: 0.9670842544829281
+Model size: (32, 39)
+Validation fitness: 0.9621642718686504 
+Elapsed: 1.862577199935913
+
+*** Epoch 1, batch 462/520 ***
+Training fitness: 0.9737903225806451
+Model size: (32, 48)
+Validation fitness: 0.9655106894984049 
+Elapsed: 1.8057610988616943
+
+*** Epoch 1, batch 463/520 ***
+Training fitness: 0.9708791208791209
+Model size: (31, 47)
+Validation fitness: 0.9646114402907027 
+Elapsed: 1.9220147132873535
+
+*** Epoch 1, batch 464/520 ***
+Training fitness: 0.97381591796875
+Model size: (34, 46)
+Validation fitness: 0.9591881904393135 
+Elapsed: 1.7516624927520752
+
+*** Epoch 1, batch 465/520 ***
+Training fitness: 0.9729812335717343
+Model size: (32, 48)
+Validation fitness: 0.96470761961557 
+Elapsed: 1.7544341087341309
+
+*** Epoch 1, batch 466/520 ***
+Training fitness: 0.9583715947352311
+Model size: (24, 29)
+Validation fitness: 0.9679720466608591 
+Elapsed: 1.9899406433105469
+
+*** Epoch 1, batch 467/520 ***
+Training fitness: 0.9596532991515596
+Model size: (24, 31)
+Validation fitness: 0.967646731544415 
+Elapsed: 2.027388334274292
+
+*** Epoch 1, batch 468/520 ***
+Training fitness: 0.9644843816859221
+Model size: (23, 29)
+Validation fitness: 0.968393339583585 
+Elapsed: 1.9774143695831299
+
+*** Epoch 1, batch 469/520 ***
+Training fitness: 0.9644993894993895
+Model size: (24, 32)
+Validation fitness: 0.9682786022289862 
+Elapsed: 2.005598306655884
+
+*** Epoch 1, batch 470/520 ***
+Training fitness: 0.9584046978223635
+Model size: (34, 51)
+Validation fitness: 0.9653789696230152 
+Elapsed: 1.854767084121704
+
+*** Epoch 1, batch 471/520 ***
+Training fitness: 0.9860221674876847
+Model size: (24, 32)
+Validation fitness: 0.9682786022289862 
+Elapsed: 2.031869411468506
+
+*** Epoch 1, batch 472/520 ***
+Training fitness: 0.9635224760501107
+Model size: (39, 57)
+Validation fitness: 0.9659916594022271 
+Elapsed: 1.8639559745788574
+
+*** Epoch 1, batch 473/520 ***
+Training fitness: 0.9581679389312978
+Model size: (38, 56)
+Validation fitness: 0.9647250051735317 
+Elapsed: 2.02801775932312
+
+*** Epoch 1, batch 474/520 ***
+Training fitness: 0.946469459743796
+Model size: (38, 56)
+Validation fitness: 0.9647250051735317 
+Elapsed: 1.8950178623199463
+
+*** Epoch 1, batch 475/520 ***
+Training fitness: 0.9752903385223621
+Model size: (38, 56)
+Validation fitness: 0.9649843595929883 
+Elapsed: 1.842092514038086
+
+*** Epoch 1, batch 476/520 ***
+Training fitness: 0.9622021616310489
+Model size: (23, 29)
+Validation fitness: 0.968393339583585 
+Elapsed: 2.0502872467041016
+
+*** Epoch 1, batch 477/520 ***
+Training fitness: 0.9762867647058824
+Model size: (38, 57)
+Validation fitness: 0.9644067523675137 
+Elapsed: 1.9716176986694336
+
+*** Epoch 1, batch 478/520 ***
+Training fitness: 0.9801943884100496
+Model size: (23, 29)
+Validation fitness: 0.968393339583585 
+Elapsed: 1.925825834274292
+
+*** Epoch 1, batch 479/520 ***
+Training fitness: 0.9691693191037883
+Model size: (37, 54)
+Validation fitness: 0.9681157935318252 
+Elapsed: 1.8940956592559814
+
+*** Epoch 1, batch 480/520 ***
+Training fitness: 0.9704719545342229
+Model size: (38, 54)
+Validation fitness: 0.968274150500235 
+Elapsed: 1.931150197982788
+
+*** Epoch 1, batch 481/520 ***
+Training fitness: 0.9717396623440175
+Model size: (37, 51)
+Validation fitness: 0.9680035843194797 
+Elapsed: 1.7830297946929932
+
+*** Epoch 1, batch 482/520 ***
+Training fitness: 0.9585171568627451
+Model size: (25, 34)
+Validation fitness: 0.9672982326307101 
+Elapsed: 2.0342767238616943
+
+*** Epoch 1, batch 483/520 ***
+Training fitness: 0.9760376551133932
+Model size: (38, 56)
+Validation fitness: 0.965919295910184 
+Elapsed: 1.8645274639129639
+
+*** Epoch 1, batch 484/520 ***
+Training fitness: 0.9658182262100958
+Model size: (30, 35)
+Validation fitness: 0.9602955167464143 
+Elapsed: 1.9042043685913086
+
+*** Epoch 1, batch 485/520 ***
+Training fitness: 0.9740347018572825
+Model size: (39, 57)
+Validation fitness: 0.967009364898423 
+Elapsed: 1.889894723892212
+
+*** Epoch 1, batch 486/520 ***
+Training fitness: 0.9578700271806276
+Model size: (33, 36)
+Validation fitness: 0.9618248046515472 
+Elapsed: 1.930837869644165
+
+*** Epoch 1, batch 487/520 ***
+Training fitness: 0.9721662699139352
+Model size: (20, 30)
+Validation fitness: 0.9609074370910272 
+Elapsed: 1.894761323928833
+
+*** Epoch 1, batch 488/520 ***
+Training fitness: 0.9684386410050126
+Model size: (23, 32)
+Validation fitness: 0.9628614528947743 
+Elapsed: 1.8535206317901611
+
+*** Epoch 1, batch 489/520 ***
+Training fitness: 0.9655003670173721
+Model size: (30, 35)
+Validation fitness: 0.9602955167464143 
+Elapsed: 1.9936630725860596
+
+*** Epoch 1, batch 490/520 ***
+Training fitness: 0.9706997797895768
+Model size: (31, 36)
+Validation fitness: 0.9606646621551906 
+Elapsed: 1.9599595069885254
+
+*** Epoch 1, batch 491/520 ***
+Training fitness: 0.9657571873283282
+Model size: (32, 36)
+Validation fitness: 0.9617585966362957 
+Elapsed: 2.062849760055542
+
+*** Epoch 1, batch 492/520 ***
+Training fitness: 0.9590395480225988
+Model size: (33, 39)
+Validation fitness: 0.9574700796196267 
+Elapsed: 2.048112630844116
+
+*** Epoch 1, batch 493/520 ***
+Training fitness: 0.9650246305418719
+Model size: (31, 36)
+Validation fitness: 0.9599628828413447 
+Elapsed: 2.061326026916504
+
+*** Epoch 1, batch 494/520 ***
+Training fitness: 0.9746323529411764
+Model size: (31, 38)
+Validation fitness: 0.9614246620203565 
+Elapsed: 2.0953869819641113
+
+*** Epoch 1, batch 495/520 ***
+Training fitness: 0.9707311074217548
+Model size: (23, 31)
+Validation fitness: 0.9633335559808371 
+Elapsed: 2.051382303237915
+
+*** Epoch 1, batch 496/520 ***
+Training fitness: 0.9646326276463263
+Model size: (33, 41)
+Validation fitness: 0.9580466242925599 
+Elapsed: 1.9112613201141357
+
+*** Epoch 1, batch 497/520 ***
+Training fitness: 0.9447328244274809
+Model size: (23, 31)
+Validation fitness: 0.9633335559808371 
+Elapsed: 2.006117582321167
+
+*** Epoch 1, batch 498/520 ***
+Training fitness: 0.9605392156862745
+Model size: (31, 38)
+Validation fitness: 0.9614246620203565 
+Elapsed: 2.041421890258789
+
+*** Epoch 1, batch 499/520 ***
+Training fitness: 0.96624755859375
+Model size: (30, 38)
+Validation fitness: 0.9606291216046683 
+Elapsed: 1.9978201389312744
+
+*** Epoch 1, batch 500/520 ***
+Training fitness: 0.9656902715925484
+Model size: (30, 37)
+Validation fitness: 0.9595953495812517 
+Elapsed: 2.1124751567840576
+
+*** Epoch 1, batch 501/520 ***
+Training fitness: 0.9638473282442748
+Model size: (21, 28)
+Validation fitness: 0.957475841219183 
+Elapsed: 1.8479139804840088
+
+*** Epoch 1, batch 502/520 ***
+Training fitness: 0.9644934190388736
+Model size: (17, 23)
+Validation fitness: 0.9561261888130952 
+Elapsed: 1.7410407066345215
+
+*** Epoch 1, batch 503/520 ***
+Training fitness: 0.9673029556650246
+Model size: (17, 23)
+Validation fitness: 0.954710685629248 
+Elapsed: 1.7055256366729736
+
+*** Epoch 1, batch 504/520 ***
+Training fitness: 0.9692829635063267
+Model size: (18, 25)
+Validation fitness: 0.9553750008060743 
+Elapsed: 1.8725528717041016
+
+*** Epoch 1, batch 505/520 ***
+Training fitness: 0.9668476525071862
+Model size: (19, 26)
+Validation fitness: 0.9542352391666539 
+Elapsed: 1.8567142486572266
+
+*** Epoch 1, batch 506/520 ***
+Training fitness: 0.9570631172176901
+Model size: (25, 41)
+Validation fitness: 0.9578470842532351 
+Elapsed: 1.8143689632415771
+
+*** Epoch 1, batch 507/520 ***
+Training fitness: 0.9756005770557612
+Model size: (19, 28)
+Validation fitness: 0.959093037027245 
+Elapsed: 1.8188848495483398
+
+*** Epoch 1, batch 508/520 ***
+Training fitness: 0.9656961484465605
+Model size: (19, 28)
+Validation fitness: 0.9624529747220949 
+Elapsed: 2.014193534851074
+
+*** Epoch 1, batch 509/520 ***
+Training fitness: 0.953186274509804
+Model size: (27, 43)
+Validation fitness: 0.9601616717659418 
+Elapsed: 1.7991182804107666
+
+*** Epoch 1, batch 510/520 ***
+Training fitness: 0.9621323529411765
+Model size: (24, 30)
+Validation fitness: 0.9575261475860564 
+Elapsed: 1.8935484886169434
+
+*** Epoch 1, batch 511/520 ***
+Training fitness: 0.9656104151314173
+Model size: (20, 28)
+Validation fitness: 0.9645542822919242 
+Elapsed: 2.133270263671875
+
+*** Epoch 1, batch 512/520 ***
+Training fitness: 0.9680610687022901
+Model size: (20, 28)
+Validation fitness: 0.9645542822919242 
+Elapsed: 1.9640252590179443
+
+*** Epoch 1, batch 513/520 ***
+Training fitness: 0.9680542707369719
+Model size: (20, 27)
+Validation fitness: 0.9690776417401123 
+Elapsed: 2.020397663116455
+
+*** Epoch 1, batch 514/520 ***
+Training fitness: 0.9691502463054187
+Model size: (20, 27)
+Validation fitness: 0.9690776417401123 
+Elapsed: 2.157238245010376
+
+*** Epoch 1, batch 515/520 ***
+Training fitness: 0.9847412109375
+Model size: (20, 27)
+Validation fitness: 0.9690776417401123 
+Elapsed: 2.0035159587860107
+
+*** Epoch 1, batch 516/520 ***
+Training fitness: 0.97357177734375
+Model size: (20, 27)
+Validation fitness: 0.9690776417401123 
+Elapsed: 1.935189962387085
+
+*** Epoch 1, batch 517/520 ***
+Training fitness: 0.979032158888274
+Model size: (20, 30)
+Validation fitness: 0.9647506529934964 
+Elapsed: 2.007338047027588
+
+*** Epoch 1, batch 518/520 ***
+Training fitness: 0.9696802983067425
+Model size: (39, 52)
+Validation fitness: 0.9596217118762012 
+Elapsed: 1.8207635879516602
+
+*** Epoch 1, batch 519/520 ***
+Training fitness: 0.956080254465378
+Model size: (20, 28)
+Validation fitness: 0.9526112100465587 
+Elapsed: 2.028759241104126
+
+*** Epoch 1, batch 520/520 ***
+Training fitness: 0.9598649662415604
+Model size: (21, 30)
+Validation fitness: 0.9673886411960853 
+Elapsed: 2.1267378330230713
+
+Total train time: 1355.3717725276947
+Test time: 0.26370859146118164
+Test fitness: 0.969087302245324
+Test statistics: Stats(total=14791, total_true=7158, total_false=7633, true_positive=7157, true_negative=3, false_positive=7630, false_negative=1, tpr=0.9998602961721151, tnr=0.0003930302633302764, ppv=0.48400622168120644, npv=0.75, accuracy=0.4840781556351836, f1=0.6522670312143997, mcc=0.0076993481549118385)
