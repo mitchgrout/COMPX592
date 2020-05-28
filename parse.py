@@ -22,6 +22,7 @@ def parse_neat(fname):
         # dataset, selector, fitness, batch_size, epochs, config_args
         config['dataset'    ] = read(fd, str,  'Dataset')
         config['selector'   ] = read(fd, str,  'Selector')
+        config['fold'       ] = read(fd, int,  'Fold')
         config['fitness'    ] = read(fd, str,  'Fitness')
         config['batch_size' ] = read(fd, int,  'Batch size')
         config['epochs'     ] = read(fd, int,  'Epochs')
@@ -76,6 +77,7 @@ def parse_keras(fname):
         fd.readline() # Configuration:
         config['dataset'] = read(fd, str, 'Dataset')
         config['selector'] = read(fd, str, 'Selector')
+        config['fold'] = read(fd, int,  'Fold')
         config['batch_size'] = read(fd, int, 'Batch size')
         config['epochs'] = read(fd, int, 'Epochs')
 
@@ -125,6 +127,7 @@ def parse_sklearn(fname):
         fd.readline() # Configuration:
         config['dataset'    ] = read(fd, str,  'Dataset')
         config['selector'   ] = read(fd, str,  'Selector')
+        config['fold'       ] = read(fd, int,  'Fold')
 
         # No train step
         pass

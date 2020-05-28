@@ -89,7 +89,7 @@ def _neat_task(test_name, dataset, selector, fold, fitness, batch_size, epochs, 
         print('Configuration:')
         print('Dataset:', dataset.name())
         print('Selector:', selector.name)
-        print('Fold':, fold)
+        print('Fold:', fold)
         print('Fitness:', fitness.__name__)
         print('Batch size:', batch_size)
         print('Epochs:', epochs)
@@ -133,6 +133,7 @@ def _keras_task(test_name, model, dataset, selector, fold, batch_size, epochs):
         print('Configuration:')
         print('Dataset:', dataset.name())
         print('Selector:', selector.name)
+        print('Fold:', fold)
         print('Batch size:', batch_size)
         print('Epochs:', epochs)
  
@@ -175,6 +176,7 @@ def _sklearn_task(test_name, model, dataset, selector, fold):
         print('Configuration:')
         print('Dataset:', dataset.name())
         print('Selector:', selector.name)
+        print('Fold:', fold)
     
         split = dataset.data(selector=selector, save=False, cache=False, fold=fold)
         t, _ = ne.util.benchmark(lambda: model.fit(*split.train))
