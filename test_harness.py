@@ -12,27 +12,30 @@ import tempfile
 def neat(test_name,
          dataset=ne.data.nsl_kdd.dataset,
          selector=None,
+         fold=0,
          fitness=ne.fitness.mcc,
          batch_size=256,
          epochs=1,
          config_args={}):
 
-    return _make_task(_neat_task, test_name, dataset, selector, fitness, batch_size, epochs, config_args)
+    return _make_task(_neat_task, test_name, dataset, selector, fold, fitness, batch_size, epochs, config_args)
 
 def shallow_neural(test_name,
                    dataset=ne.data.nsl_kdd.dataset,
-                   selector=None):
+                   selector=None,
+                   fold=0):
 
     model = keras.models.Sequential([
         keras.layers.InputLayer( ( (selector or dataset).num_features(),) ),
         keras.layers.Dense(7, activation='sigmoid'),
         keras.layers.Dense(1, activation='sigmoid'),
     ])
-    return _make_task(_keras_task, test_name, model, dataset, selector, 1, 10) # unspecified in ref doc
+    return _make_task(_keras_task, test_name, model, dataset, selector, fold, 1, 10) # unspecified in ref doc
 
 def deep_neural(test_name,
                 dataset=ne.data.nsl_kdd.dataset,
-                selector=None):
+                selector=None,
+                fold=0):
 
     model = keras.models.Sequential([
         keras.layers.InputLayer( ( (selector or dataset).num_features(),) ),
@@ -43,20 +46,22 @@ def deep_neural(test_name,
         keras.layers.MaxoutDense(10),
         keras.layers.Dense(1, activation='sigmoid')
     ])
-    return _make_task(_keras_task, test_name, model, dataset, selector, 1, 10)
+    return _make_task(_keras_task, test_name, model, dataset, selector, fold, 1, 10)
 
 def naive_bayes(test_name,
                 dataset=ne.data.nsl_kdd.dataset,
                 selector=None,
+                fold=0,
                 var_smoothing=1e-9):
     model = sklearn.naive_bayes.GaussianNB(\
                 priors=None,
                 var_smoothing=var_smoothing)
-    return _make_task(_sklearn_task, test_name, model, dataset, selector)
+    return _make_task(_sklearn_task, test_name, model, dataset, selector, fold)
 
 def decision_tree(test_name,
                   dataset=ne.data.nsl_kdd.dataset,
                   selector=None,
+                  fold=0,
                   max_depth=None):
 
     model = sklearn.tree.DecisionTreeClassifier(\
@@ -64,7 +69,7 @@ def decision_tree(test_name,
                 splitter='best',
                 max_depth=max_depth,
                 max_features='sqrt')
-    return _make_task(_sklearn_task, test_name, model, dataset, selector) 
+    return _make_task(_sklearn_task, test_name, model, dataset, selector, fold) 
 
 def _make_task(fn, *args):
     from multiprocessing import Process
@@ -72,7 +77,7 @@ def _make_task(fn, *args):
     p.start()
     return p
 
-def _neat_task(test_name, dataset, selector, fitness, batch_size, epochs, config_args):
+def _neat_task(test_name, dataset, selector, fold, fitness, batch_size, epochs, config_args):
     config_file = ne.neat.create_config_file(num_inputs=(selector or dataset).num_features(), **config_args)
     model_type  = ne.neat.FeedForward 
     executor    = ne.execute.Sequential()
@@ -84,12 +89,13 @@ def _neat_task(test_name, dataset, selector, fitness, batch_size, epochs, config
         print('Configuration:')
         print('Dataset:', dataset.name())
         print('Selector:', selector.name)
+        print('Fold':, fold)
         print('Fitness:', fitness.__name__)
         print('Batch size:', batch_size)
         print('Epochs:', epochs)
         print('Config args:' , config_args)
 
-        split = dataset.data(selector=selector, save=False, cache=False)
+        split = dataset.data(selector=selector, save=False, cache=True, fold=fold)
         t, model = ne.util.benchmark(lambda:\
                 ne.neat.run(
                     epochs=epochs,
@@ -111,7 +117,7 @@ def _neat_task(test_name, dataset, selector, fitness, batch_size, epochs, config
         print('Test fitness:', f)
         print('Test statistics:', stats)
 
-def _keras_task(test_name, model, dataset, selector, batch_size, epochs):
+def _keras_task(test_name, model, dataset, selector, fold, batch_size, epochs):
     cfg = tensorflow.compat.v1.ConfigProto(\
             intra_op_parallelism_threads=1,
             inter_op_parallelism_threads=1,
@@ -130,7 +136,7 @@ def _keras_task(test_name, model, dataset, selector, batch_size, epochs):
         print('Batch size:', batch_size)
         print('Epochs:', epochs)
  
-        split = dataset.data(selector=selector, save=False, cache=False, ratio=(0.01, 0.1, 0.1))
+        split = dataset.data(selector=selector, save=False, cache=False, fold=fold)
         
         model.compile('adam', 'binary_crossentropy') # placeholder
 
@@ -160,7 +166,7 @@ def _keras_task(test_name, model, dataset, selector, batch_size, epochs):
         print('Test time:', t)
         print('Test statistics:', r)
 
-def _sklearn_task(test_name, model, dataset, selector):
+def _sklearn_task(test_name, model, dataset, selector, fold):
     thresh = lambda x: x > 0.5
 
     log_dir = os.path.join('results', test_name)
@@ -170,7 +176,7 @@ def _sklearn_task(test_name, model, dataset, selector):
         print('Dataset:', dataset.name())
         print('Selector:', selector.name)
     
-        split = dataset.data(selector=selector, save=False, cache=False)
+        split = dataset.data(selector=selector, save=False, cache=False, fold=fold)
         t, _ = ne.util.benchmark(lambda: model.fit(*split.train))
         print('Total train time:', t)
 

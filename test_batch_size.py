@@ -11,20 +11,19 @@ if __name__ == '__main__':
 
     batch_sizes = [ 16, 32, 64, 128, 256, 512, 1024 ]
 
-    num_runs = 10
-
-    for run in range(1, num_runs+1):
-        procs = []
-        for (d, s) in dataset_pairs:
-            for b in batch_sizes:
-                test_name = join('batch_sizes', d.name(), s.name, str(b), str(run))
+    for (d, s) in dataset_pairs:
+        for b in batch_sizes:
+            procs = []
+            for fold in range(10):
+                test_name = join('batch_sizes', d.name(), s.name, str(b), str(fold))
                 p = neat(\
                         test_name=test_name,
                         dataset=d,
                         selector=s,
+                        fold=fold,
                         fitness=ne.fitness.mcc,
                         batch_size=b)
                 procs.append(p)
-        for p in procs:
-            p.join()
+            for p in procs:
+                p.join()
 

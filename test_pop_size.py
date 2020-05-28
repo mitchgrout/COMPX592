@@ -13,22 +13,21 @@ if __name__ == '__main__':
         32, 64, 128, 256, 512, 1024, 2048
     ]
 
-    num_runs = 10
-
-    for run in range(1, num_runs+1):
-        procs = []
-        for (d, s) in dataset_pairs:
-            for p in pop_sizes:
-                test_name = join('pop_size', d.name(), s.name, str(p), str(run))
+    for (d, s) in dataset_pairs:
+        for p in pop_sizes:
+            procs = []
+            for fold in range(10):
+                test_name = join('pop_size', d.name(), s.name, str(p), str(fold))
                 p = neat(\
                         test_name=test_name,
                         dataset=d,
                         selector=s,
+                        fold=fold,
                         fitness=ne.fitness.mcc,
                         batch_size=512,
                         epochs=4,
                         config_args={'pop_size': p})
                 procs.append(p)
-        for p in procs:
-            p.join()
+            for p in procs:
+                p.join()
 

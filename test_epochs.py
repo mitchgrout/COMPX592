@@ -13,16 +13,14 @@ if __name__ == '__main__':
     #       instead take the best after each 2^n epochs
     max_epochs = 32
 
-    num_runs = 10
-
-    for run in range(2, num_runs+1):
-        procs = []
-        for (d, s) in dataset_pairs:
-            test_name = join('epochs', d.name(), s.name, str(run))
+    for (d, s) in dataset_pairs:
+        for fold in range(10):
+            test_name = join('epochs', d.name(), s.name, str(fold))
             p = neat(\
                     test_name=test_name,
                     dataset=d,
                     selector=s,
+                    fold=fold,
                     fitness=ne.fitness.mcc,
                     batch_size=512,
                     epochs=max_epochs)

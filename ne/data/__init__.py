@@ -38,11 +38,27 @@ class Dataset:
     def num_features(self):
         return len(self._labels) - 1
 
-    def data(self, selector=None, save=False, cache=False, ratio=(0.8, 0.1, 0.1)):
+    def data(self, selector=None, save=False, cache=False, fold=9, n_folds=10):
+        from sklearn.model_selection import KFold
         data = self._load_data(selector, save, cache)
+        kf   = KFold(n_splits=n_folds, shuffle=False)
         xs   = data[:, :-1]
         ys   = data[:,  -1]
-        return self._make_split(xs, ys, ratio)
+        s    = int(0.9*data.shape[0])
+
+        # Use the top 90% of data in our k-fold cross validation
+        fold_xs = xs[:s, :-1]
+        fold_ys = xs[:s,  -1]
+
+        # Keep the last 10% of data as a consistent test dataset
+        test_idx = slice(s, None)
+
+        # Get the fold'th fold
+        train_idx, val_idx = next(t for (idx, t) in enumerate(kf.split(xs, ys)) if idx == fold)
+
+        return Split(train=Pair(xs=xs[train_idx], ys=ys[train_idx]),
+                     test =Pair(xs=xs[test_idx],  ys=ys[test_idx]),
+                     val  =Pair(xs=xs[val_idx],   ys=ys[val_idx]))
 
     def _load_data(self, selector, save, cache): 
         from os.path               import exists
@@ -92,6 +108,14 @@ class Dataset:
         # Processed data required the unprocessed data first
         else:
             data = self._load_data(None, save, cache)
+
+            # UNSW-NB15 hack
+            if self._name == 'unsw2015':
+                # Best according to f_classif:  0,  9, 36, 10,  4, 32,
+
+                data = numpy.delete(data, 36, axis=1)
+                data = numpy.delete(data, 9, axis=1)
+                data = numpy.delete(data, 0, axis=1)
 
             # Choose our feature selector
             if selector.name == 'pearsons':

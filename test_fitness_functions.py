@@ -19,19 +19,18 @@ if __name__ == '__main__':
         ne.fitness.auroc,
     ]
 
-    num_runs = 10
-
-    for run in range(1, num_runs+1):
-        procs = []
-        for (d, s) in dataset_pairs:
-            for f in fitness_funcs:
-                test_name = join('fitness_functions', d.name(), s.name, f.__name__, str(run))
+    for (d, s) in dataset_pairs:
+        for f in fitness_funcs:
+            procs = []
+            for fold in range(10):
+                test_name = join('fitness_functions', d.name(), s.name, f.__name__, str(fold))
                 p = neat(\
                         test_name=test_name,
                         dataset=d,
                         selector=s,
+                        fold=fold,
                         fitness=f)
                 procs.append(p)
-        for p in procs:
-            p.join()
+            for p in procs:
+                p.join()
 
