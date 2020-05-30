@@ -5,6 +5,7 @@ import ne
 import tensorflow
 import keras
 import sklearn.naive_bayes
+import sklearn.tree
 import os
 import tee
 import tempfile
