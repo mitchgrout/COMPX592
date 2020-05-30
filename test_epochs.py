@@ -10,10 +10,11 @@ if __name__ == '__main__':
     ]
 
     # NOTE: Rather than run parallel tests we will
-    #       instead take the best after each 2^n epochs
+    #       instead take the best after each epochs
     max_epochs = 32
 
     for (d, s) in dataset_pairs:
+        procs = []
         for fold in range(10):
             test_name = join('epochs', d.name(), s.name, str(fold))
             p = neat(\

@@ -9,7 +9,7 @@ if __name__ == '__main__':
         (ne.data.ids2017.dataset,  ne.data.PCA(16)),
     ]
 
-    batch_sizes = [ 16, 32, 64, 128, 256, 512, 1024 ]
+    batch_sizes = [ 4, 8, 16, 32, 64, 128, 256, 512, ]
 
     for (d, s) in dataset_pairs:
         for b in batch_sizes:
