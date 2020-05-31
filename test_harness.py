@@ -159,8 +159,7 @@ def _keras_task(test_name, model, dataset, selector, fold, batch_size, epochs):
                 save_best_only=True,
                 mode='max'),
         ]
-        print(split.train.ys)
-        print(split.val.ys)
+
         t, _ = ne.util.benchmark(lambda: model.fit(*split.train, batch_size=batch_size, epochs=epochs, callbacks=callbacks, verbose=2))
         print('Total train time:', t)
 
