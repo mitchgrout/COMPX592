@@ -1,0 +1,12 @@
+Configuration:
+Dataset: ids2017
+Selector: pca
+Fold: 1
+Batch size: 1
+Epochs: 10
+[1. 0. 1. ... 0. 0. 0.]
+[0. 0. 0. ... 0. 0. 0.]
+Epoch 1/10
+ - 4909s - loss: 0.1639
+ - val_mcc: 0.797324
+Epoch 2/10
