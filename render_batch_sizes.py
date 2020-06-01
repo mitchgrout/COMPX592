@@ -35,16 +35,16 @@ def _loader(name, selector):
 nsl_kdd_pca = pd.DataFrame(_loader('nsl_kdd', 'pca'))
 
 sn.set(context='paper', style='darkgrid', palette='muted')
-
 f, axes = plt.subplots(2, 1, figsize=(7,7), sharex=True)
 
-sn.boxplot(x='batch_size', y='score', data=nsl_kdd_pca, ax=axes[0])
-plt.xlabel("Batch size")
-plt.ylabel("Scores")
+ax = sn.boxplot(x='batch_size', y='score', data=nsl_kdd_pca, ax=axes[0])
+ax.set(xlabel='Batch Size',
+       ylabel='Validation Fitness',
+       title='Batch Size versus Validation Fitness')
 
-sn.boxplot(x='batch_size', y='log2time', data=nsl_kdd_pca, ax=axes[1])
-plt.xlabel("Batch size")
-plt.ylabel("Total training time in seconds")
+ax = sn.boxplot(x='batch_size', y='log2time', data=nsl_kdd_pca, ax=axes[1])
+ax.set(xlabel='Batch Size',
+       ylabel='log2(Training Time)',
+       title='Batch Size versus Logarithmic Training Time')
 
-#plt.title("Batch sizes")
 plt.show()

@@ -71,40 +71,30 @@ def parse_neat(fname):
 def parse_keras(fname):
     with open(fname, 'r') as fd:
         config = {}
-        train  = { 'train_loss': [], 'train_mcc': [], 'val_loss': [], 'val_mcc': [] }
+        train  = { 'train_loss': [], 'val_mcc': [] }
         output = {}
 
         fd.readline() # Configuration:
-        config['dataset'] = read(fd, str, 'Dataset')
-        config['selector'] = read(fd, str, 'Selector')
-        config['fold'] = read(fd, int,  'Fold')
+        config['dataset'   ] = read(fd, str, 'Dataset')
+        config['selector'  ] = read(fd, str, 'Selector')
+        config['fold'      ] = read(fd, int, 'Fold')
         config['batch_size'] = read(fd, int, 'Batch size')
-        config['epochs'] = read(fd, int, 'Epochs')
+        config['epochs'    ] = read(fd, int, 'Epochs')
 
         # Training
-        fd.readline() # Train on [x] samples, validate on [y] samples
         for _ in range(config['epochs']):
-            fd.readline() # Epoch [x]/epochs
-            l = fd.readline() # ' - time: - loss: - mcc: - val_loss: - val_mcc:'
-            parts = l.split(' - ')
-            # elapsed  = int(parts[1].split(':')[1])
-            if not parts[2].startswith('loss'): raise Exception
-            loss = float(parts[2][len('loss: '):])
+            fd.readline()      # Epoch [x]/epochs
+            l1 = fd.readline() # ' - [time] - loss: [loss]
+            l2 = fd.readline() # ' - val_mcc: [val_mcc]
 
-            if not parts[3].startswith('mcc'): raise Exception
-            mcc = float(parts[3][len('mcc: '):])
+            parts1 = l1.split(' - ')
+            parts2 = l2.split(' - ')
 
-            if not parts[4].startswith('val_loss'): raise Exception
-            val_loss = float(parts[4][len('val_loss: '):])
-
-            if not parts[5].startswith('val_mcc'): raise Exception
-            val_mcc = float(parts[5][len('val_mcc: '):])
+            loss    = float(parts1[2][len('loss: '):])
+            val_mcc = float(parts2[1][len('val_mcc: '):])
 
             train['train_loss'].append(loss)
-            # train['train_mcc' ].append(mcc)
-            # train['val_loss'  ].append(val_loss)
             train['val_mcc'   ].append(val_mcc)
-            # train['elapsed'   ].append(elapsed)
 
         # Test
         output['train_time'] = read(fd, float, 'Total train time')
@@ -113,7 +103,7 @@ def parse_keras(fname):
 
         return {
             'config': config,
-            'train' : pd.DataFrame(train, columns=list(train.keys())),
+            'train' : pd.DataFrame(train),
             'output': output,
         }
     pass
