@@ -25,7 +25,7 @@ def _loader(name, k_max, stat='mcc'):
         'pca': d_pca,
     }
 
-stat = 'f1'
+stat = 'mcc'
 
 nsl_kdd  = _loader('nsl_kdd',  41, stat)
 unsw2015 = _loader('unsw2015', 47, stat)
@@ -39,7 +39,7 @@ ids2017  = pd.melt(pd.DataFrame(ids2017,  columns=list(ids2017.keys())),  ['xs']
 # Render
 sn.set(context='paper', style='darkgrid', palette='muted')
 
-for name, df in [ ("NSL KDD", nsl_kdd), ("UNSW NB-15", unsw2015), ("IDS 2017", ids2017) ]:
+for name, df in [ ("NSL KDD", nsl_kdd), ("UNSW NB-15", unsw2015), ("CIC IDS 2017", ids2017) ]:
     sn.lineplot(x='xs', y='value', hue='variable', data=df)
     plt.xlabel("Number of features")
     plt.ylabel("Test {} score".format(stat.upper()))
