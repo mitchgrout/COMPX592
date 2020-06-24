@@ -1,0 +1,39 @@
+Configuration:
+Dataset: nsl_kdd
+Selector: pca
+Fold: 3
+Batch size: 1
+Epochs: 10
+Epoch 1/10
+ - 328s - loss: 0.1206
+ - val_mcc: 0.928019
+Epoch 2/10
+ - 319s - loss: 0.0869
+ - val_mcc: 0.942980
+Epoch 3/10
+ - 318s - loss: 0.0787
+ - val_mcc: 0.952019
+Epoch 4/10
+ - 319s - loss: 0.0858
+ - val_mcc: 0.954986
+Epoch 5/10
+ - 317s - loss: 0.0764
+ - val_mcc: 0.957182
+Epoch 6/10
+ - 318s - loss: 0.0749
+ - val_mcc: 0.945977
+Epoch 7/10
+ - 318s - loss: 0.0747
+ - val_mcc: 0.964113
+Epoch 8/10
+ - 317s - loss: 0.0719
+ - val_mcc: 0.953313
+Epoch 9/10
+ - 302s - loss: 0.0774
+ - val_mcc: 0.963296
+Epoch 10/10
+ - 240s - loss: 0.0662
+ - val_mcc: 0.961248
+Total train time: 3104.9026641845703
+Test time: 0.6723418235778809
+Test statistics: Stats(total=14791, total_true=7158, total_false=7633, true_positive=7001, true_negative=7508, false_positive=125, false_negative=157, tpr=0.9780664990220732, tnr=0.9836237390279051, ppv=0.9824586023014313, npv=0.9795172863666014, accuracy=0.980934351970793, f1=0.9802576309157098, mcc=0.9618330527547387)

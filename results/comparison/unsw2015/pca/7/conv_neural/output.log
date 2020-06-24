@@ -1,0 +1,39 @@
+Configuration:
+Dataset: unsw2015
+Selector: pca
+Fold: 7
+Batch size: 1
+Epochs: 10
+Epoch 1/10
+ - 4175s - loss: 0.0414
+ - val_mcc: 0.763244
+Epoch 2/10
+ - 3601s - loss: 0.0408
+ - val_mcc: 0.855869
+Epoch 3/10
+ - 3592s - loss: 0.0438
+ - val_mcc: 0.797740
+Epoch 4/10
+ - 3592s - loss: 0.0525
+ - val_mcc: 0.841818
+Epoch 5/10
+ - 3588s - loss: 0.0480
+ - val_mcc: 0.864028
+Epoch 6/10
+ - 3590s - loss: 0.0590
+ - val_mcc: 0.842970
+Epoch 7/10
+ - 3592s - loss: 0.0555
+ - val_mcc: 0.813707
+Epoch 8/10
+ - 3587s - loss: 0.0855
+ - val_mcc: 0.864631
+Epoch 9/10
+ - 3585s - loss: 0.0817
+ - val_mcc: 0.844746
+Epoch 10/10
+ - 3610s - loss: 0.0691
+ - val_mcc: 0.826941
+Total train time: 36635.71680855751
+Test time: 11.075614213943481
+Test statistics: Stats(total=205942, total_true=9972, total_false=195970, true_positive=7753, true_negative=195055, false_positive=915, false_negative=2219, tpr=0.7774769354191737, tnr=0.9953309179976527, ppv=0.8944393170281495, npv=0.988751685472997, accuracy=0.984782123122044, f1=0.8318669527896996, mcc=0.8261579405900339)

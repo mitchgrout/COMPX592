@@ -1,0 +1,39 @@
+Configuration:
+Dataset: ids2017
+Selector: pca
+Fold: 0
+Batch size: 1
+Epochs: 10
+Epoch 1/10
+ - 5054s - loss: 0.1963
+ - val_mcc: 0.777991
+Epoch 2/10
+ - 4444s - loss: 0.2030
+ - val_mcc: 0.780767
+Epoch 3/10
+ - 4441s - loss: 0.2001
+ - val_mcc: 0.771007
+Epoch 4/10
+ - 4441s - loss: 0.2002
+ - val_mcc: 0.780499
+Epoch 5/10
+ - 4441s - loss: 0.2017
+ - val_mcc: 0.751992
+Epoch 6/10
+ - 4439s - loss: 0.2034
+ - val_mcc: 0.763244
+Epoch 7/10
+ - 4433s - loss: 0.2079
+ - val_mcc: 0.756354
+Epoch 8/10
+ - 4421s - loss: 0.2093
+ - val_mcc: 0.757804
+Epoch 9/10
+ - 4206s - loss: 0.2128
+ - val_mcc: 0.717756
+Epoch 10/10
+ - 4255s - loss: 0.2135
+ - val_mcc: 0.763602
+Total train time: 44718.74784660339
+Test time: 12.444183588027954
+Test statistics: Stats(total=252237, total_true=42632, total_false=209605, true_positive=28547, true_negative=207861, false_positive=1744, false_negative=14085, tpr=0.6696143741790205, tnr=0.9916795877960927, ppv=0.9424251427816843, npv=0.9365386175015544, accuracy=0.9372455270241876, f1=0.7829354250373682, mcc=0.7623997819190707)
