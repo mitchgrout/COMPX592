@@ -1,6 +1,6 @@
 if __name__ == '__main__':
     import ne
-    from test_harness import neat, shallow_neural, deep_neural, decision_tree 
+    from test_harness import neat, shallow_neural, deep_neural, conv_neural, decision_tree 
     from os.path      import join
 
     dataset_pairs = [
@@ -26,11 +26,23 @@ if __name__ == '__main__':
                 selector=s,
                fold=f),
         
-       lambda n,d,s,f: deep_neural(\
+        lambda n,d,s,f: deep_neural(\
                join(n, 'deep_neural'),
                dataset=d,
                selector=s,
                fold=f),
+
+        lambda n,d,s,f: conv_neural(\
+                join(n, 'conv_neural'),
+                dataset=d,
+                selector=s,
+                fold=f),
+
+        lambda n,d,s,f: dbn(\
+                join(n, 'dbn'),
+                dataset=d,
+                selector=s,
+                fold=f),
 
         lambda n,d,s,f: decision_tree(\
                 join(n, 'decision_tree'),

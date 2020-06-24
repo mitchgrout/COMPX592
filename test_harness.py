@@ -6,6 +6,7 @@ import tensorflow
 import keras
 import sklearn.naive_bayes
 import sklearn.tree
+import dbn.tensorflow as dbntf
 import os
 import tee
 import tempfile
@@ -48,6 +49,49 @@ def deep_neural(test_name,
         keras.layers.Dense(1, activation='sigmoid')
     ])
     return _make_task(_keras_task, test_name, model, dataset, selector, fold, 1, 10)
+
+def conv_neural(test_name,
+                dataset=ne.data.nsl_kdd.dataset,
+                selector=None,
+                fold=0):
+
+    model = keras.models.Sequential([
+        keras.layers.InputLayer( ( (selector or dataset).num_features(),) ),
+        keras.layers.Reshape( (-1, 1) ),
+        keras.layers.Conv1D(64, kernel_size=(3,), activation='relu'),
+        keras.layers.MaxPooling1D(),
+        keras.layers.Conv1D(64, kernel_size=(3,), activation='relu'),
+        keras.layers.MaxPooling1D(),
+        keras.layers.Flatten(),
+        keras.layers.Dense(1, activation='sigmoid'),
+    ])
+    return _make_task(_keras_task, test_name, model, dataset, selector, fold, 1, 10) # specified to be 100 in ref doc
+
+def dbn(test_name,
+        dataset=ne.data.nsl_kdd.dataset,
+        selector=None,
+        fold=0):
+
+    # Technically runs on tensorflow, but has a sklearn interface
+    model = dbntf.SupervisedDBNClassification(\
+                hidden_layers_structure=[256,256],
+                activation_function='sigmoid',
+                optimization_algorithm='sgd',
+                learning_rate=1e-3,
+                learning_rate_rbm=1e-3,
+                n_iter_backprop=10,
+                n_epochs_rbm=2,
+                verbose=False)
+
+    cfg = tensorflow.compat.v1.ConfigProto(\
+            intra_op_parallelism_threads=1,
+            inter_op_parallelism_threads=1,
+            allow_soft_placement=True,
+            device_count={'CPU': 1})
+    ses = tensorflow.compat.v1.Session(config=cfg)
+    keras.backend.set_session(ses)
+
+    return _make_task(_sklearn_task, test_name, model, dataset, selector, fold)
 
 def naive_bayes(test_name,
                 dataset=ne.data.nsl_kdd.dataset,
@@ -177,7 +221,7 @@ def _sklearn_task(test_name, model, dataset, selector, fold):
         print('Dataset:', dataset.name())
         print('Selector:', selector.name)
         print('Fold:', fold)
-    
+
         split = dataset.data(selector=selector, save=False, cache=False, fold=fold)
         t, _ = ne.util.benchmark(lambda: model.fit(*split.train))
         print('Total train time:', t)
