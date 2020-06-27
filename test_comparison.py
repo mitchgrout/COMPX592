@@ -1,6 +1,6 @@
 if __name__ == '__main__':
     import ne
-    from test_harness import neat, shallow_neural, deep_neural, conv_neural, decision_tree 
+    from test_harness import neat, shallow_neural, deep_neural, conv_neural, dbn, decision_tree 
     from os.path      import join
 
     dataset_pairs = [

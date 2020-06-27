@@ -6,7 +6,6 @@ import tensorflow
 import keras
 import sklearn.naive_bayes
 import sklearn.tree
-import dbn.tensorflow as dbntf
 import os
 import tee
 import tempfile
@@ -72,8 +71,11 @@ def dbn(test_name,
         selector=None,
         fold=0):
 
-    # Technically runs on tensorflow, but has a sklearn interface
-    model = dbntf.SupervisedDBNClassification(\
+    def _helper(_test_name, _dataset, _selector, _fold):
+        import dbn.tensorflow as dbn_lib
+        # NOTE: tensorflow/models.py updated to use only one thread
+        #       See _keras_task for relevant code
+        model = dbn_lib.SupervisedDBNClassification(\
                 hidden_layers_structure=[256,256],
                 activation_function='sigmoid',
                 optimization_algorithm='sgd',
@@ -82,16 +84,10 @@ def dbn(test_name,
                 n_iter_backprop=10,
                 n_epochs_rbm=2,
                 verbose=False)
+        return _sklearn_task(_test_name, model, _dataset, _selector, _fold)
 
-    cfg = tensorflow.compat.v1.ConfigProto(\
-            intra_op_parallelism_threads=1,
-            inter_op_parallelism_threads=1,
-            allow_soft_placement=True,
-            device_count={'CPU': 1})
-    ses = tensorflow.compat.v1.Session(config=cfg)
-    keras.backend.set_session(ses)
-
-    return _make_task(_sklearn_task, test_name, model, dataset, selector, fold)
+    return _make_task(_helper, test_name, dataset, selector, fold)
+    # return _make_task(_sklearn_task, test_name, model, dataset, selector, fold)
 
 def naive_bayes(test_name,
                 dataset=ne.data.nsl_kdd.dataset,
@@ -119,6 +115,7 @@ def decision_tree(test_name,
 def _make_task(fn, *args):
     from multiprocessing import Process
     p = Process(target=fn, args=args)
+    p.daemon = True
     p.start()
     return p
 
