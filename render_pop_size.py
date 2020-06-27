@@ -1,8 +1,4 @@
-import matplotlib.pyplot as plt
-import seaborn as sn
-import pandas as pd 
-from parse import parse_neat
-from os.path import join
+from render_preamble import *
 
 def _loader(name, selector):
     fname_t = join('results', 'pop_size', name, selector, '{pop_size}', '{fold}', 'output.log')
@@ -33,17 +29,14 @@ def _loader(name, selector):
 
 nsl_kdd_pca = pd.DataFrame(_loader('nsl_kdd', 'pca'))
 
-sn.set(context='paper', style='darkgrid', palette='muted')
-f, axes = plt.subplots(2, 1, figsize=(7,7), sharex=True)
+f, axes = create_figure(2, 1, "Population Sizes Evaluated Against NSL-KDD")
+plt.tight_layout()
 
 ax = sn.boxplot(x='pop_size', y='score', data=nsl_kdd_pca, ax=axes[0])
-ax.set(xlabel='Population Size',
-       ylabel='Validation Fitness',
-       title='Population Size vs Validation Fitness')
+ax.set(xlabel='', ylabel='Validation Fitness')
 
 ax = sn.boxplot(x='pop_size', y='log2time', data=nsl_kdd_pca, ax=axes[1])
-ax.set(xlabel='Population Size',
-       ylabel='log2(Training Time)',
-       title='Population Size vs Logarithmic Training Time')
+ax.set(xlabel='', ylabel='log2(Training Time)')
 
-plt.show()
+plt.savefig('renders/results/pop_size_nsl_kdd.png')
+

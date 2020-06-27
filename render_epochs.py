@@ -1,8 +1,4 @@
-import matplotlib.pyplot as plt
-import seaborn as sn
-import pandas as pd 
-from parse import parse_neat
-from os.path import join
+from render_preamble import *
 
 def _loader(name, selector):
     fname_t = join('results', 'epochs', name, selector, '{fold}', 'output.log')
@@ -39,17 +35,17 @@ def _loader(name, selector):
 
 nsl_kdd_pca = pd.DataFrame(_loader('nsl_kdd', 'pca'))
 
-sn.set(context='paper', style='darkgrid', palette='muted')
-f, axes = plt.subplots(2, 1, figsize=(7,7), sharex=True)
+f, axes = create_figure(2, 1, "Epochs Evaluated Against NSL-KDD")
 
 ax = sn.boxplot(x='epoch', y='score', data=nsl_kdd_pca, ax=axes[0])
-ax.set(xlabel='Epochs',
-       ylabel='Validation Fitness',
-       title='Epochs versus Validation Fitness')
+ax.set(xlabel='', ylabel='Validation Fitness')
+for label in ax.xaxis.get_ticklabels()[::2]:
+    label.set_visible(False)
 
 ax = sn.boxplot(x='epoch', y='log2time', data=nsl_kdd_pca, ax=axes[1])
-ax.set(xlabel='Epochs',
-       ylabel='log2(Training Time)',
-       title='Epochs vs Logarithmic Training Time')
+ax.set(xlabel='', ylabel='log2(Training Time)')
+for label in ax.xaxis.get_ticklabels()[::2]:
+    label.set_visible(False)
 
-plt.show()
+plt.savefig('renders/results/epochs_nsl_kdd.png')
+

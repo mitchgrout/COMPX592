@@ -1,9 +1,4 @@
-import matplotlib.pyplot as plt
-import seaborn as sn
-import pandas as pd 
-from parse import parse_neat
-from glob import glob
-from os.path import join
+from render_preamble import *
 
 def _loader(name, selector):
     fname_t = join('results', 'fitness_functions', name, selector, '{func}', '{fold}', 'output.log') 
@@ -51,27 +46,23 @@ def _loader(name, selector):
 
 nsl_kdd_pca = pd.DataFrame(_loader('nsl_kdd', 'pca'))
 
-sn.set(context='paper', style='darkgrid', palette='muted')
-f, axes = plt.subplots(2, 2, figsize=(7,7), sharex=True)
+f, axes = create_figure(2, 2, "Fitness Functions Evaluated Against NSL-KDD")
 
 ax = sn.boxplot(x='metric', y='tpr', data=nsl_kdd_pca, ax=axes[0,0]) 
-ax.set(xlabel='',
-       ylabel='True Positive Rate',
-       title='True Positive Rate')
+ax.set(xlabel='', ylabel='True Positive Rate')
+rotate_axis(ax)
 
 ax = sn.boxplot(x='metric', y='tnr', data=nsl_kdd_pca, ax=axes[0,1]) 
-ax.set(xlabel='',
-       ylabel='True Negative Rate',
-       title='True Negative Rate')
+ax.set(xlabel='', ylabel='True Negative Rate')
+rotate_axis(ax)
 
 ax = sn.boxplot(x='metric', y='ppv', data=nsl_kdd_pca, ax=axes[1,0]) 
-ax.set(xlabel='',
-       ylabel='Positive Predictive Rate',
-       title='Positive Predictive Rate')
+ax.set(xlabel='', ylabel='Positive Predictive Rate')
+rotate_axis(ax)
 
 ax = sn.boxplot(x='metric', y='npv', data=nsl_kdd_pca, ax=axes[1,1]) 
-ax.set(xlabel='',
-       ylabel='Negative Predictive Rate',
-       title='Negative Predictive Rate')
+ax.set(xlabel='', ylabel='Negative Predictive Rate')
+rotate_axis(ax)
 
-plt.show()
+plt.savefig('renders/results/fitness_functions_nsl_kdd.png')
+

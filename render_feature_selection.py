@@ -1,8 +1,4 @@
-import matplotlib.pyplot as plt
-import seaborn as sn
-import pandas as pd
-from parse import parse_sklearn
-from glob import glob
+from render_preamble import *
 
 # Load
 def _loader(name, k_max, stat='mcc'):
@@ -37,12 +33,17 @@ unsw2015 = pd.melt(pd.DataFrame(unsw2015, columns=list(unsw2015.keys())), ['xs']
 ids2017  = pd.melt(pd.DataFrame(ids2017,  columns=list(ids2017.keys())),  ['xs'])
 
 # Render
-sn.set(context='paper', style='darkgrid', palette='muted')
-
 for name, df in [ ("NSL KDD", nsl_kdd), ("UNSW NB-15", unsw2015), ("CIC IDS 2017", ids2017) ]:
+    plt.tight_layout()
     sn.lineplot(x='xs', y='value', hue='variable', data=df)
     plt.xlabel("Number of features")
     plt.ylabel("Test {} score".format(stat.upper()))
     plt.title("Feature Selection for {}".format(name))
-    plt.show()
+
+    filenames = {
+        'NSL KDD': 'nsl_kdd',
+        'UNSW NB-15': 'unsw2015',
+        'CIC IDS 2017': 'ids2017',
+    }
+    plt.savefig( 'renders/results/feature_selection_{}.png'.format(filenames[name]) )
 
